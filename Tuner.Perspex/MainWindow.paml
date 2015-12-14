@@ -1,0 +1,8 @@
+﻿<Window xmlns="https://github.com/perspex"
+        xmlns:local="clr-namespace:Tuner.Perspex;assembly=Tuner.Perspex"
+        >
+  <StackPanel>
+    <TextBlock>Hello world!</TextBlock> 
+     <local:CircleProgressBar Width="100" Height="100"></local:CircleProgressBar>
+    </StackPanel>
+</Window>
