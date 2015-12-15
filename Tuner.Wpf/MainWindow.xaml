@@ -9,6 +9,14 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         >
     <Grid>
-
+        <StackPanel>
+            <TextBlock Text="StartAngle"/>
+            <Slider Maximum="360" Minimum="0" Value="{Binding StartAngle}"/>
+            <TextBlock Text="Angle"/>
+            <Slider Maximum="360" Minimum="0" Value="{Binding Angle}"/>
+            <TextBlock Text="Thickness"/>
+            <Slider x:Name="ProgressThicknessSlider" Maximum="360" Minimum="0" Value="10" />
+        </StackPanel>
+        <local:CircularProgressBar Height="100" Width="100" x:Name="CircularProgressBar"   StartAngle="{Binding StartAngle}" ProgressThickness="{Binding ElementName=ProgressThicknessSlider, Path=Value}" Value="{Binding Angle}"></local:CircularProgressBar>
     </Grid>
 </Window>
