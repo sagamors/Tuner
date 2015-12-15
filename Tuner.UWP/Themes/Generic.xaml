@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Tuner.UWP">
 
-    <Style TargetType="local:CircleProgressBar" >
+    <!--<Style TargetType="local:CircleProgressBar" >
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:CircleProgressBar">
@@ -11,9 +11,10 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
+                        
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 </ResourceDictionary>

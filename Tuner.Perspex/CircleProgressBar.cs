@@ -11,6 +11,7 @@ namespace Tuner.Perspex
         {
 
             var e = new Ellipse();
+/*            Arc
             var radialGradient = new RadialGradientBrush();
             radialGradient.Radius = 10;
             radialGradient.GradientOrigin = TransformOrigin;
@@ -18,8 +19,14 @@ namespace Tuner.Perspex
             radialGradient.GradientStops = new List<GradientStop>();
             radialGradient.GradientStops.Add(new GradientStop(Colors.Aqua, 0.5));
             radialGradient.GradientStops.Add(new GradientStop(Colors.Red, 10.0));
-            e.Fill = radialGradient;
+            e.Fill = radialGradient;*/
             this.AddVisualChild(e);
+        }
+
+        public override void Render(DrawingContext context)
+        {
+        /*    context*/
+            base.Render(context);
         }
     }
 }
