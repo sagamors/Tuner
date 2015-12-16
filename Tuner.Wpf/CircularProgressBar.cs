@@ -74,9 +74,32 @@ namespace Tuner.Wpf
         }
 
         public static readonly DependencyProperty ProgressThicknessProperty = DependencyProperty.Register(
-            "ProgressThickness", typeof (double), typeof (CircularProgressBar), new PropertyMetadata(1.0));
+            "ProgressThickness", typeof (double), typeof (CircularProgressBar),
+            new PropertyMetadata(1.0, null, (o, value) =>
+            {
+                return value;
+                // todo take into consideration size content?
+                var control = (CircularProgressBar) o;
+                double radius = control.ActualWidth/2;
 
-        public double ProgressThickness
+                if (control.ActualWidth > control.ActualHeight)
+                {
+                    radius = control.ActualHeight/2;
+                }
+
+                if (Math.Abs(radius) < 0.1) return value;
+                double progressThickness = (double) value;
+
+                if (radius - progressThickness < 0)
+                {
+                    return radius;
+                }
+
+                return value;
+            }));
+
+
+    public double ProgressThickness
         {
             get { return (double) GetValue(ProgressThicknessProperty); }
             set { SetValue(ProgressThicknessProperty, value); }

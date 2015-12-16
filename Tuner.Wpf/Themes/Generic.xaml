@@ -1,7 +1,6 @@
-<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Tuner.Wpf">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Tuner.Wpf">
 
     <Style TargetType="{x:Type local:CircularProgressBar}">
         <Setter Property="ContentTemplate">
@@ -18,9 +17,16 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
-                            <local:Arc Angle="360" Stroke="{TemplateBinding ProgressBackground}" StrokeThickness="{TemplateBinding ProgressThickness}"/>
-                            <local:Arc Angle="{TemplateBinding Value}" StartAngle="{TemplateBinding StartAngle}" Stroke="{TemplateBinding ProgressBrush}" StrokeThickness="{TemplateBinding ProgressThickness}"/>
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <local:Arc Angle="360"
+                                       Stroke="{TemplateBinding ProgressBackground}"
+                                       StrokeThickness="{TemplateBinding ProgressThickness}" />
+                            <local:Arc Width="{TemplateBinding ActualWidth}"
+                                       Height="{TemplateBinding ActualHeight}"
+                                       Angle="{TemplateBinding Value}"
+                                       StartAngle="{TemplateBinding StartAngle}"
+                                       Stroke="{TemplateBinding ProgressBrush}"
+                                       StrokeThickness="{TemplateBinding ProgressThickness}" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Grid>
                     </Border>
                 </ControlTemplate>
