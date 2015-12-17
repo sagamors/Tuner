@@ -26,6 +26,16 @@ namespace Tuner.Wpf
             }
         }
 
+
+        public static readonly DependencyProperty SweepDirectionProperty = DependencyProperty.Register(
+            "SweepDirection", typeof (SweepDirection), typeof (Arc), new FrameworkPropertyMetadata(default(SweepDirection), FrameworkPropertyMetadataOptions.AffectsRender));
+
+        public SweepDirection SweepDirection
+        {
+            get { return (SweepDirection) GetValue(SweepDirectionProperty); }
+            set { SetValue(SweepDirectionProperty, value); }
+        }
+
         public static readonly DependencyProperty AngleProperty = DependencyProperty.Register(
             "Angle", typeof (double ), typeof (Arc), new FrameworkPropertyMetadata(45.0, FrameworkPropertyMetadataOptions.AffectsRender));
 
@@ -90,14 +100,28 @@ namespace Tuner.Wpf
 
                 double startAngleInRads = ConvertToRads(StartAngle);
                 double endAngleInRads = ConvertToRads(endAngle);
-                Point p1 = center + new Vector(Math.Sin(endAngleInRads), Math.Cos(endAngleInRads))*radius;
-                Point p0 = center + new Vector(Math.Sin(startAngleInRads), Math.Cos(startAngleInRads))*radius;
+                Point endPoint;
+                Point startPoint;
+
+                if (SweepDirection == SweepDirection.Clockwise)
+                {
+                    endPoint = center + new Vector(Math.Cos(endAngleInRads), Math.Sin(endAngleInRads)) * radius;
+                    startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads))*radius;
+                }
+                else
+                {
+                     endPoint = center + new Vector(Math.Cos(endAngleInRads), -Math.Sin(endAngleInRads))*radius;
+                     startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads))*radius;
+                }
+
+                //Point endPoint = center + new Vector(Math.Cos(endAngleInRads), Math.Sin(endAngleInRads))*radius;
+                //Point startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads))*radius;
                 PathGeometry geometry = new PathGeometry();
                 PathFigure figure = new PathFigure();
                 figure.IsClosed = isClosed;
-                var arcSegment = new ArcSegment(p0, new Size(radius, radius), 0, Angle > 180, SweepDirection.Clockwise, true);
+                var arcSegment = new ArcSegment(endPoint, new Size(radius, radius), 0, Angle > 180, SweepDirection, true);
                 figure.Segments.Add(arcSegment);
-                figure.StartPoint = p1;
+                figure.StartPoint = startPoint;
                 geometry.Figures.Add(figure);
                 return geometry;
             }

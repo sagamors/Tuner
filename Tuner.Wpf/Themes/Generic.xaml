@@ -26,6 +26,7 @@
                                        StartAngle="{TemplateBinding StartAngle}"
                                        Stroke="{TemplateBinding ProgressBrush}"
                                        StrokeThickness="{TemplateBinding ProgressThickness}" 
+                                       SweepDirection="{TemplateBinding SweepDirection}"
                                        />
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Grid>

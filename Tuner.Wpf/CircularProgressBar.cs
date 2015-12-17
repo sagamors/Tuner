@@ -128,6 +128,15 @@ namespace Tuner.Wpf
             set { SetValue(ProgressBackgroundProperty, value); }
         }
 
+        public static readonly DependencyProperty SweepDirectionProperty = DependencyProperty.Register(
+            "SweepDirection", typeof (SweepDirection), typeof (CircularProgressBar), new PropertyMetadata(default(SweepDirection)));
+
+        public SweepDirection SweepDirection
+        {
+            get { return (SweepDirection) GetValue(SweepDirectionProperty); }
+            set { SetValue(SweepDirectionProperty, value); }
+        }
+
         static CircularProgressBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof (CircularProgressBar),
