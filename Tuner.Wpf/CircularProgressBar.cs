@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Tuner.Wpf
 {
@@ -46,6 +36,9 @@ namespace Tuner.Wpf
     /// </summary>
     public class CircularProgressBar : ContentControl
     {
+        private const string _partArcName = "PART_Arc";
+        private Arc _partArc;
+
         public static readonly DependencyProperty StartAngleProperty = DependencyProperty.Register(
             "StartAngle", typeof (double), typeof (CircularProgressBar), new PropertyMetadata(default(double)));
 
@@ -56,7 +49,11 @@ namespace Tuner.Wpf
         }
 
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
-            "Value", typeof (double), typeof (CircularProgressBar), new PropertyMetadata(default(double)));
+            "Value", typeof (double), typeof (CircularProgressBar), new PropertyMetadata(default(double), (o, args) =>
+            {
+                var control = (CircularProgressBar) o;
+                control.SetAngle();
+            }));
 
         public double Value
         {
@@ -98,8 +95,25 @@ namespace Tuner.Wpf
                 return value;
             }));
 
+        public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register(
+            "Minimum", typeof (double ), typeof (CircularProgressBar), new PropertyMetadata(default(double )));
 
-    public double ProgressThickness
+        public double  Minimum
+        {
+            get { return (double ) GetValue(MinimumProperty); }
+            set { SetValue(MinimumProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register(
+            "Maximum", typeof (double), typeof (CircularProgressBar), new PropertyMetadata(default(double)));
+
+        public double Maximum
+        {
+            get { return (double) GetValue(MaximumProperty); }
+            set { SetValue(MaximumProperty, value); }
+        }
+
+        public double ProgressThickness
         {
             get { return (double) GetValue(ProgressThicknessProperty); }
             set { SetValue(ProgressThicknessProperty, value); }
@@ -116,7 +130,23 @@ namespace Tuner.Wpf
 
         static CircularProgressBar()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CircularProgressBar), new FrameworkPropertyMetadata(typeof(CircularProgressBar)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof (CircularProgressBar),
+                new FrameworkPropertyMetadata(typeof (CircularProgressBar)));
+        }
+
+        public override void OnApplyTemplate()
+        {
+            _partArc = GetTemplateChild(_partArcName) as Arc;
+            base.OnApplyTemplate();
+        }
+
+        private void SetAngle()
+        {
+            double deltaAngle = 360 / Math.Abs(Maximum - Minimum);
+            if (_partArc != null)
+            {
+                _partArc.Angle = (Value < Maximum)?  deltaAngle*Value: 360;
+            }
         }
     }
 }

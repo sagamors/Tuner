@@ -10,6 +10,8 @@ namespace Tuner.Wpf
     //todo how to set a limit 
     public class Arc : Shape
     {
+        private const double MINIMUM_DELTA_ANGLE = 0.1;
+
         public double Radius
         {
             get
@@ -24,7 +26,6 @@ namespace Tuner.Wpf
             }
         }
 
-        private const double MINIMUM_DELTA_ANGLE = 0.1;
         public static readonly DependencyProperty AngleProperty = DependencyProperty.Register(
             "Angle", typeof (double ), typeof (Arc), new FrameworkPropertyMetadata(45.0, FrameworkPropertyMetadataOptions.AffectsRender));
 

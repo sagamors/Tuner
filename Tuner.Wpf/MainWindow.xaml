@@ -17,6 +17,11 @@
             <TextBlock Text="Thickness"/>
             <Slider x:Name="ProgressThicknessSlider" Maximum="360" Minimum="0" Value="10" />
         </StackPanel>
-        <local:CircularProgressBar Height="100" Width="100" x:Name="CircularProgressBar"   StartAngle="{Binding StartAngle}" ProgressThickness="{Binding ElementName=ProgressThicknessSlider, Path=Value}" Value="{Binding Angle}"></local:CircularProgressBar>
+        <local:CircularProgressBar Height="100" Width="100" x:Name="CircularProgressBar"   
+                                   StartAngle="{Binding StartAngle}" 
+                                   ProgressThickness="{Binding ElementName=ProgressThicknessSlider, Path=Value}" 
+                                   Value="{Binding Angle}"
+                                   Maximum="100"/>
+        
     </Grid>
 </Window>

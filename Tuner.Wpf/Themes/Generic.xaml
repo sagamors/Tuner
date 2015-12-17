@@ -20,12 +20,13 @@
                             <local:Arc Angle="360"
                                        Stroke="{TemplateBinding ProgressBackground}"
                                        StrokeThickness="{TemplateBinding ProgressThickness}" />
-                            <local:Arc Width="{TemplateBinding ActualWidth}"
+                            <local:Arc x:Name="PART_Arc"
+                                       Width="{TemplateBinding ActualWidth}"
                                        Height="{TemplateBinding ActualHeight}"
-                                       Angle="{TemplateBinding Value}"
                                        StartAngle="{TemplateBinding StartAngle}"
                                        Stroke="{TemplateBinding ProgressBrush}"
-                                       StrokeThickness="{TemplateBinding ProgressThickness}" />
+                                       StrokeThickness="{TemplateBinding ProgressThickness}" 
+                                       />
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Grid>
                     </Border>
