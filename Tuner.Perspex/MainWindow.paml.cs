@@ -7,7 +7,7 @@ namespace Tuner.Perspex
     {
         public MainWindow()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             App.AttachDevTools(this);
         }
 

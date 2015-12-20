@@ -6,8 +6,6 @@ using System.Windows.Shapes;
 
 namespace Tuner.Wpf
 {
-
-    //todo how to set a limit 
     public class Arc : Shape
     {
         private const double MINIMUM_DELTA_ANGLE = 0.1;
@@ -100,22 +98,8 @@ namespace Tuner.Wpf
 
                 double startAngleInRads = ConvertToRads(StartAngle);
                 double endAngleInRads = ConvertToRads(endAngle);
-                Point endPoint;
-                Point startPoint;
-
-                if (SweepDirection == SweepDirection.Clockwise)
-                {
-                    endPoint = center + new Vector(Math.Cos(endAngleInRads), Math.Sin(endAngleInRads)) * radius;
-                    startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads))*radius;
-                }
-                else
-                {
-                     endPoint = center + new Vector(Math.Cos(endAngleInRads), -Math.Sin(endAngleInRads))*radius;
-                     startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads))*radius;
-                }
-
-                //Point endPoint = center + new Vector(Math.Cos(endAngleInRads), Math.Sin(endAngleInRads))*radius;
-                //Point startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads))*radius;
+                Point startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads)) * radius;
+                Point endPoint = center + new Vector(Math.Cos(endAngleInRads), Math.Sin(endAngleInRads) * (SweepDirection == SweepDirection.Clockwise ? 1 : -1)) * radius;
                 PathGeometry geometry = new PathGeometry();
                 PathFigure figure = new PathFigure();
                 figure.IsClosed = isClosed;

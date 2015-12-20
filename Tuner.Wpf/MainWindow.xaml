@@ -22,7 +22,7 @@
     <Grid>
         <StackPanel Orientation="Horizontal" Height="{Binding ElementName=StringStackPanel, Path=ActualHeight}" VerticalAlignment="Top">
             <Panel.Background>
-                <ImageBrush ImageSource="palisander.jpg" TileMode="Tile" Viewport="0,0,524,349" ViewportUnits="Absolute" />
+                <ImageBrush ImageSource="palisander.jpg" TileMode="FlipX" Viewport="0,0,524,349" ViewportUnits="Absolute" />
             </Panel.Background>
             <Border Style="{StaticResource SplittingStyle}"  BorderThickness="0" Background="Black"/>
             <Border Style="{StaticResource SplittingStyle}"  BorderThickness="0" Background="Black"/>
