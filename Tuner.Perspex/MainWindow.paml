@@ -1,8 +1,15 @@
 ﻿<Window xmlns="https://github.com/perspex"
         xmlns:local="clr-namespace:Tuner.Perspex;assembly=Tuner.Perspex"
+        Height="100" Width="100" 
         >
   <StackPanel>
     <TextBlock>Hello world!</TextBlock>
-    <local:Arc Margin="100" Width="100" Height="100" StrokeThickness="1"></local:Arc>    
+    <local:CircularProgressBar Margin="100" Height="100" Width="100" 
+                           StartAngle="45.0"
+                           ProgressThickness="5"
+                           Value="63"
+                           Maximum="100"
+                           />
+    <!--<local:Arc Margin="100" Width="100" Height="100" StrokeThickness="1"></local:Arc>-->
     </StackPanel>
 </Window>

@@ -88,7 +88,7 @@ namespace Tuner.Perspex
                 {
                     radius = halfThickness;
                 }
-
+                
                 var center = new Point(Width / 2, Height / 2);
                 double endAngle = (StartAngle + Angle);
                 bool isClosed = Math.Abs(StartAngle - endAngle) >= (360 - MINIMUM_DELTA_ANGLE);

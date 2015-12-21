@@ -173,7 +173,7 @@
     <EmbeddedResource Include="MainWindow.paml" />
     <Compile Include="Arc.cs" />
     <Compile Include="ArcSegmentGeometry.cs" />
-    <Compile Include="CircleProgressBar.cs" />
+    <Compile Include="CircularProgressBar.cs" />
     <Compile Include="MainWindow.paml.cs">
       <DependentUpon>MainWindow.paml</DependentUpon>
     </Compile>
