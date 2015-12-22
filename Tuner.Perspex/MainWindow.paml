@@ -1,7 +1,6 @@
 ﻿<Window xmlns="https://github.com/perspex"
         xmlns:local="clr-namespace:Tuner.Perspex;assembly=Tuner.Perspex"
         Height="100" Width="100" 
-        DataContext="{Binding "
         >
   <StackPanel>
     <TextBlock>Hello world!</TextBlock>
