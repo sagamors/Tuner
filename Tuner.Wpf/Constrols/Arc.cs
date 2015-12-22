@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace Tuner.Wpf
+namespace Tuner.Wpf.Constrols
 {
     public class Arc : Shape
     {
