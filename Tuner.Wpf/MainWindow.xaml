@@ -75,11 +75,8 @@
                Placement="RelativePoint"
                PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
             <Border>
-                <constrols:CircularProgressBar x:Name="CircularProgressBar"
-                                               Width="100"
-                                               Height="100"
-                                               Maximum="100"
-                                               ProgressThickness="10" />
+                <constrols:TuneProgress Width="100" Height="100"></constrols:TuneProgress>
+ 
             </Border>
         </Popup>
     </Grid>
