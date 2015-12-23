@@ -31,7 +31,6 @@
             </Grid.ColumnDefinitions>
             <constrols:Frets Grid.Column="1" />
         </Grid>
-
         <UniformGrid x:Name="StringStackPanel"
                      VerticalAlignment="Stretch"
                      Rows="6">

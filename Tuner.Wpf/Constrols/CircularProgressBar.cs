@@ -75,24 +75,24 @@ namespace Tuner.Wpf.Constrols
             new PropertyMetadata(1.0, null, (o, value) =>
             {
                 return value;
-                // todo take into consideration size content?
-                var control = (CircularProgressBar) o;
-                double radius = control.ActualWidth/2;
+                //// todo take into consideration size content?
+                //var control = (CircularProgressBar) o;
+                //double radius = control.ActualWidth/2;
 
-                if (control.ActualWidth > control.ActualHeight)
-                {
-                    radius = control.ActualHeight/2;
-                }
+                //if (control.ActualWidth > control.ActualHeight)
+                //{
+                //    radius = control.ActualHeight/2;
+                //}
 
-                if (Math.Abs(radius) < 0.1) return value;
-                double progressThickness = (double) value;
+                //if (Math.Abs(radius) < 0.1) return value;
+                //double progressThickness = (double) value;
 
-                if (radius - progressThickness < 0)
-                {
-                    return radius;
-                }
+                //if (radius - progressThickness < 0)
+                //{
+                //    return radius;
+                //}
 
-                return value;
+                //return value;
             }));
 
         public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register(

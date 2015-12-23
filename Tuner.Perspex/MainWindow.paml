@@ -4,11 +4,13 @@
         DataContext="{Binding "
         >
   <StackPanel>
+    <TextBox Name="ValueTextBox" Text="{Binding Path=DoubleValue}"></TextBox>
     <TextBlock>Hello world!</TextBlock>
+    
     <local:CircularProgressBar Margin="100" Height="100" Width="100" 
                            StartAngle="45.0"
                            ProgressThickness="5"
-                           Value="63"
+                           Value="{Binding ElementName=ValueTextBox, Path=Text}"
                            Maximum="100"
                            />
     <!--<local:Arc Margin="100" Width="100" Height="100" StrokeThickness="1"></local:Arc>-->

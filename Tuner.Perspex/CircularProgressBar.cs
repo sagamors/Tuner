@@ -61,7 +61,7 @@ namespace Tuner.Perspex
             set { SetValue(MinimumProperty, value); }
         }
 
-        public static readonly PerspexProperty<double> MaximumProperty = PerspexProperty.Register<CircularProgressBar, double>("Maximum");
+        public static readonly PerspexProperty<double> MaximumProperty = PerspexProperty.Register<CircularProgressBar, double>("Maximum", 100.0);
 
         public double Maximum
         {
@@ -93,20 +93,24 @@ namespace Tuner.Perspex
         public override void ApplyTemplate()
         {
             var arc = new Arc() { Name = _partArcName, Height = 100, Width = 100 };
-            arc.BindTwoWay(Arc.StartAngleProperty, this, StartAngleProperty);
+            arc.Stroke = Brushes.Black;
+            //arc.BindTwoWay(Arc.StartAngleProperty, this, StartAngleProperty);
             arc.BindTwoWay(Shape.StrokeThicknessProperty, this, ProgressThicknessProperty);
             arc.BindTwoWay(Shape.StrokeProperty, this, ProgressBrushProperty);
-            AddVisualChild(arc);
-            _partArc = this.FindControl<Arc>(_partArcName);
+            this.VisualChildren.Add(arc);
+            _partArc = arc;
             base.ApplyTemplate();
         }
 
         private void SetAngle()
         {
-            double deltaAngle = 360 / Math.Abs(Maximum - Minimum);
+           double deltaAngle = 360 / Math.Abs(Maximum - Minimum);
+
             if (_partArc != null)
             {
-                _partArc.Angle = (Value < Maximum) ? deltaAngle * Value : 360;
+                _partArc.StrokeThickness++;
+
+                _partArc.SetValue(Arc.StartAngleProperty, (Value < Maximum) ? deltaAngle * Value : 360);
             }
         }
     }

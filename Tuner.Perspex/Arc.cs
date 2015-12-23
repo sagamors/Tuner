@@ -34,7 +34,7 @@ namespace Tuner.Perspex
         }
 
 
-        public static readonly PerspexProperty<double> AngleProperty = PerspexProperty.Register<Arc, double>("Angle", 45.0);
+        public static readonly PerspexProperty<double> AngleProperty = PerspexProperty.Register<Arc, double>("Angle");
 
         public double Angle
         {
@@ -54,6 +54,11 @@ namespace Tuner.Perspex
 
         static Arc()
         {
+
+            AffectsRender(AngleProperty);
+            AffectsRender(SweerDirectionProperty);
+            AffectsRender(StartAngleProperty);
+
             StrokeThicknessProperty.OverrideValidation<Arc>((o, value) =>
             {
                 var control = o;
@@ -77,8 +82,6 @@ namespace Tuner.Perspex
         {
             get
             {
-                this.StrokeThickness = 1;
-                this.Stroke = Brushes.Black;
                 double radius = Radius;
                 double halfThickness = StrokeThickness / 2;
                 if (radius >= halfThickness)

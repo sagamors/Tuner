@@ -8,6 +8,7 @@ namespace Tuner.Perspex
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
             App.AttachDevTools(this);
         }
 
