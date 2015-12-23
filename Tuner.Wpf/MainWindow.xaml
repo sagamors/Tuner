@@ -15,80 +15,72 @@
         <Style x:Key="StringStyle" TargetType="constrols:String">
             <Setter Property="StringThickness" Value="5" />
         </Style>
-
-        <Style x:Key="SplittingStyle" TargetType="Border">
-            <Setter Property="Width" Value="5" />
-            <Setter Property="Margin" Value="30,0" />
-            <Setter Property="VerticalAlignment" Value="Stretch" />
-        </Style>
     </Window.Resources>
-    <Grid>
-        <StackPanel Height="{Binding ElementName=StringStackPanel,
-                                     Path=ActualHeight}"
-                    VerticalAlignment="Top"
-                    Orientation="Horizontal">
-            <Panel.Background>
-                <ImageBrush ImageSource="palisander.jpg"
-                            TileMode="FlipX"
-                            Viewport="0,0,524,349"
-                            ViewportUnits="Absolute" />
-            </Panel.Background>
-            <Border Background="Black"
-                    BorderThickness="0"
-                    Style="{StaticResource SplittingStyle}" />
-            <Border Background="Black"
-                    BorderThickness="0"
-                    Style="{StaticResource SplittingStyle}" />
-            <Border Background="Black"
-                    BorderThickness="0"
-                    Style="{StaticResource SplittingStyle}" />
-            <Border Background="Black"
-                    BorderThickness="0"
-                    Style="{StaticResource SplittingStyle}" />
-            <Border Background="Black"
-                    BorderThickness="0"
-                    Style="{StaticResource SplittingStyle}" />
-            <Border Background="Black"
-                    BorderThickness="0"
-                    Style="{StaticResource SplittingStyle}" />
-        </StackPanel>
+    <Grid Grid.IsSharedSizeScope="True">
+
+        <Panel.Background>
+            <ImageBrush ImageSource="palisander.jpg"
+                        TileMode="FlipX"
+                        Viewport="0,0,524,349"
+                        ViewportUnits="Absolute" />
+        </Panel.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition SharedSizeGroup="StringsNameSharedSizeGroup" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <constrols:Frets Grid.Column="1" />
+        </Grid>
+
         <UniformGrid x:Name="StringStackPanel"
                      VerticalAlignment="Stretch"
-                     Grid.IsSharedSizeScope="True"
                      Rows="6">
             <constrols:String BorderThickness="0"
+                              Click="ButtonBase_OnClick"
                               StringBackground="Red"
                               StringName="E2"
                               Style="{StaticResource StringStyle}" />
             <constrols:String BorderThickness="0"
+                              Click="ButtonBase_OnClick"
                               StringBackground="Yellow"
                               StringName="A2"
                               Style="{StaticResource StringStyle}" />
             <constrols:String BorderThickness="0"
+                              Click="ButtonBase_OnClick"
                               StringBackground="DeepSkyBlue"
                               StringName="D3"
                               Style="{StaticResource StringStyle}" />
             <constrols:String BorderThickness="0"
+                              Click="ButtonBase_OnClick"
                               StringBackground="Orange"
                               StringName="G3"
                               Style="{StaticResource StringStyle}" />
             <constrols:String BorderThickness="0"
+                              Click="ButtonBase_OnClick"
                               StringBackground="GreenYellow"
                               StringName="B3"
                               Style="{StaticResource StringStyle}" />
             <constrols:String BorderThickness="0"
+                              Click="ButtonBase_OnClick"
                               StringBackground="DeepPink"
                               StringName="E4"
                               Style="{StaticResource StringStyle}" />
         </UniformGrid>
-        <constrols:CircularProgressBar x:Name="CircularProgressBar"
-                                       Width="100"
-                                       Height="100"
-                                       Maximum="100"
-                                       ProgressThickness="{Binding ElementName=ProgressThicknessSlider,
-                                                                   Path=Value}"
-                                       StartAngle="{Binding StartAngle}"
-                                       Visibility="Collapsed"
-                                       Value="{Binding Angle}" />
+
+        <Popup x:Name="TunePopup"
+               Width="100"
+               Height="100"
+               AllowsTransparency="True"
+               IsOpen="True"
+               Placement="RelativePoint"
+               PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+            <Border>
+                <constrols:CircularProgressBar x:Name="CircularProgressBar"
+                                               Width="100"
+                                               Height="100"
+                                               Maximum="100"
+                                               ProgressThickness="10" />
+            </Border>
+        </Popup>
     </Grid>
 </Window>
