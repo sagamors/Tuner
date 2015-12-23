@@ -38,6 +38,7 @@ namespace Tuner.Wpf.Constrols
     /// </summary>
     public class String : ButtonBase
     {
+        private Border _partString;
         static String()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(String), new FrameworkPropertyMetadata(typeof(String)));
@@ -48,10 +49,6 @@ namespace Tuner.Wpf.Constrols
             _partString = GetTemplateChild("PART_String") as Border;
             base.OnApplyTemplate();
         }
-
-        public static readonly DependencyProperty SProperty = DependencyProperty.Register(
-            "S", typeof (string), typeof (String), new PropertyMetadata(default(string)));
-
 
         public static readonly DependencyProperty StringNameProperty = DependencyProperty.Register(
             "StringName", typeof (string), typeof (String), new PropertyMetadata(default(string)));
@@ -119,29 +116,34 @@ namespace Tuner.Wpf.Constrols
             set { SetValue(IsPlayProperty, value); }
         }
 
-        public static readonly DependencyProperty AmplitudeProperty = DependencyProperty.Register(
-            "Amplitude", typeof (double), typeof (String), new PropertyMetadata(5.0, (o, args) =>
-            {
-                var control = o as String;
-                control.SetFromAmp();
-            }));
+        //public static readonly DependencyProperty AmplitudeProperty = DependencyProperty.Register(
+        //    "Amplitude", typeof (double), typeof (String), new PropertyMetadata(5.0, (o, args) =>
+        //    {
+        //        var control = o as String;
+        //        control.SetFromAmp();
+        //    }));
 
-        private Border _partString;
+        //public double Amplitude
+        //{
+        //    get { return (double) GetValue(AmplitudeProperty); }
+        //    set { SetValue(AmplitudeProperty, value); }
+        //}
 
-        public double Amplitude
+
+        protected override void OnClick()
         {
-            get { return (double) GetValue(AmplitudeProperty); }
-            set { SetValue(AmplitudeProperty, value); }
+            IsPlay = !IsPlay;
+            base.OnClick();
         }
 
-        private void SetFromAmp()
-        {
-            var story = this._partString.FindResource("Storyboard")as Storyboard;
-            story.Stop(_partString);
-            var g = story.Children.OfType<DoubleAnimation>().FirstOrDefault();
-            g.To = Amplitude;
-            g.From = -Amplitude;
-            _partString.BeginStoryboard(story);
-        }
+        //private void SetFromAmp()
+        //{
+        //    var story = this._partString.FindResource("Storyboard")as Storyboard;
+        //    story.Stop(_partString);
+        //    var g = story.Children.OfType<DoubleAnimation>().FirstOrDefault();
+        //    g.To = Amplitude;
+        //    g.From = -Amplitude;
+        //    _partString.BeginStoryboard(story);
+        //}
     }
 }
