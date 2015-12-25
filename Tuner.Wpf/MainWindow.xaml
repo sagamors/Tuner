@@ -58,14 +58,15 @@
                               Click="ButtonBase_OnClick"
                               StringBackground="GreenYellow"
                               StringName="B3"
-                              Style="{StaticResource StringStyle}" />
+                              Style="{StaticResource StringStyle}" >
+
+            </constrols:String>
             <constrols:String BorderThickness="0"
                               Click="ButtonBase_OnClick"
                               StringBackground="DeepPink"
                               StringName="E4"
                               Style="{StaticResource StringStyle}" />
         </UniformGrid>
-
         <Popup x:Name="TunePopup"
                Width="100"
                Height="100"
@@ -74,8 +75,7 @@
                Placement="RelativePoint"
                PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
             <Border>
-                <constrols:TuneProgress Width="100" Height="100"></constrols:TuneProgress>
- 
+                <constrols:TuneProgress Width="100" Height="100"/>
             </Border>
         </Popup>
     </Grid>

@@ -138,11 +138,15 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <constrols:CircularProgressBar x:Name="CircularProgressBar"
+                        <Grid>
+                            <constrols:CircularProgressBar x:Name="CircularProgressBar"
                                                Width="100"
                                                Height="100"
                                                Maximum="100"
                                                ProgressThickness="10" />
+                            <constrols:Arc Width="100" Height="100" StartAngle="45" Angle="0" Stroke="Black" StrokeThickness="1000"/>
+                        </Grid>
+      
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
