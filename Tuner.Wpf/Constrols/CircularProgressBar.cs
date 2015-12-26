@@ -71,29 +71,7 @@ namespace Tuner.Wpf.Constrols
         }
 
         public static readonly DependencyProperty ProgressThicknessProperty = DependencyProperty.Register(
-            "ProgressThickness", typeof (double), typeof (CircularProgressBar),
-            new PropertyMetadata(1.0, null, (o, value) =>
-            {
-                return value;
-                //// todo take into consideration size content?
-                //var control = (CircularProgressBar) o;
-                //double radius = control.ActualWidth/2;
-
-                //if (control.ActualWidth > control.ActualHeight)
-                //{
-                //    radius = control.ActualHeight/2;
-                //}
-
-                //if (Math.Abs(radius) < 0.1) return value;
-                //double progressThickness = (double) value;
-
-                //if (radius - progressThickness < 0)
-                //{
-                //    return radius;
-                //}
-
-                //return value;
-            }));
+            "ProgressThickness", typeof (double), typeof (CircularProgressBar));
 
         public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register(
             "Minimum", typeof (double ), typeof (CircularProgressBar), new PropertyMetadata(default(double )));
@@ -135,6 +113,15 @@ namespace Tuner.Wpf.Constrols
         {
             get { return (SweepDirection) GetValue(SweepDirectionProperty); }
             set { SetValue(SweepDirectionProperty, value); }
+        }
+
+        public static readonly DependencyProperty FillProperty = DependencyProperty.Register(
+            "Fill", typeof (Brush), typeof (CircularProgressBar), new PropertyMetadata(default(Brush)));
+
+        public Brush Fill
+        {
+            get { return (Brush) GetValue(FillProperty); }
+            set { SetValue(FillProperty, value); }
         }
 
         static CircularProgressBar()

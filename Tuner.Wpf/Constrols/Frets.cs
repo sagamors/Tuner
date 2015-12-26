@@ -42,19 +42,6 @@ namespace Tuner.Wpf.Constrols
             get { return theVisuals.Count; }
         }
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="width">Total width</param>
-        /// <param name="index">Begin of 1</param>
-        /// <returns></returns>
-        //public double CalculationDistanceBetweenFret(double width, int index)
-        //{
-
-        //}
-
         public static readonly DependencyProperty NumberFretsProperty = DependencyProperty.Register(
             "NumberFrets", typeof (uint), typeof (Frets),
             new FrameworkPropertyMetadata((uint) 24, FrameworkPropertyMetadataOptions.AffectsRender));
