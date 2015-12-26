@@ -14,6 +14,14 @@
     <Window.Resources>
         <Style x:Key="StringStyle" TargetType="constrols:String">
             <Setter Property="StringThickness" Value="5" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="10"
+                                      Opacity="1"
+                                      ShadowDepth="10" />
+                    <!--  Color="{Binding RelativeSource={RelativeSource AncestorType=constrols:String}, Path=StringBackground}"  -->
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     <Grid Grid.IsSharedSizeScope="True">
@@ -36,6 +44,7 @@
                      Rows="6">
             <constrols:String BorderThickness="0"
                               Click="ButtonBase_OnClick"
+                              Content=""
                               StringBackground="Red"
                               StringName="E2"
                               Style="{StaticResource StringStyle}" />
@@ -58,25 +67,31 @@
                               Click="ButtonBase_OnClick"
                               StringBackground="GreenYellow"
                               StringName="B3"
-                              Style="{StaticResource StringStyle}" >
-
-            </constrols:String>
+                              Style="{StaticResource StringStyle}" />
             <constrols:String BorderThickness="0"
                               Click="ButtonBase_OnClick"
                               StringBackground="DeepPink"
                               StringName="E4"
                               Style="{StaticResource StringStyle}" />
         </UniformGrid>
-        <Popup x:Name="TunePopup"
-               Width="100"
-               Height="100"
-               AllowsTransparency="True"
-               IsOpen="True"
-               Placement="RelativePoint"
-               PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
-            <Border>
-                <constrols:TuneProgress Width="100" Height="100"/>
-            </Border>
-        </Popup>
+        <constrols:PopupNonTopmost x:Name="TunePopup"
+                                   Width="300"
+                                   Height="300"
+                                   AllowsTransparency="True"
+                                   DataContext="{Binding Path=PlacementTarget,
+                                                         RelativeSource={x:Static RelativeSource.Self}}"
+                                   IsOpen="True"
+                                   Placement="RelativePoint"
+                                   PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                                   Topmost="False">
+            <Grid>
+                <constrols:TuneProgress Width="300"
+                                        Height="300"
+                                        SelectedString="{Binding TunedString}" />
+
+                <constrols:Axis Width="300" Height="300" />
+            </Grid>
+        </constrols:PopupNonTopmost>
+
     </Grid>
 </Window>

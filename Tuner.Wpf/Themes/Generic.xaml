@@ -19,6 +19,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
                             <constrols:Arc Angle="360"
+                                           Fill="{TemplateBinding Fill}"
                                            Stroke="{TemplateBinding ProgressBackground}"
                                            StrokeThickness="{TemplateBinding ProgressThickness}" />
                             <constrols:Arc x:Name="PART_Arc"
@@ -43,7 +44,7 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}" />
-                
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -57,6 +58,7 @@
                 </Style>
             </Setter.Value>
         </Setter>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type constrols:String}">
@@ -88,11 +90,11 @@
                                         <Storyboard x:Key="Storyboard">
                                             <DoubleAnimation x:Name="DoubleAnimation"
                                                              AutoReverse="True"
-                                                             Duration="0:0:0.001"
-                                                             From="-5"
+                                                             Duration="0:0:0.05"
+                                                             From="-3"
                                                              RepeatBehavior="Forever"
                                                              Storyboard.TargetProperty="(Canvas.Top)"
-                                                             To="5" />
+                                                             To="3" />
                                         </Storyboard>
                                     </Border.Resources>
                                     <Border.Style>
@@ -118,35 +120,46 @@
         </Setter>
     </Style>
 
-    <!--<Style TargetType="{x:Type constrols:Frets}">
-        <Setter Property="Template">
+    <Style TargetType="{x:Type constrols:TuneProgress}">
+        <Setter Property="Effect">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type constrols:Frets}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                    </Border>
-                </ControlTemplate>
+                <DropShadowEffect BlurRadius="10"
+                                  Opacity="1"
+                                  ShadowDepth="10" />
+                <!--  Color="{Binding RelativeSource={RelativeSource AncestorType=constrols:String}, Path=StringBackground}"  -->
             </Setter.Value>
         </Setter>
-    </Style>-->
-
-    <Style TargetType="{x:Type constrols:TuneProgress}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type constrols:TuneProgress}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid>
+                        <Grid Margin="10">
+                            <constrols:Arc Angle="90"
+                                           ClipToBounds="True"
+                                           StartAngle="-45"
+                                           Stroke="Gray"
+                                           StrokeThickness="100" />
                             <constrols:CircularProgressBar x:Name="CircularProgressBar"
-                                               Width="100"
-                                               Height="100"
-                                               Maximum="100"
-                                               ProgressThickness="10" />
-                            <constrols:Arc Width="100" Height="100" StartAngle="45" Angle="0" Stroke="Black" StrokeThickness="1000"/>
+                                                           Width="100"
+                                                           Height="100"
+                                                           Fill="Gray"
+                                                           Maximum="100"
+                                                           ProgressBackground="DarkGray"
+                                                           ProgressBrush="DodgerBlue"
+                                                           ProgressThickness="10">
+                                <constrols:CircularProgressBar.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock DataContext="{Binding RelativeSource={RelativeSource AncestorType=constrols:TuneProgress}}"
+                                                   FontSize="24"
+                                                   Foreground="{Binding SelectedString.StringBackground}"
+                                                   Text="{Binding SelectedString.StringName,
+                                                                  Mode=OneWay}" />
+                                    </DataTemplate>
+                                </constrols:CircularProgressBar.ContentTemplate>
+                            </constrols:CircularProgressBar>
                         </Grid>
-      
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

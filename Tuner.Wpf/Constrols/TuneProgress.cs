@@ -46,6 +46,15 @@ namespace Tuner.Wpf.Constrols
     /// </summary>
     public class TuneProgress : Control
     {
+        public static readonly DependencyProperty SelectedStringProperty = DependencyProperty.Register(
+            "SelectedString", typeof (String), typeof (TuneProgress), new PropertyMetadata(default(String)));
+
+        public String SelectedString
+        {
+            get { return (String) GetValue(SelectedStringProperty); }
+            set { SetValue(SelectedStringProperty, value); }
+        }
+
         static TuneProgress()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TuneProgress), new FrameworkPropertyMetadata(typeof(TuneProgress)));
