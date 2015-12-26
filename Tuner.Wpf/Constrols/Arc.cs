@@ -14,11 +14,11 @@ namespace Tuner.Wpf.Constrols
         {
             get
             {
-                double radius = ActualWidth / 2;
+                double radius = CorrectWidth / 2;
 
-                if (ActualWidth > ActualHeight)
+                if (CorrectWidth > CorrectHeight)
                 {
-                    radius = ActualHeight / 2;
+                    radius = CorrectHeight / 2;
                 }
                 return radius;
             }
@@ -73,21 +73,26 @@ namespace Tuner.Wpf.Constrols
             }));
         }
 
+        private double CorrectWidth { get { return Width < ActualWidth ? Width : ActualWidth; } }
+
+        private double CorrectHeight { get { return Height < ActualHeight ? Height : ActualHeight; } }
         protected override Geometry DefiningGeometry
         {
             get
             {
+   
                 double radius = Radius;
                 double halfThickness = StrokeThickness/2;
                 if (radius >= halfThickness)
                     radius -= halfThickness;
 
-                if (radius < halfThickness)
+                if (radius < halfThickness && Math.Abs(radius) > 0.1)
                 {
-                    radius = halfThickness;
+                    radius =  Radius/2;
+                    StrokeThickness = radius*2;
                 }
 
-                var center = new Point(ActualWidth/2, ActualHeight/2);
+                var center = new Point(CorrectWidth / 2, CorrectHeight / 2);
                 double endAngle = (StartAngle + Angle);
                 bool isClosed = Math.Abs(StartAngle - endAngle) >=(360 - MINIMUM_DELTA_ANGLE);
 
@@ -98,8 +103,9 @@ namespace Tuner.Wpf.Constrols
 
                 double startAngleInRads = ConvertToRads(StartAngle);
                 double endAngleInRads = ConvertToRads(endAngle);
-                Point startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads)) * radius;
-                Point endPoint = center + new Vector(Math.Cos(endAngleInRads), Math.Sin(endAngleInRads) * (SweepDirection == SweepDirection.Clockwise ? 1 : -1)) * radius;
+                int direction = (SweepDirection == SweepDirection.Clockwise ? 1 : -1);
+                Point startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads) * direction) * radius;
+                Point endPoint = center + new Vector(Math.Cos(endAngleInRads), Math.Sin(endAngleInRads) * direction) * radius;
                 PathGeometry geometry = new PathGeometry();
                 PathFigure figure = new PathFigure();
                 figure.IsClosed = isClosed;
