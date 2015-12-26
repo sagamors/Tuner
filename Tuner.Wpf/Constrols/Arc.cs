@@ -95,19 +95,18 @@ namespace Tuner.Wpf.Constrols
                 var center = new Point(CorrectWidth / 2, CorrectHeight / 2);
                 double endAngle = (StartAngle + Angle);
                 bool isClosed = Math.Abs(StartAngle - endAngle) >=(360 - MINIMUM_DELTA_ANGLE);
-
                 if (isClosed)
                 {
                     endAngle -= 0.1;
                 }
-
-                double startAngleInRads = ConvertToRads(StartAngle);
-                double endAngleInRads = ConvertToRads(endAngle);
+                double startAngleInRads = MathHelper.ConvertToRads(StartAngle);
+                double endAngleInRads = MathHelper.ConvertToRads(endAngle);
                 int direction = (SweepDirection == SweepDirection.Clockwise ? 1 : -1);
                 Point startPoint = center + new Vector(Math.Cos(startAngleInRads), Math.Sin(startAngleInRads) * direction) * radius;
                 Point endPoint = center + new Vector(Math.Cos(endAngleInRads), Math.Sin(endAngleInRads) * direction) * radius;
                 PathGeometry geometry = new PathGeometry();
                 PathFigure figure = new PathFigure();
+                figure.IsFilled = true;
                 figure.IsClosed = isClosed;
                 var arcSegment = new ArcSegment(endPoint, new Size(radius, radius), 0, Angle > 180, SweepDirection, true);
                 figure.Segments.Add(arcSegment);
@@ -117,9 +116,6 @@ namespace Tuner.Wpf.Constrols
             }
         }
 
-        private double ConvertToRads(double grad)
-        {
-            return grad * Math.PI/180;
-        }
+
     }
 }
