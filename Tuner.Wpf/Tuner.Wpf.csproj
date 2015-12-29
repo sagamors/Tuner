@@ -65,12 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Constrols\Axis.cs" />
+    <Compile Include="Converters\PointerCenterConverter.cs" />
+    <Compile Include="Constrols\AxisBase.cs" />
     <Compile Include="Constrols\ITransformation.cs" />
     <Compile Include="Constrols\PolarTransformation.cs" />
     <Compile Include="Constrols\PopupNonTopmost.cs" />
     <Compile Include="Constrols\Frets.cs" />
     <Compile Include="Constrols\Sector.cs" />
+    <Compile Include="Constrols\SimpleGauge.cs" />
     <Compile Include="Constrols\String.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -75,8 +75,8 @@
                               Style="{StaticResource StringStyle}" />
         </UniformGrid>
         <constrols:PopupNonTopmost x:Name="TunePopup"
-                                   Width="300"
-                                   Height="300"
+                                   Width="250"
+                                   Height="250"
                                    AllowsTransparency="True"
                                    DataContext="{Binding Path=PlacementTarget,
                                                          RelativeSource={x:Static RelativeSource.Self}}"
@@ -85,11 +85,9 @@
                                    PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                                    Topmost="False">
             <Grid>
-                <constrols:TuneProgress Width="300"
-                                        Height="300"
+                <constrols:TuneProgress Width="250"
+                                        Height="250"
                                         SelectedString="{Binding TunedString}" />
-
-                <constrols:Axis Width="300" Height="300" />
             </Grid>
         </constrols:PopupNonTopmost>
 

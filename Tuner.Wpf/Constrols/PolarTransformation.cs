@@ -54,9 +54,9 @@ namespace Tuner.Wpf.Constrols
             double radius = Radius;
             radius -= (source.Y + _radiusOffset);
             var center = new Point(CorrectWidth / 2, CorrectHeight / 2);
-            double endAngle = MathHelper.ConvertToRads((StartAngle + source.X));
-            Point startPoint = center + new Vector(Math.Cos(endAngle), -Math.Sin(endAngle)) * radius;
-            return startPoint;
+            double angle = MathHelper.ConvertToRads((StartAngle + source.X));
+            Point point = center + new Vector(Math.Cos(angle), -Math.Sin(angle)) * radius;
+            return point;
         }
     }
 }

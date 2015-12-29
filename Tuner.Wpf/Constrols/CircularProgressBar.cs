@@ -124,6 +124,25 @@ namespace Tuner.Wpf.Constrols
             set { SetValue(FillProperty, value); }
         }
 
+
+        public static readonly DependencyProperty OuterCircularBorderThicknessProperty = DependencyProperty.Register(
+            "OuterCircularBorderThickness", typeof(double), typeof(CircularProgressBar), new PropertyMetadata(default(double)));
+
+        public double OuterCircularBorderThickness
+        {
+            get { return (double)GetValue(OuterCircularBorderThicknessProperty); }
+            set { SetValue(OuterCircularBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty OuterCircularBorderStrokeProperty = DependencyProperty.Register(
+            "OuterCircularBorderStroke", typeof (Brush), typeof (CircularProgressBar), new PropertyMetadata(default(Brush)));
+
+        public Brush OuterCircularBorderStroke
+        {
+            get { return (Brush) GetValue(OuterCircularBorderStrokeProperty); }
+            set { SetValue(OuterCircularBorderStrokeProperty, value); }
+        }
+
         static CircularProgressBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof (CircularProgressBar),
