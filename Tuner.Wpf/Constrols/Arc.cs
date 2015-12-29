@@ -10,20 +10,32 @@ namespace Tuner.Wpf.Constrols
     {
         private const double MINIMUM_DELTA_ANGLE = 0.1;
 
+        private static readonly DependencyPropertyKey RadiusPropertyKey  = DependencyProperty.RegisterReadOnly(
+            "Radius", typeof (double), typeof (Arc), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.AffectsRender,
+                (o, args) =>
+                {
+                    var arc = (Arc)o;
+                    arc.Diameter = arc.Radius * 2;
+                }));
+
+        public static readonly DependencyProperty RadiusProperty = RadiusPropertyKey.DependencyProperty;
+
         public double Radius
         {
-            get
-            {
-                double radius = CorrectWidth / 2;
-
-                if (CorrectWidth > CorrectHeight)
-                {
-                    radius = CorrectHeight / 2;
-                }
-                return radius;
-            }
+            get { return (double) GetValue(RadiusProperty); }
+            protected set { SetValue(RadiusPropertyKey, value); }
         }
 
+        private static readonly DependencyPropertyKey DiameterPropertyKey = DependencyProperty.RegisterReadOnly(
+            "Diameter", typeof(double), typeof(Arc), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.AffectsRender));
+
+        public static readonly DependencyProperty DiameterProperty = RadiusPropertyKey.DependencyProperty;
+
+        public double Diameter
+        {
+            get { return (double) GetValue(DiameterProperty); }
+            protected set { SetValue(DiameterPropertyKey, value); }
+        }
 
         public static readonly DependencyProperty SweepDirectionProperty = DependencyProperty.Register(
             "SweepDirection", typeof (SweepDirection), typeof (Arc), new FrameworkPropertyMetadata(default(SweepDirection), FrameworkPropertyMetadataOptions.AffectsRender));
@@ -73,31 +85,46 @@ namespace Tuner.Wpf.Constrols
             }));
         }
 
-        private double CorrectWidth { get { return Width < ActualWidth ? Width : ActualWidth; } }
+        public Arc()
+        {
+            this.SizeChanged+= OnSizeChanged;
+        }
 
-        private double CorrectHeight { get { return Height < ActualHeight ? Height : ActualHeight; } }
+        private void OnSizeChanged(object sender, SizeChangedEventArgs sizeChangedEventArgs)
+        {
+            double radius = CorrectedWidth / 2;
+
+            if (CorrectedWidth > CorrectedHeight)
+            {
+                radius = CorrectedHeight / 2;
+            }
+            Radius = radius;
+        }
+
+        private double CorrectedWidth { get { return Width < ActualWidth ? Width : ActualWidth; } }
+
+        private double CorrectedHeight { get { return Height < ActualHeight ? Height : ActualHeight; } }
         protected override Geometry DefiningGeometry
         {
             get
             {
-   
                 double radius = Radius;
-                double halfThickness = StrokeThickness/2;
+                double halfThickness = StrokeThickness / 2;
                 if (radius >= halfThickness)
                     radius -= halfThickness;
 
                 if (radius < halfThickness && Math.Abs(radius) > 0.1)
                 {
-                    radius =  Radius/2;
-                    StrokeThickness = radius*2;
+                    radius = Radius / 2;
+                    StrokeThickness = radius * 2;
                 }
 
-                var center = new Point(CorrectWidth / 2, CorrectHeight / 2);
+                var center = new Point(CorrectedWidth / 2, CorrectedHeight / 2);
                 double endAngle = (StartAngle + Angle);
-                bool isClosed = Math.Abs(StartAngle - endAngle) >=(360 - MINIMUM_DELTA_ANGLE);
+                bool isClosed = Math.Abs(StartAngle - endAngle) >= (360 - MINIMUM_DELTA_ANGLE);
                 if (isClosed)
                 {
-                    endAngle -= 0.1;
+                    return new EllipseGeometry(center, radius, radius);
                 }
                 double startAngleInRads = MathHelper.ConvertToRads(StartAngle);
                 double endAngleInRads = MathHelper.ConvertToRads(endAngle);
@@ -107,15 +134,40 @@ namespace Tuner.Wpf.Constrols
                 PathGeometry geometry = new PathGeometry();
                 PathFigure figure = new PathFigure();
                 figure.IsFilled = true;
-                figure.IsClosed = isClosed;
                 var arcSegment = new ArcSegment(endPoint, new Size(radius, radius), 0, Angle > 180, SweepDirection, true);
                 figure.Segments.Add(arcSegment);
                 figure.StartPoint = startPoint;
                 geometry.Figures.Add(figure);
+
+                // Create a StreamGeometry for describing the shape
+                //StreamGeometry geometry = new StreamGeometry
+                //{
+                //    FillRule = FillRule.EvenOdd
+                //};
+
+                //if (CorrectedWidth < 0 || CorrectedHeight < 0)
+                //{
+                //    return geometry;
+                //}
+
+                //using (StreamGeometryContext context = geometry.Open())
+                //{
+                //    context.BeginFigure(new Point(0, this.CorrectedHeight / 2), true, true);
+                //    context.LineTo(new Point(CorrectedWidth - Radius, 0), true, true);
+                //    context.ArcTo(new Point(CorrectedWidth - Radius, CorrectedHeight), new Size(Radius, CorrectedHeight),
+                //        0, false, SweepDirection.Clockwise, true, true);
+                //}
+                //// Freeze the geometry for performance benefits
+                //geometry.Freeze();
+
                 return geometry;
             }
         }
 
-
+        public double OuterCircularBorder
+        {
+            get { return (double)GetValue(CircularProgressBar.OuterCircularBorderThicknessProperty); }
+            set { SetValue(CircularProgressBar.OuterCircularBorderThicknessProperty, value); }
+        }
     }
 }
