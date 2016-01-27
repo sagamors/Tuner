@@ -6,90 +6,21 @@
         xmlns:local="clr-namespace:Tuner.Wpf"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:views="clr-namespace:Tuner.Wpf.Views"
         Title="MainWindow"
         Width="525"
-        Height="350"
+        Height="358"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        mc:Ignorable="d">
-    <Window.Resources>
-        <Style x:Key="StringStyle" TargetType="constrols:String">
-            <Setter Property="StringThickness" Value="5" />
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect BlurRadius="10"
-                                      Opacity="1"
-                                      ShadowDepth="10" />
-                    <!--  Color="{Binding RelativeSource={RelativeSource AncestorType=constrols:String}, Path=StringBackground}"  -->
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-    <Grid Grid.IsSharedSizeScope="True">
-
-        <Panel.Background>
-            <ImageBrush ImageSource="palisander.jpg"
-                        TileMode="FlipX"
-                        Viewport="0,0,524,349"
-                        ViewportUnits="Absolute" />
-        </Panel.Background>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition SharedSizeGroup="StringsNameSharedSizeGroup" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <constrols:Frets Grid.Column="1" />
-        </Grid>
-        <UniformGrid x:Name="StringStackPanel"
-                     VerticalAlignment="Stretch"
-                     Rows="6">
-            <constrols:String BorderThickness="0"
-                              Click="ButtonBase_OnClick"
-                              Content=""
-                              StringBackground="Red"
-                              StringName="E2"
-                              Style="{StaticResource StringStyle}" />
-            <constrols:String BorderThickness="0"
-                              Click="ButtonBase_OnClick"
-                              StringBackground="Yellow"
-                              StringName="A2"
-                              Style="{StaticResource StringStyle}" />
-            <constrols:String BorderThickness="0"
-                              Click="ButtonBase_OnClick"
-                              StringBackground="DeepSkyBlue"
-                              StringName="D3"
-                              Style="{StaticResource StringStyle}" />
-            <constrols:String BorderThickness="0"
-                              Click="ButtonBase_OnClick"
-                              StringBackground="Orange"
-                              StringName="G3"
-                              Style="{StaticResource StringStyle}" />
-            <constrols:String BorderThickness="0"
-                              Click="ButtonBase_OnClick"
-                              StringBackground="GreenYellow"
-                              StringName="B3"
-                              Style="{StaticResource StringStyle}" />
-            <constrols:String BorderThickness="0"
-                              Click="ButtonBase_OnClick"
-                              StringBackground="DeepPink"
-                              StringName="E4"
-                              Style="{StaticResource StringStyle}" />
-        </UniformGrid>
-        <constrols:PopupNonTopmost x:Name="TunePopup"
-                                   Width="250"
-                                   Height="250"
-                                   AllowsTransparency="True"
-                                   DataContext="{Binding Path=PlacementTarget,
-                                                         RelativeSource={x:Static RelativeSource.Self}}"
-                                   IsOpen="True"
-                                   Placement="RelativePoint"
-                                   PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                                   Topmost="False">
-            <Grid>
-                <constrols:TuneProgress Width="250"
-                                        Height="250"
-                                        SelectedString="{Binding TunedString}" />
-            </Grid>
-        </constrols:PopupNonTopmost>
-
+        Background="{StaticResource MainWindow.Background}"
+        mc:Ignorable="d" ResizeMode="NoResize"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--<views:GuitarNeckView></views:GuitarNeckView>-->
     </Grid>
 </Window>

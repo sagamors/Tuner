@@ -30,7 +30,7 @@ namespace Tuner.Wpf
         {
             if (WindowState == WindowState.Minimized)
             {
-                TunePopup.IsOpen = false;
+               // TunePopup.IsOpen = false;
             }
             TunePopupToString();
         }
@@ -62,10 +62,12 @@ namespace Tuner.Wpf
         {
             if(TunedString==null) return;
             Point relativePoint = TunedString.TransformToAncestor(this).Transform(new Point(0, 0));
+            /*
             TunePopup.VerticalOffset++;
             TunePopup.HorizontalOffset++;
             TunePopup.VerticalOffset = (relativePoint.Y + TunedString.ActualHeight / 2)- TunePopup.Child.RenderSize.Height / 2;
             TunePopup.HorizontalOffset = 10;
+            */
         }
     }
 }

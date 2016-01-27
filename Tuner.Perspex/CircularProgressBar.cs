@@ -95,8 +95,8 @@ namespace Tuner.Perspex
             var arc = new Arc() { Name = _partArcName, Height = 100, Width = 100 };
             arc.Stroke = Brushes.Black;
             //arc.BindTwoWay(Arc.StartAngleProperty, this, StartAngleProperty);
-            arc.BindTwoWay(Shape.StrokeThicknessProperty, this, ProgressThicknessProperty);
-            arc.BindTwoWay(Shape.StrokeProperty, this, ProgressBrushProperty);
+            //arc.Bind(Shape.StrokeThicknessProperty, this, ProgressThicknessProperty);
+            //arc.Bind(Shape.StrokeProperty, this, ProgressBrushProperty);
             this.VisualChildren.Add(arc);
             _partArc = arc;
             base.ApplyTemplate();

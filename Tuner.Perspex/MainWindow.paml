@@ -7,12 +7,13 @@
     <TextBox Name="ValueTextBox" Text="{Binding Path=DoubleValue}"></TextBox>
     <TextBlock>Hello world!</TextBlock>
     
-    <local:CircularProgressBar Margin="100" Height="100" Width="100" 
+    <!--<local:CircularProgressBar Margin="100" Height="100" Width="100" 
                            StartAngle="45.0"
                            ProgressThickness="5"
-                           Value="{Binding ElementName=ValueTextBox, Path=Text}"
+                           Value="{Binding Path=DoubleValue}"
                            Maximum="100"
-                           />
-    <!--<local:Arc Margin="100" Width="100" Height="100" StrokeThickness="1"></local:Arc>-->
+                           />-->
+    <local:Arc Margin="100" Name="Arc"  Angle="{Binding Path=DoubleValue}" Width="100" Height="100" StrokeThickness="1" Stroke="Black"></local:Arc>
+    <Button Height="10" Name="Bu"></Button>
     </StackPanel>
 </Window>

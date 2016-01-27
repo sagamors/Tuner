@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Tuner.Wpf"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="MainWindow.Background" Color="Black"/>
+        
     </Application.Resources>
 </Application>
