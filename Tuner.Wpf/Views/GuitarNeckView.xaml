@@ -1,13 +1,13 @@
 ﻿<UserControl x:Class="Tuner.Wpf.Views.GuitarNeckView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:constrols="clr-namespace:Tuner.Wpf.Constrols"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Tuner.Wpf.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-             >
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
     <UserControl.Resources>
         <Style x:Key="StringStyle" TargetType="constrols:String">
             <Setter Property="StringThickness" Value="5" />
@@ -25,9 +25,9 @@
         <Grid Grid.IsSharedSizeScope="True">
             <Panel.Background>
                 <ImageBrush ImageSource="../palisander.jpg"
-                        TileMode="FlipX"
-                        Viewport="0,0,524,349"
-                        ViewportUnits="Absolute" />
+                            TileMode="FlipX"
+                            Viewport="0,0,524,349"
+                            ViewportUnits="Absolute" />
             </Panel.Background>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -37,33 +37,33 @@
                 <constrols:Frets Grid.Column="1" />
             </Grid>
             <UniformGrid x:Name="StringStackPanel"
-                     VerticalAlignment="Stretch"
-                     Rows="6">
+                         VerticalAlignment="Stretch"
+                         Rows="6">
                 <constrols:String BorderThickness="0"
-                              Content=""
-                              StringBackground="Red"
-                              StringName="E2"
-                              Style="{StaticResource StringStyle}" />
+                                  Content=""
+                                  StringBackground="Red"
+                                  StringName="E2"
+                                  Style="{StaticResource StringStyle}" />
                 <constrols:String BorderThickness="0"
-                              StringBackground="Yellow"
-                              StringName="A2"
-                              Style="{StaticResource StringStyle}" />
+                                  StringBackground="Yellow"
+                                  StringName="A2"
+                                  Style="{StaticResource StringStyle}" />
                 <constrols:String BorderThickness="0"
-                              StringBackground="DeepSkyBlue"
-                              StringName="D3"
-                              Style="{StaticResource StringStyle}" />
+                                  StringBackground="DeepSkyBlue"
+                                  StringName="D3"
+                                  Style="{StaticResource StringStyle}" />
                 <constrols:String BorderThickness="0"
-                              StringBackground="Orange"
-                              StringName="G3"
-                              Style="{StaticResource StringStyle}" />
+                                  StringBackground="Orange"
+                                  StringName="G3"
+                                  Style="{StaticResource StringStyle}" />
                 <constrols:String BorderThickness="0"
-                              StringBackground="GreenYellow"
-                              StringName="B3"
-                              Style="{StaticResource StringStyle}" />
+                                  StringBackground="GreenYellow"
+                                  StringName="B3"
+                                  Style="{StaticResource StringStyle}" />
                 <constrols:String BorderThickness="0"
-                              StringBackground="DeepPink"
-                              StringName="E4"
-                              Style="{StaticResource StringStyle}" />
+                                  StringBackground="DeepPink"
+                                  StringName="E4"
+                                  Style="{StaticResource StringStyle}" />
             </UniformGrid>
             <!--<constrols:PopupNonTopmost x:Name="TunePopup"
                                    Width="250"

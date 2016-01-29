@@ -1,9 +1,9 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:constrols="clr-namespace:Tuner.Wpf.Constrols"
+                    xmlns:converters="clr-namespace:Tuner.Wpf.Converters"
                     xmlns:local="clr-namespace:Tuner.Wpf"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib"
-                    xmlns:converters="clr-namespace:Tuner.Wpf.Converters">
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <converters:PointerCenterConverter x:Key="PointerCenterConverter" />
     <Style TargetType="{x:Type constrols:CircularProgressBar}">
@@ -230,10 +230,11 @@
                                                             Path=PointerLength,
                                                             Converter={StaticResource PointerCenterConverter}}"
                                   RenderTransformOrigin="0,0.5"
-                                  Stretch="Fill"
-                                >
-                                <!--Stroke="DeepSkyBlue"
-                                  StrokeThickness="2"-->
+                                  Stretch="Fill">
+                                <!--
+                                    Stroke="DeepSkyBlue"
+                                    StrokeThickness="2"
+                                -->
                                 <!--<Path.Fill>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0.197" Color="#FF890A0A" />
