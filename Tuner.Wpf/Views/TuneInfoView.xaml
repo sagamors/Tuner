@@ -101,13 +101,13 @@
             </Rectangle.RenderTransform>
         </Rectangle>
         <TextBlock Canvas.Left="135"
-                   Canvas.Top="150"
+                   Canvas.Top="107"
                    Height="38"
                    VerticalAlignment="Top"
                    FontSize="30"
                    Text="329 Hz" />
         <TextBlock Canvas.Left="152"
-                   Canvas.Top="100"
+                   Canvas.Top="130"
                    Height="60"
                    VerticalAlignment="Top"
                    FontSize="50"

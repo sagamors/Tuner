@@ -20,21 +20,39 @@
         </Style>
     </UserControl.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Favorite tunings:" />
-        <WrapPanel Grid.Row="1">
-            <RadioButton Content="Standard" IsChecked="True" />
-            <RadioButton Content="Open A" />
-            <RadioButton Content="Open B" />
-            <RadioButton Content="Open C" />
-            <RadioButton Content="Open D" />
-            <RadioButton Content="Open E" />
-            <RadioButton Content="Open F" />
-        </WrapPanel>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Favorite tunings:" />
 
+        <ListBox Grid.Row="1" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem Content="Standard" IsSelected="True" />
+            <ListBoxItem Content="Open A" />
+            <ListBoxItem Content="Open B" />
+            <ListBoxItem Content="Open C" />
+            <ListBoxItem Content="Open D" />
+            <ListBoxItem Content="Open E" />
+            <ListBoxItem Content="Open F" />
+            <ListBoxItem Content="Open B" />
+            <ListBoxItem Content="Open C" />
+            <ListBoxItem Content="Open D" />
+            <ListBoxItem Content="Open E" />
+            <ListBoxItem Content="Open F" />
+        </ListBox>
+        <UniformGrid Columns="1" Grid.Column="1" Grid.Row="1" Width="40">
+            <Button Content="+"/>
+            <Button Content="-"/>
+        </UniformGrid>
         <!--<TextBlock Grid.Row="1"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"

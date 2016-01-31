@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Tuner.Wpf.Constrols.ClockwiseArrow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tuner.Wpf.Constrols"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Viewbox>
+        <Canvas Height="63" Width="60" Canvas.Left="127" Canvas.Top="10" RenderTransformOrigin="0.5,0.516">
+            <Path Height="45" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Stroke="{DynamicResource TuningArrowHelperColorBrush}" StrokeThickness="10" Canvas.Top="6" Width="50">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="41.4446208637534,16.5146474918008">
+                            <BezierSegment IsSmoothJoin="True" Point3="22.9683742523193,5.11832904815674" Point2="31.0238437652588,4.17677927017212" Point1="38.6707305908203,8.89345073699951"/>
+                            <BezierSegment IsSmoothJoin="True" Point3="7.61832904815674,20.4683742523193" Point2="8.5598783493042,12.4129056930542" Point1="14.9129056930542,6.05987930297852"/>
+                            <BezierSegment Point3="19.0146484375,38.9446220397949" Point2="11.3934507369995,36.1707305908203" Point1="6.67677927017212,28.5238437652588"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            <Path
+                    Width="25"
+                    Height="25"
+                    Stroke="{DynamicResource TuningArrowHelperColorBrush}"
+                    StrokeThickness="1"
+                    Data="M160,70 L155,55 145,70 z"
+                    Fill="{DynamicResource TuningArrowHelperColorBrush}"
+                    Stretch="Fill" Canvas.Left="28.438" Canvas.Top="2.077" />
+            <FrameworkElement.Effect>
+                <DropShadowEffect />
+            </FrameworkElement.Effect>
+        </Canvas>
+    </Viewbox>
+</UserControl>

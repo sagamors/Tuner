@@ -9,36 +9,26 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:views="clr-namespace:Tuner.Wpf.Views"
         Title="MainWindow"
-        Width="440"
-        Height="718"
+        Width="705"
+        Height="360"
         Background="{StaticResource MainWindowBackground}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Foreground="{StaticResource MainWindowTextBrush}"
         ResizeMode="NoResize"
         mc:Ignorable="d">
-    <Grid>
+    <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
+            <ColumnDefinition Width="343"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="190" />
             <RowDefinition />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <views:TuneInfoView HorizontalAlignment="Center" />
-        <views:TuningsView Grid.Row="1" />
-        <views:InstrumentView Grid.Row="2" />
-        <UniformGrid Grid.Row="3">
-            <Button Width="30" Background="Transparent">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Image Source="/Resources/settings.png" />
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button Content="Next string" />
-            <CheckBox Content="Auto tune" Foreground="{StaticResource MainWindowTextBrush}" />
-        </UniformGrid>
+        <views:TuneInfoView Height="Auto" Margin="0,0,2,131" Grid.RowSpan="2" Width="Auto"  />
+        <views:TuningsView Grid.Row="1"  VerticalAlignment="Stretch"  />
+        <views:InstrumentView Grid.Column="1" Grid.RowSpan="2" />
+        <Button Visibility="Collapsed" Content="Next string" Grid.Column="1"  Grid.Row="1" Height="66" VerticalAlignment="Top"  />
+        <CheckBox Visibility="Collapsed" Content="Auto tune" Foreground="{StaticResource MainWindowTextBrush}" Margin="394,66,2,46" Grid.Row="1" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

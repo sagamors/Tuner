@@ -13,10 +13,10 @@
             <GradientStop Offset="1" Color="Black" />
             <GradientStop Color="#FF272525" />
         </RadialGradientBrush>-->
-
-        <Color x:Key="ControlMouseOverColor">Azure</Color>
+        <SolidColorBrush  x:Key="TuningArrowHelperColorBrush">#00C322</SolidColorBrush>
+        <Color x:Key="ControlMouseOverColor">Black</Color>
         <Color x:Key="ControlPressedColor">#00a8ff</Color>
-        <SolidColorBrush x:Key="ControlBackground" Color="Gray" />
+        <SolidColorBrush x:Key="ControlBackground" Color="#FFDDDDDD" />
         <SolidColorBrush x:Key="ControlBorder" Color="#616161" />
 
         <Color x:Key="PressedBorderLightColor">#0073a6</Color>
@@ -33,34 +33,15 @@
                          Opacity="0.9"
                          Color="Green" />
 
-        <Style x:Key="NoteStyle" TargetType="Label">
-            <Setter Property="Width" Value="60" />
-            <Setter Property="Height" Value="60" />
-            <Setter Property="FontSize" Value="30" />
-            <Setter Property="VerticalContentAlignment" Value="Stretch" />
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <Border BorderBrush="Azure"
-                                BorderThickness="2"
-                                CornerRadius="3">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"
-                                              Content="{Binding}" />
-                        </Border>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="NoteButonStyle" TargetType="ToggleButton">
+        <Style x:Key="NoteButonStyle" TargetType="RadioButton">
             <Setter Property="Foreground" Value="{StaticResource MainWindowTextBrush}" />
             <Setter Property="Width" Value="60" />
             <Setter Property="Height" Value="60" />
             <Setter Property="FontSize" Value="30" />
             <Setter Property="VerticalContentAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="GroupName" Value="NotesGroup"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ToggleButton">

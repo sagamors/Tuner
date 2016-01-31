@@ -1,41 +1,88 @@
-﻿<UserControl x:Class="Tuner.Wpf.Views.InstrumentView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Tuner.Wpf.Views"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             d:DesignHeight="260"
-             d:DesignWidth="440"
-             mc:Ignorable="d">
+﻿<UserControl
+    x:Class="Tuner.Wpf.Views.InstrumentView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Tuner.Wpf.Constrols"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+    xmlns:local="clr-namespace:Tuner.Wpf.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:systemcontrols="clr-namespace:System.Windows.Controls"
+    d:DesignHeight="360"
+    d:DesignWidth="440"
+    UseLayoutRounding="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
     <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Canvas Width="440" Height="260">
-            <RadioButton Canvas.Left="29"
-                         Canvas.Top="183"
-                         Content="E2"
-                         Style="{StaticResource NoteButonStyle}" />
-
-            <RadioButton Canvas.Left="30"
-                         Canvas.Top="23"
-                         Content="D3"
-                         Style="{StaticResource NoteButonStyle}" />
-            <RadioButton Canvas.Left="30"
-                         Canvas.Top="103"
-                         Content="A2"
-                         Style="{StaticResource NoteButonStyle}" />
-            <RadioButton Canvas.Left="332"
-                         Canvas.Top="23"
-                         Content="G3"
-                         Style="{StaticResource NoteButonStyle}" />
-
-            <RadioButton Canvas.Left="332"
-                         Canvas.Top="104"
-                         Content="B3"
-                         Style="{StaticResource NoteButonStyle}" />
-            <RadioButton Canvas.Left="332"
-                         Canvas.Top="183"
-                         Content="E4"
-                         Style="{StaticResource NoteButonStyle}" />
+        <Canvas
+            Width="373"
+            Height="360"
+            ClipToBounds="True">
+            <Image
+                Canvas.Left="-504"
+                Canvas.Top="-80"
+                Width="1364"
+                Height="2044"
+                Source="/Tuner.Wpf;component/stratocaster_electric_guitar.png"
+                Stretch="Fill">
+                <Image.Effect>
+                    <DropShadowEffect />
+                </Image.Effect>
+            </Image>
+            <StackPanel Canvas.Top="120">
+                <RadioButton x:Name="A2Button" Style="{StaticResource NoteButonStyle}" Content="A2" />
+                <RadioButton x:Name="D3Button" Style="{StaticResource NoteButonStyle}" Content="D3" />
+                <RadioButton x:Name="E2Button" Style="{StaticResource NoteButonStyle}" Content="E2" />
+            </StackPanel>
+            <StackPanel Canvas.Left="296" Canvas.Top="1">
+                <RadioButton
+                    Style="{StaticResource NoteButonStyle}"
+                    Content="E4"
+                    IsChecked="True"
+                    x:Name="E4Button"
+                    />
+                <RadioButton  x:Name="B3Button" Style="{StaticResource NoteButonStyle}" Content="B3" />
+                <RadioButton  x:Name="G3Button" Style="{StaticResource NoteButonStyle}" Content="G3" />
+            </StackPanel>
+            <controls:ClockwiseArrow
+                Canvas.Left="129"
+                Canvas.Top="13"
+                Width="86"
+                Height="75"
+                Opacity="0.7"
+                RenderTransformOrigin="0.5,0.5" />
+            <controls:NoteHelper
+                Canvas.Left="201"
+                Canvas.Top="291"
+                Visibility="{Binding ElementName=E4Button, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Text="E4" />
+            <controls:NoteHelper
+                Canvas.Left="189"
+                Canvas.Top="291"
+                  Visibility="{Binding ElementName=B3Button, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Text="B3" />
+            <controls:NoteHelper
+                Canvas.Left="174"
+                Canvas.Top="291"
+                  Visibility="{Binding ElementName=G3Button, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Text="G3" />
+            <controls:NoteHelper
+                Canvas.Left="162"
+                Canvas.Top="291"
+                       Visibility="{Binding ElementName=A2Button, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Text="A2" />
+            <controls:NoteHelper
+                Canvas.Left="149"
+                Canvas.Top="291"
+                   Visibility="{Binding ElementName=D3Button, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Text="D3" />
+            <controls:NoteHelper
+                Canvas.Left="136"
+                Canvas.Top="291"
+                   Visibility="{Binding ElementName=E2Button, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Text="E2" />
         </Canvas>
     </Viewbox>
-
 </UserControl>
