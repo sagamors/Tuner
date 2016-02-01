@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         xmlns:local="clr-namespace:Tuner.Wpf"
+        xmlns:viewmodels="clr-namespace:Tuner.Wpf.ViewModels"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:views="clr-namespace:Tuner.Wpf.Views"
@@ -12,10 +13,13 @@
         Width="705"
         Height="360"
         Background="{StaticResource MainWindowBackground}"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Foreground="{StaticResource MainWindowTextBrush}"
         ResizeMode="NoResize"
-        mc:Ignorable="d">
+        mc:Ignorable="d"
+        >
+    <Window.DataContext>
+        <viewmodels:MainViewModel/>
+    </Window.DataContext>
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -31,7 +35,6 @@
                             Margin="0,0,2,131" />
         <views:InstrumentView Grid.RowSpan="2" Grid.Column="1" />
         <views:TuningsView Grid.Row="1" VerticalAlignment="Stretch" />
-        <Button Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Settings"/>
-        
+        <Button Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Settings" Command="{Binding OpenSettingsCommand}"/>
     </Grid>
 </Window>
