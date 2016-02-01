@@ -31,17 +31,7 @@
                             Margin="0,0,2,131" />
         <views:InstrumentView Grid.RowSpan="2" Grid.Column="1" />
         <views:TuningsView Grid.Row="1" VerticalAlignment="Stretch" />
-        <CheckBox Grid.Row="1"
-                  Grid.ColumnSpan="2"
-                  Margin="394,66,2,46"
-                  Content="Auto tune"
-                  Foreground="{StaticResource MainWindowTextBrush}"
-                  Visibility="Collapsed" />
-        <Button Grid.Row="1"
-                Grid.Column="1"
-                Height="66"
-                VerticalAlignment="Top"
-                Content="Next string"
-                Visibility="Collapsed" />
+        <Button Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Settings"/>
+        
     </Grid>
 </Window>
