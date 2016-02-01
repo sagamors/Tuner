@@ -64,6 +64,15 @@ namespace Tuner.Wpf.Constrols
             set { SetValue(AngleProperty, value); }
         }
 
+        public static readonly DependencyProperty ThicknessProperty = DependencyProperty.Register(
+    "Thickness", typeof(double), typeof(SimpleGauge), new PropertyMetadata(30.0));
+
+        public double Thickness
+        {
+            get { return (double)GetValue(ThicknessProperty); }
+            set { SetValue(ThicknessProperty, value); }
+        }
+
         public static readonly DependencyProperty PointerLengthProperty = DependencyProperty.Register(
             "PointerLength", typeof (double), typeof (SimpleGauge), new PropertyMetadata(100.0));
 

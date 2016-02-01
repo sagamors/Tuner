@@ -21,19 +21,21 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Favorite tunings:" />
+        <TextBlock Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   Text="Favorite tunings:" />
 
-        <ListBox Grid.Row="1" >
+        <ListBox Grid.Row="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid/>
+                    <UniformGrid />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBoxItem Content="Standard" IsSelected="True" />
@@ -49,9 +51,12 @@
             <ListBoxItem Content="Open E" />
             <ListBoxItem Content="Open F" />
         </ListBox>
-        <UniformGrid Columns="1" Grid.Column="1" Grid.Row="1" Width="40">
-            <Button Content="+"/>
-            <Button Content="-"/>
+        <UniformGrid Grid.Row="1"
+                     Grid.Column="1"
+                     Width="40"
+                     Columns="1">
+            <Button Content="+" />
+            <Button Content="-" />
         </UniformGrid>
         <!--<TextBlock Grid.Row="1"
                    HorizontalAlignment="Left"

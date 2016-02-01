@@ -69,19 +69,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Constrols\ClockwiseArrow.xaml.cs">
-      <DependentUpon>ClockwiseArrow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Converters\PointerCenterConverter.cs" />
+    <Compile Include="Constrols\Arc.cs" />
     <Compile Include="Constrols\AxisBase.cs" />
+    <Compile Include="Constrols\CircularProgressBar.cs" />
+    <Compile Include="Constrols\Cord.cs" />
+    <Compile Include="Constrols\Frets.cs" />
     <Compile Include="Constrols\ITransformation.cs" />
+    <Compile Include="Constrols\NoteHelper.cs" />
     <Compile Include="Constrols\PolarTransformation.cs" />
     <Compile Include="Constrols\PopupNonTopmost.cs" />
-    <Compile Include="Constrols\Frets.cs" />
     <Compile Include="Constrols\Sector.cs" />
     <Compile Include="Constrols\SimpleGauge.cs" />
     <Compile Include="Constrols\String.cs" />
-    <Compile Include="Constrols\NoteHelper.cs" />
+    <Compile Include="Constrols\TuneProgress.cs" />
+    <Compile Include="Constrols\VerticalTransformation.cs" />
+    <Compile Include="Converters\PointerCenterConverter.cs" />
     <Compile Include="Views\GuitarNeckView.xaml.cs">
       <DependentUpon>GuitarNeckView.xaml</DependentUpon>
     </Compile>
@@ -95,8 +97,8 @@
       <DependentUpon>TuningsView.xaml</DependentUpon>
     </Compile>
     <Page Include="Constrols\ClockwiseArrow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -106,11 +108,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Constrols\Arc.cs" />
-    <Compile Include="Constrols\CircularProgressBar.cs" />
-    <Compile Include="Constrols\Cord.cs" />
-    <Compile Include="Constrols\TuneProgress.cs" />
-    <Compile Include="Constrols\VerticalTransformation.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

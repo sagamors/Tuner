@@ -19,16 +19,29 @@
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="343"/>
+            <ColumnDefinition Width="343" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="190" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <views:TuneInfoView Height="Auto" Margin="0,0,2,131" Grid.RowSpan="2" Width="Auto"  />
-        <views:TuningsView Grid.Row="1"  VerticalAlignment="Stretch"  />
-        <views:InstrumentView Grid.Column="1" Grid.RowSpan="2" />
-        <Button Visibility="Collapsed" Content="Next string" Grid.Column="1"  Grid.Row="1" Height="66" VerticalAlignment="Top"  />
-        <CheckBox Visibility="Collapsed" Content="Auto tune" Foreground="{StaticResource MainWindowTextBrush}" Margin="394,66,2,46" Grid.Row="1" Grid.ColumnSpan="2" />
+        <views:TuneInfoView Grid.RowSpan="2"
+                            Width="Auto"
+                            Height="Auto"
+                            Margin="0,0,2,131" />
+        <views:InstrumentView Grid.RowSpan="2" Grid.Column="1" />
+        <views:TuningsView Grid.Row="1" VerticalAlignment="Stretch" />
+        <CheckBox Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  Margin="394,66,2,46"
+                  Content="Auto tune"
+                  Foreground="{StaticResource MainWindowTextBrush}"
+                  Visibility="Collapsed" />
+        <Button Grid.Row="1"
+                Grid.Column="1"
+                Height="66"
+                VerticalAlignment="Top"
+                Content="Next string"
+                Visibility="Collapsed" />
     </Grid>
 </Window>

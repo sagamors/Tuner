@@ -1,10 +1,9 @@
-<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:constrols="clr-namespace:Tuner.Wpf.Constrols"
-    xmlns:converters="clr-namespace:Tuner.Wpf.Converters"
-    xmlns:local="clr-namespace:Tuner.Wpf"
-    xmlns:system="clr-namespace:System;assembly=mscorlib">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:constrols="clr-namespace:Tuner.Wpf.Constrols"
+                    xmlns:converters="clr-namespace:Tuner.Wpf.Converters"
+                    xmlns:local="clr-namespace:Tuner.Wpf"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <converters:PointerCenterConverter x:Key="PointerCenterConverter" />
     <Style TargetType="{x:Type constrols:CircularProgressBar}">
@@ -18,32 +17,31 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type constrols:CircularProgressBar}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
-                            <constrols:Arc
-                                Fill="{TemplateBinding Fill}"
-                                Stroke="{TemplateBinding ProgressBackground}"
-                                StrokeThickness="{TemplateBinding ProgressThickness}"
-                                Angle="360" />
-
-                            <constrols:Arc
-                                x:Name="PART_Arc"
-                                Width="{TemplateBinding ActualWidth}"
-                                Height="{TemplateBinding ActualHeight}"
-                                Stroke="{TemplateBinding ProgressBrush}"
-                                StrokeThickness="{TemplateBinding ProgressThickness}"
-                                StartAngle="{TemplateBinding StartAngle}"
-                                SweepDirection="{TemplateBinding SweepDirection}" />
+                            <constrols:Arc Angle="360"
+                                           Fill="{TemplateBinding Fill}"
+                                           Stroke="{TemplateBinding ProgressBackground}"
+                                           StrokeThickness="{TemplateBinding ProgressThickness}" />
+                            <constrols:Arc x:Name="PART_Arc"
+                                           Width="{TemplateBinding ActualWidth}"
+                                           Height="{TemplateBinding ActualHeight}"
+                                           StartAngle="{TemplateBinding StartAngle}"
+                                           Stroke="{TemplateBinding ProgressBrush}"
+                                           StrokeThickness="{TemplateBinding ProgressThickness}"
+                                           SweepDirection="{TemplateBinding SweepDirection}" />
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Ellipse
-                                Width="{Binding ElementName=PART_Arc, Path=Diameter, Mode=OneWay}"
-                                Height="{Binding ElementName=PART_Arc, Path=Diameter, Mode=OneWay}"
-                                Fill="{TemplateBinding Background}"
-                                Stroke="{TemplateBinding OuterCircularBorderStroke}"
-                                StrokeThickness="{TemplateBinding OuterCircularBorderThickness}" />
+                            <Ellipse Width="{Binding ElementName=PART_Arc,
+                                                     Path=Diameter,
+                                                     Mode=OneWay}"
+                                     Height="{Binding ElementName=PART_Arc,
+                                                      Path=Diameter,
+                                                      Mode=OneWay}"
+                                     Fill="{TemplateBinding Background}"
+                                     Stroke="{TemplateBinding OuterCircularBorderStroke}"
+                                     StrokeThickness="{TemplateBinding OuterCircularBorderThickness}" />
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -55,10 +53,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type constrols:Cord}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}" />
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" />
 
                 </ControlTemplate>
             </Setter.Value>
@@ -77,42 +74,39 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type constrols:String}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="StringsNameSharedSizeGroup" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <TextBlock
-                                x:Name="PART_name"
-                                Margin="0,0,5,0"
-                                VerticalAlignment="Center"
-                                Style="{TemplateBinding StringNameStyle}"
-                                Text="{TemplateBinding StringName}" />
-                            <Canvas
-                                x:Name="PART_canvas"
-                                Grid.Column="1"
-                                VerticalAlignment="Center">
-                                <Border
-                                    x:Name="PART_String"
-                                    Width="{Binding ElementName=PART_canvas, Path=ActualWidth, Mode=OneWay}"
-                                    Height="{TemplateBinding StringThickness}"
-                                    Background="{TemplateBinding StringBackground}"
-                                    BorderBrush="{TemplateBinding StringBrush}"
-                                    BorderThickness="{TemplateBinding StringBorderThickness}">
+                            <TextBlock x:Name="PART_name"
+                                       Margin="0,0,5,0"
+                                       VerticalAlignment="Center"
+                                       Style="{TemplateBinding StringNameStyle}"
+                                       Text="{TemplateBinding StringName}" />
+                            <Canvas x:Name="PART_canvas"
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center">
+                                <Border x:Name="PART_String"
+                                        Width="{Binding ElementName=PART_canvas,
+                                                        Path=ActualWidth,
+                                                        Mode=OneWay}"
+                                        Height="{TemplateBinding StringThickness}"
+                                        Background="{TemplateBinding StringBackground}"
+                                        BorderBrush="{TemplateBinding StringBrush}"
+                                        BorderThickness="{TemplateBinding StringBorderThickness}">
                                     <Border.Resources>
                                         <Storyboard x:Key="Storyboard">
-                                            <DoubleAnimation
-                                                x:Name="DoubleAnimation"
-                                                AutoReverse="True"
-                                                Duration="0:0:0.01"
-                                                From="-3"
-                                                RepeatBehavior="Forever"
-                                                Storyboard.TargetProperty="(Canvas.Top)"
-                                                To="3" />
+                                            <DoubleAnimation x:Name="DoubleAnimation"
+                                                             AutoReverse="True"
+                                                             Duration="0:0:0.01"
+                                                             From="-3"
+                                                             RepeatBehavior="Forever"
+                                                             Storyboard.TargetProperty="(Canvas.Top)"
+                                                             To="3" />
                                         </Storyboard>
                                     </Border.Resources>
                                     <Border.Style>
@@ -138,12 +132,11 @@
         </Setter>
     </Style>
 
-
-    <system:Double x:Key="TuneProgress.Gauge.Angle">90</system:Double>
-    <system:Double x:Key="TuneProgress.Gauge.StartAngle">-45</system:Double>
-    <system:Double x:Key="TuneProgress.Gauge.Thickness">100</system:Double>
+    <system:Double x:Key="TuneProgress.Gauge.Angle">120</system:Double>
+    <system:Double x:Key="TuneProgress.Gauge.StartAngle">30</system:Double>
+    <system:Double x:Key="TuneProgress.Gauge.Thickness">20</system:Double>
     <system:Double x:Key="TuneProgress.InternalBorder.Thickness">0.5</system:Double>
-    <Thickness x:Key="TuneProgress.Margin">10</Thickness>
+    <Thickness x:Key="TuneProgress.Margin">0</Thickness>
     <Brush x:Key="TuneProgress.InternalBorder.Stroke">Black</Brush>
     <Brush x:Key="TuneProgress.Gauge.Background">Gray</Brush>
     <system:Double x:Key="CircularProgressBar.Width">100</system:Double>
@@ -156,44 +149,42 @@
     <Style TargetType="{x:Type constrols:TuneProgress}">
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect
-                    Opacity="1"
-                    BlurRadius="10"
-                    ShadowDepth="10" />
-                <!--  Color="{Binding RelativeSource={RelativeSource AncestorType=constrols:String}, Path=StringBackground}"  -->
+                <DropShadowEffect BlurRadius="10"
+                                  Opacity="1"
+                                  ShadowDepth="10" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type constrols:TuneProgress}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid>
-                            <constrols:SimpleGauge Angle="{StaticResource TuneProgress.Gauge.Angle}" StartAngle="{StaticResource TuneProgress.Gauge.StartAngle}" />
-                            <constrols:CircularProgressBar
-                                x:Name="CircularProgressBar"
-                                Width="{StaticResource CircularProgressBar.Width}"
-                                Height="{StaticResource CircularProgressBar.Height}"
-                                Fill="{StaticResource CircularProgressBar.Fill}"
-                                OuterCircularBorderStroke="{StaticResource TuneProgress.InternalBorder.Stroke}"
-                                OuterCircularBorderThickness="{StaticResource TuneProgress.InternalBorder.Thickness}"
-                                ProgressBackground="{StaticResource CircularProgressBar.ProgressBackground}"
-                                ProgressBrush="{StaticResource CircularProgressBar.ProgressBrush}"
-                                ProgressThickness="{StaticResource CircularProgressBar.Thickness}"
-                                Value="100">
-                                <constrols:CircularProgressBar.ContentTemplate>
-                                    <DataTemplate>
-                                        <TextBlock
-                                            Foreground="{Binding SelectedString.StringBackground}"
-                                            FontSize="24"
-                                            DataContext="{Binding RelativeSource={RelativeSource AncestorType=constrols:TuneProgress}}"
-                                            Text="{Binding SelectedString.StringName, Mode=OneWay}" />
-                                    </DataTemplate>
-                                </constrols:CircularProgressBar.ContentTemplate>
-                            </constrols:CircularProgressBar>
-                        </Grid>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Viewbox>
+                            <Grid Width="350" Height="350">
+                                <constrols:SimpleGauge Angle="{StaticResource TuneProgress.Gauge.Angle}" StartAngle="{StaticResource TuneProgress.Gauge.StartAngle}" />
+                                <!--<constrols:CircularProgressBar x:Name="CircularProgressBar"
+                                                               Width="{StaticResource CircularProgressBar.Width}"
+                                                               Height="{StaticResource CircularProgressBar.Height}"
+                                                               Fill="{StaticResource CircularProgressBar.Fill}"
+                                                               OuterCircularBorderStroke="{StaticResource TuneProgress.InternalBorder.Stroke}"
+                                                               OuterCircularBorderThickness="{StaticResource TuneProgress.InternalBorder.Thickness}"
+                                                               ProgressBackground="{StaticResource CircularProgressBar.ProgressBackground}"
+                                                               ProgressBrush="{StaticResource CircularProgressBar.ProgressBrush}"
+                                                               ProgressThickness="{StaticResource CircularProgressBar.Thickness}"
+                                                               Value="100">
+                                    <constrols:CircularProgressBar.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock DataContext="{Binding RelativeSource={RelativeSource AncestorType=constrols:TuneProgress}}"
+                                                       FontSize="24"
+                                                       Foreground="{Binding SelectedString.StringBackground}"
+                                                       Text="{Binding SelectedString.StringName,
+                                                                      Mode=OneWay}" />
+                                        </DataTemplate>
+                                    </constrols:CircularProgressBar.ContentTemplate>
+                                </constrols:CircularProgressBar>-->
+                            </Grid>
+                        </Viewbox>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -204,56 +195,41 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type constrols:SimpleGauge}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
-                            <constrols:Sector
-                                x:Name="PART_Back"
-                                Margin="{StaticResource TuneProgress.Margin}"
-                                Fill="{StaticResource TuneProgress.Gauge.Background}"
-                                Angle="{TemplateBinding Angle}"
-                                StartAngle="{TemplateBinding StartAngle}"
-                                Thickness="{StaticResource TuneProgress.Gauge.Thickness}" />
-                            <constrols:CircularAxis
-                                Angle="{TemplateBinding Angle}"
-                                MajorStroke="White"
-                                MinorStroke="White"
-                                RadiusOffset="10"
-                                StartAngle="{TemplateBinding StartAngle}" />
-                            <constrols:Sector
-                                x:Name="Border"
-                                Margin="{StaticResource TuneProgress.Margin}"
-                                Stroke="{StaticResource TuneProgress.InternalBorder.Stroke}"
-                                StrokeThickness="{StaticResource TuneProgress.InternalBorder.Thickness}"
-                                Angle="{TemplateBinding Angle}"
-                                StartAngle="{TemplateBinding StartAngle}"
-                                Thickness="{StaticResource TuneProgress.Gauge.Thickness}" />
+                            <!--<constrols:Sector x:Name="PART_Back"
+                                              Margin="{StaticResource TuneProgress.Margin}"
+                                              Angle="{TemplateBinding Angle}"
+                                              Fill="{StaticResource TuneProgress.Gauge.Background}"
+                                              StartAngle="{TemplateBinding StartAngle}"
+                                              Thickness="{TemplateBinding Thickness}" />-->
+                            <constrols:CircularAxis Angle="{TemplateBinding Angle}"
+                                                    MajorStep="15"
+                                                    MajorStroke="White"
+                                                    MinorStroke="White"
+                                                    StartAngle="{TemplateBinding StartAngle}" />
+                            <!--<constrols:Sector x:Name="Border"
+                                              Margin="{StaticResource TuneProgress.Margin}"
+                                              Angle="{TemplateBinding Angle}"
+                                              StartAngle="{TemplateBinding StartAngle}"
+                                              Stroke="{StaticResource TuneProgress.InternalBorder.Stroke}"
+                                              StrokeThickness="{StaticResource TuneProgress.InternalBorder.Thickness}"
+                                              Thickness="{TemplateBinding Thickness}" />-->
+
                             <!--  Pointer  -->
-                            <Path
-                                x:Name="Pointer"
-                                Width="100"
-                                Height="10"
-                                HorizontalAlignment="Center"
-                                Fill="DeepSkyBlue"
-                                Data="M1,1 L1,10 L156,6 z"
-                                RenderTransform="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PointerLength, Converter={StaticResource PointerCenterConverter}}"
-                                RenderTransformOrigin="0,0.5"
-                                Stretch="Fill">
-                                <!--
-                                    Stroke="DeepSkyBlue"
-                                    StrokeThickness="2"
-                                -->
-                                <!--<Path.Fill>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Offset="0.197" Color="#FF890A0A" />
-                                        <GradientStop Offset="1" Color="#FFC40808" />
-                                        <GradientStop Offset="0.61" Color="#FFE32323" />
-                                    </LinearGradientBrush>
-                                </Path.Fill>-->
-                            </Path>
+                            <Path x:Name="Pointer"
+                                  Width="100"
+                                  Height="10"
+                                  HorizontalAlignment="Center"
+                                  Data="M1,1 L1,10 L156,6 z"
+                                  Fill="DeepSkyBlue"
+                                  RenderTransform="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                                            Path=PointerLength,
+                                                            Converter={StaticResource PointerCenterConverter}}"
+                                  RenderTransformOrigin="0,0.5"
+                                  Stretch="Fill" />
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -265,31 +241,29 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type constrols:NoteHelper}">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <Viewbox
-                            
-                            Width="35"
-                            Height="43"
-                            RenderTransformOrigin="0.5,0.5">
-                            <Canvas
-                                Canvas.Left="192"
-                                Canvas.Top="274.196"
-                                Width="45"
-                                Height="55">
-                                <Path
-                                    Canvas.Left="0.333"
-                                    Canvas.Top="42.08"
-                                    Width="44.126"
-                                    Height="53.84"
-                                    Fill="White"
-                                    Stroke="#0073a6"
-                                    StrokeThickness="2"
-                                    Data="M49.291,0.5 L63.941904,24.509026 64.719786,24.740421 C84.869682,31.00769 99.5,49.802799 99.5,72.014999 99.5,99.353096 77.338097,121.515 50,121.515 22.661905,121.515 0.5,99.353096 0.5,72.014999 0.5,50.229958 14.573027,31.731842 34.123909,25.115829 L34.305857,25.056757 z"
-                                    RenderTransformOrigin="0.492910003563521,0.110703602569914"
-                                    Stretch="Fill">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Viewbox Width="35"
+                                 Height="43"
+                                 RenderTransformOrigin="0.5,0.5">
+                            <Canvas Canvas.Left="192"
+                                    Canvas.Top="274.196"
+                                    Width="45"
+                                    Height="55">
+                                <FrameworkElement.Effect>
+                                    <DropShadowEffect />
+                                </FrameworkElement.Effect>
+                                <Path Canvas.Left="0.333"
+                                      Canvas.Top="42.08"
+                                      Width="44.126"
+                                      Height="53.84"
+                                      Data="M49.291,0.5 L63.941904,24.509026 64.719786,24.740421 C84.869682,31.00769 99.5,49.802799 99.5,72.014999 99.5,99.353096 77.338097,121.515 50,121.515 22.661905,121.515 0.5,99.353096 0.5,72.014999 0.5,50.229958 14.573027,31.731842 34.123909,25.115829 L34.305857,25.056757 z"
+                                      Fill="White"
+                                      RenderTransformOrigin="0.492910003563521,0.110703602569914"
+                                      Stretch="Fill"
+                                      Stroke="#0073a6"
+                                      StrokeThickness="2">
                                     <Path.RenderTransform>
                                         <TransformGroup>
                                             <ScaleTransform ScaleY="-1" />
@@ -299,15 +273,11 @@
                                         </TransformGroup>
                                     </Path.RenderTransform>
                                 </Path>
-                                <TextBlock
-                                    Canvas.Left="8"
-                                    Canvas.Top="7"
-                                    FontFamily="SimSun"
-                                    FontSize="28"
-                                    Text="{TemplateBinding Text}" />
-                                <FrameworkElement.Effect>
-                                    <DropShadowEffect />
-                                </FrameworkElement.Effect>
+                                <TextBlock Canvas.Left="8"
+                                           Canvas.Top="7"
+                                           FontFamily="SimSun"
+                                           FontSize="28"
+                                           Text="{TemplateBinding Text}" />
                             </Canvas>
                         </Viewbox>
                     </Border>

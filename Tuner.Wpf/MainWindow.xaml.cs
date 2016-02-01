@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using PropertyChanged;
 using Tuner.Wpf.Constrols;
+using System.Windows.Controls;
+
 namespace Tuner.Wpf
 {
     /// <summary>

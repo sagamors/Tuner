@@ -5,33 +5,43 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <system:String x:Key="LowFreqTextBorder">Pull!</system:String>
+        <system:String x:Key="HighFreqTextBorder">Loosen!</system:String>
         <SolidColorBrush x:Key="MainWindowTextBrush" Color="{x:Static SystemColors.ControlTextColor}" />
-        <!--<SolidColorBrush x:Key="MainWindowTextBrush">Azure</SolidColorBrush>-->
         <SolidColorBrush x:Key="MainWindowBackground" Color="{x:Static SystemColors.ControlColor}" />
-
+        <!--<SolidColorBrush x:Key="MainWindowTextBrush">Azure</SolidColorBrush>-->
         <!--<RadialGradientBrush x:Key="MainWindowBackground">
             <GradientStop Offset="1" Color="Black" />
             <GradientStop Color="#FF272525" />
         </RadialGradientBrush>-->
-        <SolidColorBrush  x:Key="TuningArrowHelperColorBrush">#00C322</SolidColorBrush>
+        <SolidColorBrush x:Key="TuningArrowHelperColorBrush">#00C322</SolidColorBrush>
         <Color x:Key="ControlMouseOverColor">Black</Color>
         <Color x:Key="ControlPressedColor">#00a8ff</Color>
         <SolidColorBrush x:Key="ControlBackground" Color="#FFDDDDDD" />
         <SolidColorBrush x:Key="ControlBorder" Color="#616161" />
-
         <Color x:Key="PressedBorderLightColor">#0073a6</Color>
         <Color x:Key="PressedBorderDarkColor">#FF444444</Color>
         <SolidColorBrush x:Key="MainWindow.Background" Color="Black" />
-        <system:Double x:Key="Ticks.Major.Width">20</system:Double>
-        <system:Double x:Key="Gauge.Arrow.Width">50</system:Double>
-        <system:Double x:Key="Gauge.Arrow.Height">4</system:Double>
-
+        <SolidColorBrush x:Key="Major.Background" Color="Black" />
+        <SolidColorBrush x:Key="Minor.Background" Color="Black" />
+        <SolidColorBrush x:Key="Arrow.Background" Color="Black" />
         <SolidColorBrush x:Key="Gauge.Progress.Background"
-                         Opacity="0.9"
-                         Color="SteelBlue" />
-        <SolidColorBrush x:Key="Gauge.Success.Background"
-                         Opacity="0.9"
+                         Opacity="0.6"
                          Color="Green" />
+
+        <LinearGradientBrush x:Key="Gauge.FreqBorder.Low" StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Offset="1" Color="#FF03A8CD" />
+            <GradientStop Offset="0.3" Color="Transparent" />
+        </LinearGradientBrush>
+
+        <SolidColorBrush x:Key="Gauge.FreqBorder.LowTextColor" Color="Azure" />
+        <LinearGradientBrush x:Key="Gauge.FreqBorder.High" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Offset="1" Color="#FFCB0000" />
+            <GradientStop Offset="0.3" Color="Transparent" />
+        </LinearGradientBrush>
+
+        <SolidColorBrush x:Key="Gauge.FreqBorder.HighLowTextColor" Color="Azure" />
+        <SolidColorBrush x:Key="Gauge.Stroke" Color="Black" />
 
         <Style x:Key="NoteButonStyle" TargetType="RadioButton">
             <Setter Property="Foreground" Value="{StaticResource MainWindowTextBrush}" />
@@ -40,8 +50,8 @@
             <Setter Property="FontSize" Value="30" />
             <Setter Property="VerticalContentAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="GroupName" Value="NotesGroup"/>
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="GroupName" Value="NotesGroup" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ToggleButton">

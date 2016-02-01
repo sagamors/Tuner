@@ -5,213 +5,242 @@
              xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
              xmlns:local="clr-namespace:Tuner.Wpf.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              Width="442.5"
              Height="200"
              mc:Ignorable="d">
-    <Canvas Width="360" HorizontalAlignment="Center">
+    <UserControl.Resources>
+        <system:Double x:Key="StartAngle">-70</system:Double>
+        <system:Double x:Key="Angle">70</system:Double>
+        <system:Double x:Key="HighFreqAngle">0</system:Double>
+        <system:Double x:Key="LowFreqAngle">0</system:Double>
+        <system:Double x:Key="Thickness">80</system:Double>
+        <system:Double x:Key="FontSize">20</system:Double>
+        <system:Double x:Key="Major.Height">20</system:Double>
+        <system:Double x:Key="Major.Width">2</system:Double>
+        <system:Double x:Key="Minor.Height">10</system:Double>
+        <system:Double x:Key="Minor.Width">2</system:Double>
+        <system:Double x:Key="Arrow.Width">4</system:Double>
+        <system:Double x:Key="Arrow.Height">30</system:Double>
+
+        <Style x:Key="MinorStyle" TargetType="Rectangle">
+            <Setter Property="Width" Value="{StaticResource Minor.Width}" />
+            <Setter Property="Height" Value="{StaticResource Minor.Height}" />
+            <Setter Property="Fill" Value="{StaticResource Minor.Background}" />
+        </Style>
+
+        <Style x:Key="MajorStyle" TargetType="Rectangle">
+            <Setter Property="Width" Value="{StaticResource Major.Width}" />
+            <Setter Property="Height" Value="{StaticResource Major.Height}" />
+            <Setter Property="Fill" Value="{StaticResource Major.Background}" />
+        </Style>
+
+        <Style x:Key="TickStyle" TargetType="ContentControl">
+            <Setter Property="Canvas.Left" Value="163" />
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.Row="0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Top"
+                                       Style="{StaticResource MajorStyle}" />
+                            <TextBlock Grid.Row="1"
+                                       HorizontalAlignment="Center"
+                                       FontSize="{StaticResource FontSize}"
+                                       Text="{Binding}" />
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <!--  Dummy realization  -->
+    <Canvas Width="360"
+            Margin="5"
+            HorizontalAlignment="Center">
         <ed:Arc Width="360"
                 Height="360"
-                ArcThickness="100"
+                ArcThickness="{StaticResource Thickness}"
+                ArcThicknessUnit="Pixel"
+                EndAngle="{StaticResource Angle}"
+                Fill="{StaticResource Gauge.FreqBorder.High}"
+                StartAngle="{StaticResource HighFreqAngle}"
+                Stretch="None" />
+
+        <ed:Arc Width="360"
+                Height="360"
+                ArcThickness="{StaticResource Thickness}"
+                ArcThicknessUnit="Pixel"
+                EndAngle="{StaticResource LowFreqAngle}"
+                Fill="{StaticResource Gauge.FreqBorder.Low}"
+                StartAngle="{StaticResource StartAngle}"
+                Stretch="None" />
+
+        <ed:Arc Width="360"
+                Height="360"
+                ArcThickness="{StaticResource Thickness}"
                 ArcThicknessUnit="Pixel"
                 EndAngle="-30"
                 Fill="{StaticResource Gauge.Progress.Background}"
-                StartAngle="-70"
-                Stretch="None"
-                Stroke="#FF7C7C7C" />
+                StartAngle="{StaticResource StartAngle}"
+                Stretch="None" />
+        <TextBlock Canvas.Left="290"
+                   Canvas.Top="115"
+                   Foreground="{StaticResource Gauge.FreqBorder.HighLowTextColor}"
+                   RenderTransformOrigin="0.5,0.5"
+                   Text="{StaticResource HighFreqTextBorder}">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-22.566" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Canvas.Left="35"
+                   Canvas.Top="114"
+                   Foreground="{StaticResource Gauge.FreqBorder.LowTextColor}"
+                   RenderTransformOrigin="0.5,0.5"
+                   Text="{StaticResource LowFreqTextBorder}">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="22.879" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <ContentControl Content="+15%"
+                        RenderTransformOrigin="0,0"
+                        Style="{StaticResource TickStyle}">
+            <ContentControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="22.938" CenterX="17" CenterY="180" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </ContentControl.RenderTransform>
+        </ContentControl>
+        <ContentControl Content="-15%" Style="{StaticResource TickStyle}">
+            <ContentControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-28.5" CenterX="17" CenterY="180" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </ContentControl.RenderTransform>
+        </ContentControl>
+        <ContentControl Content="-30%" Style="{StaticResource TickStyle}">
+            <ContentControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-53.794" CenterX="17" CenterY="180" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </ContentControl.RenderTransform>
+        </ContentControl>
         <ed:Arc Width="360"
                 Height="360"
-                ArcThickness="100"
+                ArcThickness="{StaticResource Thickness}"
                 ArcThicknessUnit="Pixel"
-                EndAngle="70"
-                Fill="{StaticResource Gauge.Success.Background}"
-                StartAngle="-70"
+                EndAngle="{StaticResource Angle}"
+                StartAngle="{StaticResource StartAngle}"
                 Stretch="None"
-                Stroke="#FF7C7C7C" />
-        <Viewbox Width="35"
-                 Margin="143.667,139.5,0,150"
-                 HorizontalAlignment="Left" />
-        <Rectangle Canvas.Left="31"
-                   Canvas.Top="79"
-                   Width="2"
-                   Height="{StaticResource Ticks.Major.Width}"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   Fill="White"
-                   RenderTransformOrigin="0.5,0">
-            <Rectangle.RenderTransform>
+                Stroke="{StaticResource Gauge.Stroke}" />
+        <ContentControl Content="+30%"
+                        RenderTransformOrigin="0,0"
+                        Style="{StaticResource TickStyle}">
+            <ContentControl.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
                     <SkewTransform />
-                    <RotateTransform Angle="-59.046" />
+                    <RotateTransform Angle="48.404" CenterX="17" CenterY="180" />
                     <TranslateTransform />
                 </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <TextBlock Canvas.Left="37"
-                   Canvas.Top="80"
-                   Width="41"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   FontSize="20"
-                   RenderTransformOrigin="0.5,0.5"
-                   Text="-30"
-                   TextWrapping="Wrap">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="-59.466" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <TextBlock Canvas.Left="106"
-                   Canvas.Top="31"
-                   Width="41"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   FontSize="20"
-                   RenderTransformOrigin="0.5,0.5"
-                   Text="-15"
-                   TextWrapping="Wrap">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="-23.441" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <Rectangle Canvas.Left="111"
-                   Canvas.Top="13"
-                   Width="2"
-                   Height="{StaticResource Ticks.Major.Width}"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   Fill="White"
-                   RenderTransformOrigin="0.5,0">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="-25.206" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
+            </ContentControl.RenderTransform>
+        </ContentControl>
         <TextBlock Canvas.Left="135"
-                   Canvas.Top="107"
+                   Canvas.Top="86"
                    Height="38"
                    VerticalAlignment="Top"
                    FontSize="30"
                    Text="329 Hz" />
-        <TextBlock Canvas.Left="152"
-                   Canvas.Top="130"
+        <TextBlock Canvas.Left="153"
+                   Canvas.Top="110"
                    Height="60"
                    VerticalAlignment="Top"
                    FontSize="50"
                    Text="E4" />
-        <TextBlock x:Name="textBlock1"
-                   Canvas.Left="173"
-                   Canvas.Top="18"
-                   VerticalAlignment="Top"
-                   FontSize="20"
-                   Text="0"
-                   TextWrapping="Wrap" />
-        <Rectangle Canvas.Left="177"
-                   Width="2"
-                   Height="{StaticResource Ticks.Major.Width}"
+        <ContentControl Canvas.Left="174"
+                        Width="12"
+                        Content="0"
+                        Style="{StaticResource TickStyle}" />
+        <Rectangle Canvas.Left="178"
+                   Canvas.Top="51"
+                   Width="{StaticResource Arrow.Width}"
+                   Height="{StaticResource Arrow.Height}"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
-                   Fill="White" />
-        <Rectangle Canvas.Left="216"
-                   Canvas.Top="111"
-                   Width="{StaticResource Gauge.Arrow.Height}"
-                   Height="{StaticResource Gauge.Arrow.Width}"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   Fill="White"
-                   RenderTransformOrigin="0.5,0">
-            <Rectangle.RenderTransform>
+                   Fill="{StaticResource Arrow.Background}"
+                   RenderTransformOrigin="0.5,4.3" />
+        <Rectangle Canvas.Left="179" Style="{StaticResource MinorStyle}">
+            <FrameworkElement.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
                     <SkewTransform />
-                    <RotateTransform Angle="215.14" />
+                    <RotateTransform Angle="12.814" CenterX="1" CenterY="180" />
                     <TranslateTransform />
                 </TransformGroup>
-            </Rectangle.RenderTransform>
+            </FrameworkElement.RenderTransform>
         </Rectangle>
-
-        <TextBlock Canvas.Left="229"
-                   Canvas.Top="38"
-                   Width="41"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Top"
-                   FontSize="20"
-                   RenderTransformOrigin="0.5,0.5"
-                   Text="+10"
-                   TextWrapping="Wrap">
-            <TextBlock.RenderTransform>
+        <Rectangle Canvas.Left="179" Style="{StaticResource MinorStyle}">
+            <FrameworkElement.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
                     <SkewTransform />
-                    <RotateTransform Angle="37.14" />
+                    <RotateTransform Angle="39.356" CenterX="1" CenterY="180" />
                     <TranslateTransform />
                 </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <Rectangle Canvas.Left="268"
-                   Canvas.Top="26"
-                   Width="2"
-                   Height="{StaticResource Ticks.Major.Width}"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   Fill="White"
-                   RenderTransformOrigin="0.5,0">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="36.504" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </Rectangle.RenderTransform>
+            </FrameworkElement.RenderTransform>
         </Rectangle>
-        <TextBlock Canvas.Left="280"
-                   Canvas.Top="80"
-                   Width="42"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Top"
-                   FontSize="20"
-                   RenderTransformOrigin="0.5,0.5"
-                   Text="+30"
-                   TextWrapping="Wrap">
-            <TextBlock.RenderTransform>
+        <Rectangle Canvas.Left="179" Style="{StaticResource MinorStyle}">
+            <FrameworkElement.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
                     <SkewTransform />
-                    <RotateTransform Angle="55.854" />
+                    <RotateTransform Angle="-13.28" CenterX="1" CenterY="180" />
                     <TranslateTransform />
                 </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <Rectangle Canvas.Left="326"
-                   Canvas.Top="78"
-                   Width="2"
-                   Height="{StaticResource Ticks.Major.Width}"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   Fill="White"
-                   RenderTransformOrigin="0.5,0">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="58.098" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </Rectangle.RenderTransform>
+            </FrameworkElement.RenderTransform>
         </Rectangle>
+        <Rectangle Canvas.Left="179" Style="{StaticResource MinorStyle}">
+            <FrameworkElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-39.698" CenterX="1" CenterY="180" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </FrameworkElement.RenderTransform>
+        </Rectangle>
+        <ed:Arc Width="360"
+                Height="360"
+                ArcThickness="{StaticResource Thickness}"
+                ArcThicknessUnit="Pixel"
+                EndAngle="{StaticResource Angle}"
+                StartAngle="{StaticResource StartAngle}"
+                Stretch="None"
+                Stroke="{StaticResource Gauge.Stroke}" />
     </Canvas>
 </UserControl>

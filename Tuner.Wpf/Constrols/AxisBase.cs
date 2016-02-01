@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 
@@ -10,6 +6,8 @@ namespace Tuner.Wpf.Constrols
 {
     public class AxisBase  : FrameworkElement
     {
+        private const string TYPEFACE_NAME = "Arial";
+
         private VisualCollection theVisuals;
         private DrawingVisual _drawingVisual;
 
@@ -78,6 +76,33 @@ namespace Tuner.Wpf.Constrols
             set { SetValue(MinorStrokeThicknessProperty, value); }
         }
 
+        public static readonly DependencyProperty TextOffsetProperty = DependencyProperty.Register(
+            "TextOffset", typeof(double), typeof(AxisBase), new FrameworkPropertyMetadata(5.0, FrameworkPropertyMetadataOptions.AffectsRender));
+
+        public double TextOffset
+        {
+            get { return (double)GetValue(TextOffsetProperty); }
+            set { SetValue(TextOffsetProperty, value); }
+        }
+
+        public static readonly DependencyProperty FontSizeProperty = DependencyProperty.Register(
+       "FontSize", typeof(double), typeof(AxisBase), new FrameworkPropertyMetadata(8.0, FrameworkPropertyMetadataOptions.AffectsRender));
+
+        public double FontSize
+        {
+            get { return (double)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ForegroundProperty = DependencyProperty.Register(
+"Foreground", typeof(Brush), typeof(AxisBase), new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
+
+        public Brush Foreground
+        {
+            get { return (Brush)GetValue(ForegroundProperty); }
+            set { SetValue(ForegroundProperty, value); }
+        }
+
         static AxisBase()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(AxisBase), new FrameworkPropertyMetadata(typeof(AxisBase)));
@@ -95,18 +120,61 @@ namespace Tuner.Wpf.Constrols
         {
             if(Transformation==null) return;
             int majorCount = (int) (Transformation.Width / MajorStep);
-            DrawLines(drawingContext, MajorStep/2, majorCount,MajorStep, MajorStrokeThickness, MajorStroke, MajorHeight);
-            DrawLines(drawingContext, MajorStep, majorCount-1, MajorStep, MinorStrokeThickness, MinorStroke, MinorHeight);
+            //if (true)
+            //{
+            //    DrawLinesFromCenter(drawingContext, 0, majorCount/2, MajorStep, MajorStrokeThickness, MajorStroke, MajorHeight, true);
+            //    DrawLinesFromCenter(drawingContext, MajorStep/2, majorCount - 1, MajorStep, MinorStrokeThickness, MinorStroke, MinorHeight);
+            //}
+            //else
+            {
+                DrawLines(drawingContext, MajorStep / 2, majorCount, MajorStep, MajorStrokeThickness, MajorStroke, MajorHeight, true);
+                DrawLines(drawingContext, MajorStep, majorCount - 1, MajorStep, MinorStrokeThickness, MinorStroke, MinorHeight);
+            }
+
             base.OnRender(drawingContext);
         }
 
-        private void DrawLines(DrawingContext drawingContext, double offset, int count, double step, double strokeThickness, Brush stroke, double height)
+        private void DrawLines(DrawingContext drawingContext, double offset, int count, double step, double strokeThickness, Brush stroke, double height, bool showText = false)
         {
             var transform = Transformation;
             if (transform == null) return;
+   
             for (int i = 0; i < count; i++)
             {
-                drawingContext.DrawLine(new Pen(stroke, strokeThickness), transform.GetUIPoint(new Point(offset+i * step, 0)), transform.GetUIPoint(new Point(offset+i * step, height)));
+                var value = i * step;
+                // todo dummy realization
+                var text = value.ToString("f0");
+                var x = offset + value;
+                var yUI = transform.GetUIPoint(new Point(x, height));
+                drawingContext.DrawLine(new Pen(stroke, strokeThickness), transform.GetUIPoint(new Point(x, 0)), yUI);
+                if (showText)
+                {
+                    var formatted = new FormattedText(text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface(TYPEFACE_NAME), FontSize, Foreground);
+                    var offsetTextPoint = transform.GetUIPoint(new Point(x, height + TextOffset));
+                    drawingContext.DrawText(formatted, new Point(offsetTextPoint.X - formatted.Width/2,offsetTextPoint.Y));
+                }
+            }
+        }
+
+        // todo dummy realization
+        private void DrawLinesFromCenter(DrawingContext drawingContext, double offset, int count, double step, double strokeThickness, Brush stroke, double height, bool showText = false)
+        {
+            var transform = Transformation;
+            if (transform == null) return;
+            for (int i = 1 - count; i < count; i++)
+            {
+                var value = i * step;
+                // todo dummy realization
+                var text = value.ToString("f0");
+                var x = offset + value + transform.Width/2;
+                var yUI = transform.GetUIPoint(new Point(x, height));
+                drawingContext.DrawLine(new Pen(stroke, strokeThickness), transform.GetUIPoint(new Point(x, 0)), yUI);
+                if (showText)
+                {
+                    var formatted = new FormattedText(text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface(TYPEFACE_NAME), FontSize, Foreground);
+                    var offsetTextPoint = transform.GetUIPoint(new Point(x, height + TextOffset));
+                    drawingContext.DrawText(formatted, new Point(offsetTextPoint.X - formatted.Width / 2, offsetTextPoint.Y));
+                }
             }
         }
 
@@ -159,6 +227,21 @@ namespace Tuner.Wpf.Constrols
         {
             Transformation = new PolarTransformation(this, StartAngle, Angle, RadiusOffset);
             base.OnRender(drawingContext);
+
+            Sector sector = new  Sector()
+            {
+                Angle = this.Angle,
+                StartAngle = this.StartAngle,
+                Fill = Brushes.Beige,
+                Thickness = 100
+            };
+            
+            drawingContext.DrawGeometry(Brushes.Black, new Pen(Brushes.Bisque,2) ,sector.RenderedGeometry);
+            //drawingContext.PushClip(sector.RenderedGeometry);
+            //Angle = "{TemplateBinding Angle}"
+            //                 Fill = "{StaticResource TuneProgress.Gauge.Background}"
+            //                 StartAngle = "{TemplateBinding StartAngle}"
+            //                 Thickness = "{TemplateBinding Thickness}" />
         }
     }
 }
