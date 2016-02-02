@@ -67,6 +67,15 @@
                 Height="360"
                 ArcThickness="{StaticResource Thickness}"
                 ArcThicknessUnit="Pixel"
+                EndAngle="10"
+                Fill="{StaticResource Gauge.Progress.Background}"
+                StartAngle="{StaticResource StartAngle}"
+                Stretch="None" />
+
+        <ed:Arc Width="360"
+                Height="360"
+                ArcThickness="{StaticResource Thickness}"
+                ArcThicknessUnit="Pixel"
                 EndAngle="{StaticResource Angle}"
                 Fill="{StaticResource Gauge.FreqBorder.High}"
                 StartAngle="{StaticResource HighFreqAngle}"
@@ -81,14 +90,8 @@
                 StartAngle="{StaticResource StartAngle}"
                 Stretch="None" />
 
-        <ed:Arc Width="360"
-                Height="360"
-                ArcThickness="{StaticResource Thickness}"
-                ArcThicknessUnit="Pixel"
-                EndAngle="-30"
-                Fill="{StaticResource Gauge.Progress.Background}"
-                StartAngle="{StaticResource StartAngle}"
-                Stretch="None" />
+
+
         <TextBlock Canvas.Left="290"
                    Canvas.Top="115"
                    Foreground="{StaticResource Gauge.FreqBorder.HighLowTextColor}"
