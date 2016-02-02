@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ninject;
 using System.Windows.Input;
+using Tuner.Wpf.Core;
 using Tuner.Wpf.Helpers;
 
 namespace Tuner.Wpf.ViewModels
 {
-    class MainViewModel
+    class MainViewModel : ViewModelBase<IMainWindowView>, IMainWindowViewModel
     {
         public ICommand OpenSettingsCommand {private set; get; }
 
-        public MainViewModel()
+        public MainViewModel(IMainWindowView view, IKernel kernel) : base(view, kernel)
         {
             OpenSettingsCommand = new RelayCommand(OpenSettings);
         }
 
         public void OpenSettings()
         {
-
+            Container.Get<ISettingsViewModel>().View.ShowDialog(View);
         }
     }
 }

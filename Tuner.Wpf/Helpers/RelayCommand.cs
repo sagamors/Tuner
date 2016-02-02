@@ -11,7 +11,7 @@ namespace Tuner.Wpf.Helpers
         readonly Action<object> _execute;
         readonly Predicate<object> _canExecute;
         /// <summary>
-        /// Constructer takes Execute events to register in CommandManager.
+        /// Constructor takes Execute events to register in CommandManager.
         /// </summary>
         /// <param name="execute">Execute method as action.</param>
         public RelayCommand(Action<object> execute)
@@ -32,7 +32,7 @@ namespace Tuner.Wpf.Helpers
         }
 
         /// <summary>
-        /// Constructer takes Execute events to register in CommandManager.
+        /// Constructor takes Execute events to register in CommandManager.
         /// </summary>
         /// <param name="execute">Execute method as action.</param>
         public RelayCommand(Action execute)
@@ -53,7 +53,7 @@ namespace Tuner.Wpf.Helpers
         }
 
         /// <summary>
-        /// Constructer takes Execute and CanExcecute events to register in CommandManager.
+        /// Constructor takes Execute and CanExcecute events to register in CommandManager.
         /// </summary>
         /// <param name="execute">Execute method as action.</param>
         /// <param name="canExecute">CanExecute method as return bool type.</param>
