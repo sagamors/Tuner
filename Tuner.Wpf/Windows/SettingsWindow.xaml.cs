@@ -8,16 +8,11 @@ namespace Tuner.Wpf.Views
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
     /// </summary>
-    public partial class SettingsWindow : Window, ISettingsView
+    public partial class SettingsWindow : WindowDialogBase, ISettingsView
     {
         public SettingsWindow()
         {
             InitializeComponent();
-        }
-
-        public void ShowDialog(object owner)
-        {
-            this.ShowDialog();
         }
     }
 }

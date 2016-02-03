@@ -18,6 +18,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="TunningsButton" TargetType="Button">
+            <Setter Property="Width" Value="Auto" />
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -55,13 +59,8 @@
                      Grid.Column="1"
                      Width="40"
                      Columns="1">
-            <Button Content="+" />
-            <Button Content="-" />
+            <Button Content="+" Style="{StaticResource TunningsButton}" />
+            <Button Content="-" Style="{StaticResource TunningsButton}" />
         </UniformGrid>
-        <!--<TextBlock Grid.Row="1"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   Text="Todo: quick access to the standard tune "
-                   TextWrapping="Wrap" />-->
     </Grid>
 </UserControl>

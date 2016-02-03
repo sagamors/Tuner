@@ -9,14 +9,14 @@ namespace Tuner.Wpf.ViewModels
     {
         public ICommand OpenSettingsCommand {private set; get; }
 
-        public MainViewModel(IMainWindowView view, IKernel kernel) : base(view, kernel)
+        public MainViewModel(IKernel kernel) : base(kernel)
         {
             OpenSettingsCommand = new RelayCommand(OpenSettings);
         }
 
         public void OpenSettings()
         {
-            Container.Get<ISettingsViewModel>().View.ShowDialog(View);
+            ShowDialog(Container.Get<ISettingsViewModel>());
         }
     }
 }

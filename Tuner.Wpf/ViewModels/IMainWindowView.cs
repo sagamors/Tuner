@@ -2,8 +2,7 @@
 
 namespace Tuner.Wpf.Core
 {
-
-    public interface IMainWindowView : IView, IWindowView
+    public interface IMainWindowView : IDialogView
     {
 
     }

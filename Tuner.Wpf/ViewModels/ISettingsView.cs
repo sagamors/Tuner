@@ -2,9 +2,7 @@
 
 namespace Tuner.Wpf.ViewModels
 {
-    public interface ISettingsView : IView
+    public interface ISettingsView : IDialogView
     {
-        void ShowDialog(object owner);
-        void Close();
     }
 }

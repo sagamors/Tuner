@@ -20,13 +20,11 @@ namespace Tuner.Wpf
             Bootstrapper.Initialize();
         }
 
-        public object ObjectFactory { get; private set; }
-
         protected override void OnStartup(StartupEventArgs e)
         {
             IMainWindowViewModel window = Bootstrapper.Container.Get<IMainWindowViewModel>();
             MainWindow = (MainWindow)window.View;
-            MainWindow.ShowDialog();
+            MainWindow.Show();
         }
     }
 }

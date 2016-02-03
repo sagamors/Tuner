@@ -5,7 +5,7 @@ namespace Tuner.Wpf.ViewModels
 {
     public class SettingsViewModel : ViewModelBase<ISettingsView>, ISettingsViewModel
     {
-        public SettingsViewModel(ISettingsView window, IKernel kernel) : base(window,kernel)
+        public SettingsViewModel(IKernel kernel) : base(kernel)
         { 
 
         }
