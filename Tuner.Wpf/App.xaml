@@ -6,8 +6,7 @@
              ShutdownMode="OnMainWindowClose">
     <Application.Resources>
 
-        <Thickness x:Key="ControlMargin">3</Thickness>
-        
+        <Thickness x:Key="ControlMargin">3,3,1.5,1.5</Thickness>
         <Style TargetType="Button">
             <Setter Property="Height" Value="28" />
             <Setter Property="MinWidth" Value="80" />
