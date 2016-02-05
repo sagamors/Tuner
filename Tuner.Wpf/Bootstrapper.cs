@@ -21,7 +21,6 @@ namespace Tuner.Wpf
             Container.Bind<INoteCapture>().To<NoteCapture>().InSingletonScope();
             Container.Bind<INoteFinder>().To<NoteFinder>().InSingletonScope();
             Container.Bind<INoteFactory>().To<NoteFactory>().InSingletonScope();
-            
         }
     }
 

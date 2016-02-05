@@ -6,7 +6,7 @@ using Tuner.Wpf.Sound;
 
 namespace Tuner.Wpf.ViewModels
 {
-    class MainViewModel : ViewModelBase<IMainWindowView>, IMainWindowViewModel
+    class MainViewModel : DialogViewModelBase<IMainWindowView>, IMainWindowViewModel
     {
         public ISettingsViewModel Settings { private set; get; }
         public ICommand OpenSettingsCommand {private set; get; }
@@ -31,6 +31,14 @@ namespace Tuner.Wpf.ViewModels
         public void OpenSettings()
         {
             ShowDialog(Settings);
+        }
+    }
+
+    public  static class Ex
+    {
+        public static void Show(this ViewModelBase<ISettingsView> self)
+        {
+            
         }
     }
 }

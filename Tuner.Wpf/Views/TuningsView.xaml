@@ -35,7 +35,6 @@
         <TextBlock Grid.Row="0"
                    Grid.ColumnSpan="2"
                    Text="Favorite tunings:" />
-
         <ListBox Grid.Row="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

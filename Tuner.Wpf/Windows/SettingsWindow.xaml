@@ -4,8 +4,11 @@
                        xmlns:auto="clr-namespace:WpfAutoGrid;assembly=WpfAutoGrid"
                        xmlns:core="clr-namespace:Tuner.Wpf.Core"
                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:helpers="clr-namespace:Tuner.Wpf.Helpers"
                        xmlns:local="clr-namespace:Tuner.Wpf.Views"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:system="clr-namespace:System;assembly=mscorlib"
+                       xmlns:viewModels="clr-namespace:Tuner.Wpf.ViewModels"
                        Title="Settings"
                        Width="300"
                        Height="300"
@@ -15,12 +18,43 @@
                        SizeToContent="WidthAndHeight"
                        WindowStartupLocation="CenterOwner"
                        mc:Ignorable="d">
-    <StackPanel>
-        <auto:AutoGrid Columns="Auto,*" RowCount="2">
-            <Label Margin="{StaticResource ControlMargin}" Content="Sample rate:" />
-            <ComboBox Margin="{StaticResource ControlMargin}" />
-            <Label Margin="{StaticResource ControlMargin}" Content="Device:" />
-            <ComboBox Margin="{StaticResource ControlMargin}" />
+    <core:WindowDialogBase.Resources>
+        <Style x:Key="NameItem" TargetType="FrameworkElement">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+    </core:WindowDialogBase.Resources>
+    <StackPanel Margin="{StaticResource ControlMargin}" Validation.Error="StackPanel_Error">
+        <auto:AutoGrid Columns="Auto,*" RowCount="10">
+            <TextBlock Style="{StaticResource NameItem}" Text="Device:" />
+            <ComboBox DisplayMemberPath="FriendlyName"
+                      ItemsSource="{Binding Devices}"
+                      SelectedValue="{Binding SelectedDevice,
+                                              ValidatesOnDataErrors=True}" />
+            <TextBlock Style="{StaticResource NameItem}" Text="Sample rate [Hz]:" />
+            <ComboBox IsSynchronizedWithCurrentItem="True"
+                      SelectedIndex="4"
+                      SelectedItem="{Binding SampleRate}">
+                <system:UInt32>11025</system:UInt32>
+                <system:UInt32>16000</system:UInt32>
+                <system:UInt32>22050</system:UInt32>
+                <system:UInt32>44100</system:UInt32>
+                <system:UInt32>48000</system:UInt32>
+                <system:UInt32>96000</system:UInt32>
+            </ComboBox>
+            <TextBlock Style="{StaticResource NameItem}" Text="Bits per sample:" />
+            <ComboBox SelectedIndex="0" SelectedItem="{Binding BitDepth, ValidatesOnDataErrors=True}">
+                <system:Int32>8</system:Int32>
+                <system:Int32>16</system:Int32>
+                <system:Int32>32</system:Int32>
+            </ComboBox>
+            <TextBlock Style="{StaticResource NameItem}" Text="Channel type:" />
+            <ComboBox Margin="{StaticResource ControlMargin}"
+                      DisplayMemberPath="DisplayName"
+                      ItemsSource="{Binding Source={helpers:Enumeration {x:Type viewModels:eChannelType}}}"
+                      SelectedValue="{Binding ChannelType,
+                                              ValidatesOnDataErrors=True}"
+                      SelectedValuePath="Value" />
         </auto:AutoGrid>
         <UniformGrid HorizontalAlignment="Right" Rows="1">
             <Button Click="OkButton_Click"

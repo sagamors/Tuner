@@ -17,6 +17,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +30,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -116,7 +116,9 @@
     <Compile Include="Converters\PointerCenterConverter.cs" />
     <Compile Include="Core\IDialog.cs" />
     <Compile Include="Core\IViewModel.cs" />
+    <Compile Include="Core\ValidationViewModelBase.cs" />
     <Compile Include="Core\WindowDialogBase.cs" />
+    <Compile Include="Helpers\EnumerationExtension.cs" />
     <Compile Include="Sound\NoteCapture.cs" />
     <Compile Include="Sound\FrequencyUtils.cs" />
     <Compile Include="Sound\FftEventArgs.cs" />

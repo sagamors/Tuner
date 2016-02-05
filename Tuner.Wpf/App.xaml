@@ -6,13 +6,8 @@
              ShutdownMode="OnMainWindowClose">
     <Application.Resources>
 
-        <Thickness x:Key="ControlMargin">3</Thickness>
-        
-        <Style TargetType="Button">
-            <Setter Property="Height" Value="28" />
-            <Setter Property="MinWidth" Value="80" />
-            <Setter Property="Margin" Value="{StaticResource ControlMargin}" />
-        </Style>
+        <Thickness x:Key="ControlMargin">3,3,1.5,1.5</Thickness>
+
 
         <system:String x:Key="LowFreqTextBorder">Pull!</system:String>
         <system:String x:Key="HighFreqTextBorder">Loosen!</system:String>
@@ -53,6 +48,29 @@
 
         <SolidColorBrush x:Key="Gauge.FreqBorder.HighLowTextColor" Color="Azure" />
         <SolidColorBrush x:Key="Gauge.Stroke" Color="Black" />
+
+
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="MinWidth" Value="80" />
+            <Setter Property="Margin" Value="{StaticResource ControlMargin}" />
+        </Style>
+
+        <Style x:Key="ErrorStyle" TargetType="FrameworkElement">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style BasedOn="{StaticResource ErrorStyle}" TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="{StaticResource ControlMargin}" />
+        </Style>
+
+        <Style BasedOn="{StaticResource ErrorStyle}" TargetType="{x:Type ComboBox}">
+            <Setter Property="Margin" Value="{StaticResource ControlMargin}" />
+        </Style>
 
         <Style x:Key="NoteButonStyle" TargetType="RadioButton">
             <Setter Property="Foreground" Value="{StaticResource MainWindowTextBrush}" />

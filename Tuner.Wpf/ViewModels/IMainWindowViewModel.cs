@@ -2,7 +2,7 @@
 
 namespace Tuner.Wpf.ViewModels
 {
-    interface IMainWindowViewModel : IViewModel<IMainWindowView>
+    interface IMainWindowViewModel : IDialogViewModelBase<IMainWindowView>
     {
     }
 }

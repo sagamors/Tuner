@@ -23,8 +23,9 @@ namespace Tuner.Wpf
         protected override void OnStartup(StartupEventArgs e)
         {
             IMainWindowViewModel window = Bootstrapper.Container.Get<IMainWindowViewModel>();
-            MainWindow = (MainWindow)window.View;
-            MainWindow.Show();
+            var main = window.View;
+            MainWindow = (MainWindow)main;
+            window.ShowThisDialog(null);
         }
     }
 }
