@@ -35,7 +35,7 @@ namespace Tuner.Wpf.Helpers
         /// Constructor takes Execute events to register in CommandManager.
         /// </summary>
         /// <param name="execute">Execute method as action.</param>
-        public RelayCommand(Action execute)
+        public RelayCommand(Action execute, Predicate<object> canExecute = null)
             : this((p)=>execute(), null)
         {
             try
@@ -45,6 +45,7 @@ namespace Tuner.Wpf.Helpers
                     throw new NotImplementedException("Not implemented");
                 }
                 _execute = (p) => execute();
+                _canExecute = canExecute;
             }
             catch (Exception)
             {
