@@ -2,7 +2,7 @@
 {
     public interface IDialog
     {
-        void ShowDialog(object owner);
+        bool? ShowDialog(object owner);
         void Close();
     }
 }

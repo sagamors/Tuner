@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuner.Perspex", "Tuner.Perspex\Tuner.Perspex.csproj", "{440EB808-F0A3-482C-A57C-2094EC123121}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuner.Core", "Tuner.Core\Tuner.Core.csproj", "{7903D346-C5A2-46B4-9082-11743C4444BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuner.Wpf", "Tuner.Wpf\Tuner.Wpf.csproj", "{30FAA6B9-CB1F-4111-A9AD-EEE52C14D68E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuner.Core.Test", "Tuner.Core.Test\Tuner.Core.Test.csproj", "{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +94,22 @@ Global
 		{30FAA6B9-CB1F-4111-A9AD-EEE52C14D68E}.Release|x64.Build.0 = Release|Any CPU
 		{30FAA6B9-CB1F-4111-A9AD-EEE52C14D68E}.Release|x86.ActiveCfg = Release|Any CPU
 		{30FAA6B9-CB1F-4111-A9AD-EEE52C14D68E}.Release|x86.Build.0 = Release|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Debug|ARM.Build.0 = Debug|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Debug|x64.Build.0 = Debug|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Debug|x86.Build.0 = Debug|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Release|ARM.ActiveCfg = Release|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Release|ARM.Build.0 = Release|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Release|x64.ActiveCfg = Release|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Release|x64.Build.0 = Release|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Release|x86.ActiveCfg = Release|Any CPU
+		{13C70B79-E3B8-41F5-87FE-C9F4D52F47B8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

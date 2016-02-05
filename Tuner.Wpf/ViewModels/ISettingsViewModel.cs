@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NAudio.CoreAudioApi;
+using System;
 using Tuner.Wpf.Core;
 
 namespace Tuner.Wpf.ViewModels
 {
-    interface ISettingsViewModel : IViewModel<ISettingsView>
+    public class SettingsChangedEventArgs : EventArgs
     {
         
+    }
+
+    interface ISettingsViewModel : IViewModel<ISettingsView>, ISettings 
+    {
+        uint SampleRate { set; get; }
+        MMDevice SelectedDevice { set; get; }
     }
 }

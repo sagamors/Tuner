@@ -5,12 +5,11 @@ namespace Tuner.Wpf.Core
 {
     public class WindowDialogBase : Window, IDialogView
     {
-        public void ShowDialog(object owner)
+        public bool? ShowDialog(object owner)
         {
             var ownerWindow = owner as Window;
             Owner = ownerWindow;
-            this.ShowDialog();
-            this.Close();
+            return this.ShowDialog();
         }
     }
 }

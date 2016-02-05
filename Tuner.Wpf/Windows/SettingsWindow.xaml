@@ -23,7 +23,10 @@
             <ComboBox Margin="{StaticResource ControlMargin}" />
         </auto:AutoGrid>
         <UniformGrid HorizontalAlignment="Right" Rows="1">
-            <Button Content="Ok" IsDefault="True" />
+            <Button Click="OkButton_Click"
+                    Command="{Binding OkCommand}"
+                    Content="Ok"
+                    IsDefault="True" />
             <Button Content="Cancel" IsCancel="True" />
         </UniformGrid>
     </StackPanel>
