@@ -19,10 +19,5 @@ namespace Tuner.Wpf.Views
         {
             DialogResult = true;
         }
-
-        private void StackPanel_Error(object sender, System.Windows.Controls.ValidationErrorEventArgs e)
-        {
-            MessageBox.Show(e.Error.ErrorContent.ToString());
-        }
     }
 }

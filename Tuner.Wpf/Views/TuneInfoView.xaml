@@ -89,9 +89,6 @@
                 Fill="{StaticResource Gauge.FreqBorder.Low}"
                 StartAngle="{StaticResource StartAngle}"
                 Stretch="None" />
-
-
-
         <TextBlock Canvas.Left="290"
                    Canvas.Top="115"
                    Foreground="{StaticResource Gauge.FreqBorder.HighLowTextColor}"
@@ -173,12 +170,18 @@
                 </TransformGroup>
             </ContentControl.RenderTransform>
         </ContentControl>
-        <TextBlock Canvas.Left="135"
+        <ContentControl Canvas.Left="135"
                    Canvas.Top="86"
+                   Width="95"
                    Height="38"
+                   HorizontalContentAlignment="Center"
+                   >
+            <TextBlock 
                    VerticalAlignment="Top"
                    FontSize="30"
                    Text="329 Hz" />
+        </ContentControl>
+
         <TextBlock Canvas.Left="153"
                    Canvas.Top="110"
                    Height="60"

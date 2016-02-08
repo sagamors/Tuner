@@ -15,22 +15,30 @@
                        MinWidth="300"
                        Background="{DynamicResource MainWindowBackground}"
                        ResizeMode="NoResize"
-                       SizeToContent="WidthAndHeight"
+                       SizeToContent="Height"
                        WindowStartupLocation="CenterOwner"
                        mc:Ignorable="d">
+    <!--="WidthAndHeight"-->
     <core:WindowDialogBase.Resources>
         <Style x:Key="NameItem" TargetType="FrameworkElement">
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
-
+        <!--<Style x:Key="SelectedItemComboboxStyle" TargetType="ComboBox">
+            <Setter Property="SelectionBoxItemTemplate">
+                <Setter.Value>
+                    <DataTemplate></DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
     </core:WindowDialogBase.Resources>
-    <StackPanel Margin="{StaticResource ControlMargin}" Validation.Error="StackPanel_Error">
-        <auto:AutoGrid Columns="Auto,*" RowCount="10">
+    <StackPanel Margin="{StaticResource ControlMargin}">
+        <auto:AutoGrid Columns="Auto,*" RowCount="10" >
             <TextBlock Style="{StaticResource NameItem}" Text="Device:" />
             <ComboBox DisplayMemberPath="FriendlyName"
                       ItemsSource="{Binding Devices}"
-                      SelectedValue="{Binding SelectedDevice,
-                                              ValidatesOnDataErrors=True}" />
+                      SelectedValue="{Binding SelectedDevice, NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" 
+                      />
+            
             <TextBlock Style="{StaticResource NameItem}" Text="Sample rate [Hz]:" />
             <ComboBox IsSynchronizedWithCurrentItem="True"
                       SelectedIndex="4"

@@ -5,11 +5,11 @@ namespace Tuner.Wpf.Sound
 {
     class SampleAggregator
     {
-        private FftEventArgs fftArgs;
-        private int fftPos;
-        private int fftLength;
+        private readonly FftEventArgs _fftArgs;
+        private int _fftPos;
+        private readonly int _fftLength;
         private int m;
-        private Complex[] fftBuffer;
+        private readonly Complex[] _fftBuffer;
 
         public event EventHandler<FftEventArgs> FftCalculated;
         public bool PerformFFT { get; set; }
@@ -22,10 +22,10 @@ namespace Tuner.Wpf.Sound
                 throw new ArgumentException("FFT Length must be a power of two");
             }
             this.m = (int)Math.Log(fftLength, 2.0);
-            this.fftLength = fftLength;
-            this.fftBuffer = new Complex[fftLength];
+            this._fftLength = fftLength;
+            this._fftBuffer = new Complex[fftLength];
             Values = new float[fftLength];
-            this.fftArgs = new FftEventArgs(fftBuffer);
+            this._fftArgs = new FftEventArgs(_fftBuffer);
         }
 
         bool IsPowerOfTwo(int x)
@@ -38,15 +38,15 @@ namespace Tuner.Wpf.Sound
             if (PerformFFT && FftCalculated != null)
             {
                 // Remember the window function! There are many others as well.
-                Values[fftPos] = (float)(value * FastFourierTransform.HammingWindow(fftPos, fftLength));
-                fftBuffer[fftPos].X = Values[fftPos];
-                fftBuffer[fftPos].Y = 0; // This is always zero with audio.
-                fftPos++;
-                if (fftPos >= fftLength)
+                Values[_fftPos] = (float)(value * FastFourierTransform.HammingWindow(_fftPos, _fftLength));
+                _fftBuffer[_fftPos].X = Values[_fftPos];
+                _fftBuffer[_fftPos].Y = 0; // This is always zero with audio.
+                _fftPos++;
+                if (_fftPos >= _fftLength)
                 {
-                    fftPos = 0;
-                    FastFourierTransform.FFT(true, m, fftBuffer);
-                    FftCalculated(this, fftArgs);
+                    _fftPos = 0;
+                    FastFourierTransform.FFT(true, m, _fftBuffer);
+                    FftCalculated(this, _fftArgs);
                 }
             }
         }

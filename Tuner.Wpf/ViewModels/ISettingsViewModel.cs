@@ -6,9 +6,9 @@ using Tuner.Wpf.Core;
 namespace Tuner.Wpf.ViewModels
 {
     public enum eChannelType { Mono = 0x1, Stereo = 0x2 }
-    public interface ISettingsViewModel : IDialogViewModelBase<ISettingsView>
+    public interface ISettingsViewModel : IDialogViewModelBase<ISettingsView>, IValidationViewModel
     {
-        ObservableCollection<MMDevice> Devices { set; get; }
+        ReadOnlyObservableCollection<MMDevice> Devices { get; }
         MMDevice SelectedDevice { set; get; }
         uint SampleRate { set; get; }
         int BitDepth { set; get; }

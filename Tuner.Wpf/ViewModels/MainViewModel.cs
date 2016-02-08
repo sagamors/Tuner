@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using System.Windows.Input;
+using Tuner.Core;
 using Tuner.Wpf.Core;
 using Tuner.Wpf.Helpers;
 using Tuner.Wpf.Sound;
@@ -11,13 +12,30 @@ namespace Tuner.Wpf.ViewModels
         public ISettingsViewModel Settings { private set; get; }
         public ICommand OpenSettingsCommand {private set; get; }
         public INoteCapture NoteCapture { set; get; }
+        public INote TargetNote { set; get; }
+        public INote CurrentNote { set; get; }
+        public double CurrentFrequency { set; get; }
 
         public MainViewModel(IKernel kernel, ISettingsViewModel settings, INoteCapture noteCapture) : base(kernel)
         {
             OpenSettingsCommand = new RelayCommand(OpenSettings);
             Settings = settings;
-            NoteCapture = noteCapture;
             Settings.SettingsChanged += SettingsChanged;
+            NoteCapture = noteCapture;
+            NoteCapture.NoteDetected += NoteCapture_NoteDetected;
+        }
+
+        public void ValidateChildren()
+        {
+            if (Settings.Validate()) return;
+            OpenSettings();
+            if (Settings.IsValid) return;
+            View.Close();
+        }
+
+        public void OpenSettings()
+        {
+            Show<ISettingsView>(Settings);
         }
 
         private void SettingsChanged(object sender, System.EventArgs e)
@@ -28,15 +46,7 @@ namespace Tuner.Wpf.ViewModels
             NoteCapture.Start();
         }
 
-        public void OpenSettings()
-        {
-            ShowDialog(Settings);
-        }
-    }
-
-    public  static class Ex
-    {
-        public static void Show(this ViewModelBase<ISettingsView> self)
+        private void NoteCapture_NoteDetected(object sender, NoteDetectedEvent e)
         {
             
         }

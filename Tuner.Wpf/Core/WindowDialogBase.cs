@@ -9,7 +9,14 @@ namespace Tuner.Wpf.Core
         {
             var ownerWindow = owner as Window;
             Owner = ownerWindow;
+            
             return this.ShowDialog();
+        }
+        public void Show(object owner)
+        {
+            var ownerWindow = owner as Window;
+            Owner = ownerWindow;
+            this.Show();
         }
     }
 }

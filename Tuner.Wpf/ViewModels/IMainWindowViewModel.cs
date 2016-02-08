@@ -4,5 +4,6 @@ namespace Tuner.Wpf.ViewModels
 {
     interface IMainWindowViewModel : IDialogViewModelBase<IMainWindowView>
     {
+        void ValidateChildren();
     }
 }

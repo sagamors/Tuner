@@ -53,6 +53,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Expression.Effects, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -70,6 +73,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
@@ -111,14 +115,20 @@
     <Compile Include="Constrols\Sector.cs" />
     <Compile Include="Constrols\SimpleGauge.cs" />
     <Compile Include="Constrols\String.cs" />
+    <Compile Include="Constrols\TuneInfoControl.cs" />
     <Compile Include="Constrols\TuneProgress.cs" />
     <Compile Include="Constrols\VerticalTransformation.cs" />
     <Compile Include="Converters\PointerCenterConverter.cs" />
+    <Compile Include="Core\IValidationViewModel.cs" />
+    <Compile Include="Core\DialogViewModelBase.cs" />
+    <Compile Include="Core\IDialogViewModelBase.cs" />
     <Compile Include="Core\IDialog.cs" />
     <Compile Include="Core\IViewModel.cs" />
     <Compile Include="Core\ValidationViewModelBase.cs" />
     <Compile Include="Core\WindowDialogBase.cs" />
     <Compile Include="Helpers\EnumerationExtension.cs" />
+    <Compile Include="Sound\AudioDevicesWatcher.cs" />
+    <Compile Include="Sound\INoteCapture.cs" />
     <Compile Include="Sound\NoteCapture.cs" />
     <Compile Include="Sound\FrequencyUtils.cs" />
     <Compile Include="Sound\FftEventArgs.cs" />

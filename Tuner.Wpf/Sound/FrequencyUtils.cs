@@ -4,6 +4,9 @@ namespace Tuner.Wpf.Sound
 {
     static class FrequencyUtils
     {
+        const int MaxAmountOfSteps = 30;
+        const int PeaksCount = 15;
+
         /// <summary>
         /// Finds fundamental frequency: calculates spectrogram, finds peaks, analyzes
         /// and refines frequency by diff sample values.
@@ -22,7 +25,7 @@ namespace Tuner.Wpf.Sound
                 (int)(maxFreq * spectr.Length / sampleRate) + 1);
 
             // find peaks in the FFT frequency bins 
-            const int PeaksCount = 15;
+
             int[] peakIndices;
             peakIndices = FindPeaks(spectr, usefullMinSpectr, usefullMaxSpectr - usefullMinSpectr,
                 PeaksCount);
@@ -41,7 +44,6 @@ namespace Tuner.Wpf.Sound
 
             // trying all peaks to find one with smaller difference value
             double minPeakValue = Double.PositiveInfinity;
-            int minPeakIndex = 0;
             int minOptimalInterval = 0;
             for (int i = 0; i < peakIndices.Length; i++)
             {
@@ -56,7 +58,6 @@ namespace Tuner.Wpf.Sound
                 if (peakValue < minPeakValue)
                 {
                     minPeakValue = peakValue;
-                    minPeakIndex = index;
                     minOptimalInterval = interval;
                 }
             }
@@ -72,7 +73,7 @@ namespace Tuner.Wpf.Sound
 
             // distance between min and max range value can be big
             // limiting it to the fixed value
-            const int MaxAmountOfSteps = 30;
+           
             int steps = intervalMax - intervalMin;
             if (steps > MaxAmountOfSteps)
                 steps = MaxAmountOfSteps;

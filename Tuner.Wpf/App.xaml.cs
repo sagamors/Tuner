@@ -25,7 +25,8 @@ namespace Tuner.Wpf
             IMainWindowViewModel window = Bootstrapper.Container.Get<IMainWindowViewModel>();
             var main = window.View;
             MainWindow = (MainWindow)main;
-            window.ShowThisDialog(null);
+            window.Show(null);
+            window.ValidateChildren();
         }
     }
 }

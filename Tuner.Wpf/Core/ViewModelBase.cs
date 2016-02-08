@@ -1,12 +1,9 @@
-﻿using PropertyChanged;
-using Ninject;
+﻿using Ninject;
 using Tuner.Wpf.ViewModels;
-using System.Windows;
 
 namespace Tuner.Wpf.Core
 {
-    [ImplementPropertyChanged]
-    public abstract class ViewModelBase<TView> : IViewModel<TView> where TView : IView
+    public abstract class ViewModelBase<TView> : NotificationBase, IViewModel<TView> where TView : IView
     {
         public ViewModelBase(IKernel container)
         {
@@ -29,27 +26,12 @@ namespace Tuner.Wpf.Core
             view.DataContext = viewModel;
             return view.ShowDialog(View);
         }
-    }
 
-    public interface IDialogViewModelBase<TView> : IViewModel<TView> where TView : IDialogView
-    {
-        bool? ShowThisDialog(object owner);
-    }
-
-    [ImplementPropertyChanged]
-    public abstract class DialogViewModelBase<TView> : ViewModelBase<TView>, IDialogViewModelBase<TView> where TView : IDialogView
-    {
-
-        public DialogViewModelBase(IKernel container) : base(container)
+        public void Show<T>(IViewModel<T> viewModel) where T : IDialogView
         {
-
-        }
-
-        public bool? ShowThisDialog(object owner)
-        {
-            var view = View;
-            view.DataContext = this;
-            return view.ShowDialog(owner);
+            var view = viewModel.View;
+            view.DataContext = viewModel;
+            view.ShowDialog(View);
         }
     }
 }
