@@ -192,7 +192,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MathHelper.cs" />
+    <Compile Include="Helpers\MathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
