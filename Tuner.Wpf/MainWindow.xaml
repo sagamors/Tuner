@@ -17,9 +17,6 @@
                        Foreground="{StaticResource MainWindowTextBrush}"
                        ResizeMode="NoResize"
                        mc:Ignorable="d">
-    <!--<Window.DataContext>
-        <viewmodels:MainViewModel />
-    </Window.DataContext>-->
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -30,14 +27,19 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <constrols:TuneInfoControl Grid.RowSpan="2"
-                            Width="Auto"
-                            Height="Auto"
-                            Margin="0,0,2,131" />
-        <Button Height="30"
+                                   Width="Auto"
+                                   Height="Auto"
+                                   Margin="0,0,2,131" />
+        <Button Width="37"
+                Height="37"
+                MinWidth="0"
+                MinHeight="0"
+                Margin="3,3,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Command="{Binding OpenSettingsCommand}"
-                Content="Settings" />
+                Command="{Binding OpenSettingsCommand}">
+            <local:SettingsIco />
+        </Button>
         <views:InstrumentView Grid.RowSpan="2" Grid.Column="1" />
         <views:TuningsView Grid.Row="1" VerticalAlignment="Stretch" />
     </Grid>

@@ -118,6 +118,8 @@
     <Compile Include="Constrols\TuneInfoControl.cs" />
     <Compile Include="Constrols\TuneProgress.cs" />
     <Compile Include="Constrols\VerticalTransformation.cs" />
+    <Compile Include="Converters\ValueConverterBase.cs" />
+    <Compile Include="Converters\DeltaToAngle.cs" />
     <Compile Include="Converters\PointerCenterConverter.cs" />
     <Compile Include="Core\IValidationViewModel.cs" />
     <Compile Include="Core\DialogViewModelBase.cs" />
@@ -127,11 +129,19 @@
     <Compile Include="Core\ValidationViewModelBase.cs" />
     <Compile Include="Core\WindowDialogBase.cs" />
     <Compile Include="Helpers\EnumerationExtension.cs" />
+    <Compile Include="SettingsIco.xaml.cs">
+      <DependentUpon>SettingsIco.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sound\AudioDevicesWatcher.cs" />
+    <Compile Include="Sound\SixStringGuitar.cs" />
     <Compile Include="Sound\INoteCapture.cs" />
+    <Compile Include="Sound\IInstrument.cs" />
+    <Compile Include="Sound\InstrumentBase.cs" />
+    <Compile Include="Sound\IPreset.cs" />
     <Compile Include="Sound\NoteCapture.cs" />
     <Compile Include="Sound\FrequencyUtils.cs" />
     <Compile Include="Sound\FftEventArgs.cs" />
+    <Compile Include="Sound\Preset.cs" />
     <Compile Include="Sound\SampleAggregator.cs" />
     <Compile Include="ViewModels\IMainWindowView.cs" />
     <Compile Include="Core\NotificationBase.cs" />
@@ -176,6 +186,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SettingsIco.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

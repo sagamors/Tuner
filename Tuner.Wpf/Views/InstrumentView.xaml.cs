@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Tuner.Core;
+using Tuner.Wpf.ViewModels;
 
 namespace Tuner.Wpf.Views
 {
@@ -25,5 +15,15 @@ namespace Tuner.Wpf.Views
             InitializeComponent();
         }
 
+        private void Note_Checked(object sender, RoutedEventArgs e)
+        {
+            var control = (sender as RadioButton);
+            if(control == null) return;
+            var main = Application.Current.MainWindow.DataContext as IMainWindowViewModel;
+            //var main = Bootstrapper.Container.Get<IMainWindowViewModel>();
+            if (main == null) return;
+            var note =  control.Content as INote;
+            main.TargetNote = note;
+        }
     }
 }

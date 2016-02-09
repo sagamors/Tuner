@@ -1,24 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tuner.Core
 {
+    public class MainFrequencyChangedEventArgs : EventArgs
+    {
+        public double Frequency { get; }
+
+        public MainFrequencyChangedEventArgs(double frequency)
+        {
+            Frequency = frequency;
+        }
+    }
+
     public class NoteFactory : INoteFactory
     {
-        public double MainFrequnect { set; get; }
-        string[] noteNames = new[] { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H" };
+        string[] _noteNames = new[] { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+
+        public double MainFrequency
+        {
+            set
+            {
+                _mainFrequency = value;
+                OnMainFrequencyChanged();
+            }
+            get { return _mainFrequency; }
+        }
+
+
+        private double _mainFrequency;
 
         public NoteFactory()
         {
-            MainFrequnect = 440;
+            MainFrequency = 440;
         }
 
-        public INote CreateNote(uint indexNote, uint octave, double frequency)
+        public INote CreateNote(uint indexNote, uint octave)
         {
-            return new Note(noteNames[indexNote], octave, frequency);
+            return new Note(_noteNames[indexNote], octave, indexNote, this);
+        }
+
+        public INote CreateNote(eNote note, uint octave)
+        {
+            return CreateNote((uint)note,  octave);
+        }
+
+        public event EventHandler<MainFrequencyChangedEventArgs> MainFrequencyChanged;
+
+        private void OnMainFrequencyChanged()
+        {
+            MainFrequencyChanged?.Invoke(this, new MainFrequencyChangedEventArgs(MainFrequency));
         }
     }
 }

@@ -39,6 +39,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrequencyUtils.cs" />
     <Compile Include="INoteFinder.cs" />
     <Compile Include="INoteFactory.cs" />
     <Compile Include="NoteFactory.cs" />

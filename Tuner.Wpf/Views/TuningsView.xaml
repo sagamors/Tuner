@@ -18,7 +18,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <Style x:Key="TunningsButton" TargetType="Button">
             <Setter Property="Width" Value="Auto" />
         </Style>
@@ -35,13 +34,20 @@
         <TextBlock Grid.Row="0"
                    Grid.ColumnSpan="2"
                    Text="Favorite tunings:" />
-        <ListBox Grid.Row="1">
+        <ListBox Grid.Row="1"
+                 ItemsSource="{Binding SelectedInstrument.FavoritePresets}"
+                 SelectedValue="{Binding SelectedInstrument.SelectedPreset}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Content" Value="{Binding Name}" />
+                </Style>
+            </ListBox.ItemContainerStyle>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
-            <ListBoxItem Content="Standard" IsSelected="True" />
+            <!--<ListBoxItem Content="Standard" IsSelected="True" />
             <ListBoxItem Content="Open A" />
             <ListBoxItem Content="Open B" />
             <ListBoxItem Content="Open C" />
@@ -52,7 +58,7 @@
             <ListBoxItem Content="Open C" />
             <ListBoxItem Content="Open D" />
             <ListBoxItem Content="Open E" />
-            <ListBoxItem Content="Open F" />
+            <ListBoxItem Content="Open F" />-->
         </ListBox>
         <UniformGrid Grid.Row="1"
                      Grid.Column="1"

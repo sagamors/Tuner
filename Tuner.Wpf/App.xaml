@@ -81,6 +81,7 @@
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="GroupName" Value="NotesGroup" />
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ToggleButton">

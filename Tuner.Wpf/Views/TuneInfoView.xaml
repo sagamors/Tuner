@@ -171,15 +171,13 @@
             </ContentControl.RenderTransform>
         </ContentControl>
         <ContentControl Canvas.Left="135"
-                   Canvas.Top="86"
-                   Width="95"
-                   Height="38"
-                   HorizontalContentAlignment="Center"
-                   >
-            <TextBlock 
-                   VerticalAlignment="Top"
-                   FontSize="30"
-                   Text="329 Hz" />
+                        Canvas.Top="86"
+                        Width="95"
+                        Height="38"
+                        HorizontalContentAlignment="Center">
+            <TextBlock VerticalAlignment="Top"
+                       FontSize="30"
+                       Text="329 Hz" />
         </ContentControl>
 
         <TextBlock Canvas.Left="153"
@@ -235,7 +233,17 @@
                 <TransformGroup>
                     <ScaleTransform />
                     <SkewTransform />
-                    <RotateTransform Angle="-39.698" CenterX="1" CenterY="180" />
+                    <RotateTransform Angle="-13.28" CenterX="1" CenterY="180" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </FrameworkElement.RenderTransform>
+        </Rectangle>
+        <Rectangle Canvas.Left="179" Style="{StaticResource MinorStyle}">
+            <FrameworkElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-13.205" CenterX="1" CenterY="180" />
                     <TranslateTransform />
                 </TransformGroup>
             </FrameworkElement.RenderTransform>

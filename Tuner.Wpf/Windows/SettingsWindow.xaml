@@ -18,7 +18,7 @@
                        SizeToContent="Height"
                        WindowStartupLocation="CenterOwner"
                        mc:Ignorable="d">
-    <!--="WidthAndHeight"-->
+    <!--  ="WidthAndHeight"  -->
     <core:WindowDialogBase.Resources>
         <Style x:Key="NameItem" TargetType="FrameworkElement">
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -31,14 +31,16 @@
             </Setter>
         </Style>-->
     </core:WindowDialogBase.Resources>
+
     <StackPanel Margin="{StaticResource ControlMargin}">
-        <auto:AutoGrid Columns="Auto,*" RowCount="10" >
+        <auto:AutoGrid Columns="Auto,*" RowCount="10">
             <TextBlock Style="{StaticResource NameItem}" Text="Device:" />
             <ComboBox DisplayMemberPath="FriendlyName"
                       ItemsSource="{Binding Devices}"
-                      SelectedValue="{Binding SelectedDevice, NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}" 
-                      />
-            
+                      SelectedValue="{Binding SelectedDevice,
+                                              NotifyOnValidationError=True,
+                                              ValidatesOnNotifyDataErrors=True}" />
+
             <TextBlock Style="{StaticResource NameItem}" Text="Sample rate [Hz]:" />
             <ComboBox IsSynchronizedWithCurrentItem="True"
                       SelectedIndex="4"

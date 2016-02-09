@@ -5,8 +5,6 @@ using Tuner.Core;
 
 namespace Tuner.Wpf.Sound
 {
-
-
     class NoteCapture : INoteCapture
     {
         // There might be a sample aggregator in NAudio somewhere but I made a variation for my needs

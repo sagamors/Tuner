@@ -410,34 +410,7 @@
                                     Fill="{StaticResource Gauge.FreqBorder.Low}"
                                     StartAngle="{StaticResource StartAngle}"
                                     Stretch="None" />
-                            <TextBlock Canvas.Left="290"
-                                       Canvas.Top="115"
-                                       Foreground="{StaticResource Gauge.FreqBorder.HighLowTextColor}"
-                                       RenderTransformOrigin="0.5,0.5"
-                                       Text="{StaticResource HighFreqTextBorder}">
-                                <TextBlock.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <SkewTransform />
-                                        <RotateTransform Angle="-22.566" />
-                                        <TranslateTransform />
-                                    </TransformGroup>
-                                </TextBlock.RenderTransform>
-                            </TextBlock>
-                            <TextBlock Canvas.Left="35"
-                                       Canvas.Top="114"
-                                       Foreground="{StaticResource Gauge.FreqBorder.LowTextColor}"
-                                       RenderTransformOrigin="0.5,0.5"
-                                       Text="{StaticResource LowFreqTextBorder}">
-                                <TextBlock.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <SkewTransform />
-                                        <RotateTransform Angle="22.879" />
-                                        <TranslateTransform />
-                                    </TransformGroup>
-                                </TextBlock.RenderTransform>
-                            </TextBlock>
+
 
                             <ContentControl Content="+15%"
                                             RenderTransformOrigin="0,0"
@@ -496,8 +469,8 @@
                                             Width="95"
                                             Height="38"
                                             HorizontalContentAlignment="Center">
-                                <TextBlock VerticalAlignment="Top"
-                                           HorizontalAlignment="Center"
+                                <TextBlock HorizontalAlignment="Center"
+                                           VerticalAlignment="Top"
                                            FontSize="30"
                                            Text="{Binding Frequency,
                                                           RelativeSource={RelativeSource AncestorType=constrols:TuneInfoControl},
@@ -520,13 +493,22 @@
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Top"
                                        Fill="{StaticResource Arrow.Background}"
-                                       RenderTransformOrigin="0.5,4.3" />
+                                       RenderTransformOrigin="0.5,4.3">
+                                <FrameworkElement.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform x:Name="PART_RotateTransform" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </FrameworkElement.RenderTransform>
+                            </Rectangle>
                             <Rectangle Canvas.Left="179" Style="{StaticResource MinorStyle}">
                                 <FrameworkElement.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform />
                                         <SkewTransform />
-                                        <RotateTransform Angle="{TemplateBinding Frequency}" CenterX="1" CenterY="180" />
+                                        <RotateTransform Angle="12.814" CenterX="1" CenterY="180" />
                                         <TranslateTransform />
                                     </TransformGroup>
                                 </FrameworkElement.RenderTransform>
@@ -569,6 +551,34 @@
                                     StartAngle="{StaticResource StartAngle}"
                                     Stretch="None"
                                     Stroke="{StaticResource Gauge.Stroke}" />
+                            <TextBlock Canvas.Left="290"
+                                       Canvas.Top="115"
+                                       Foreground="{StaticResource Gauge.FreqBorder.HighLowTextColor}"
+                                       RenderTransformOrigin="0.5,0.5"
+                                       Text="{StaticResource HighFreqTextBorder}">
+                                <TextBlock.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="-22.566" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                            <TextBlock Canvas.Left="35"
+                                       Canvas.Top="114"
+                                       Foreground="{StaticResource Gauge.FreqBorder.LowTextColor}"
+                                       RenderTransformOrigin="0.5,0.5"
+                                       Text="{StaticResource LowFreqTextBorder}">
+                                <TextBlock.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="22.879" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
                         </Canvas>
                     </Border>
                 </ControlTemplate>

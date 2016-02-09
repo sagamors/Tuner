@@ -47,9 +47,20 @@ namespace Tuner.Wpf.Constrols
     /// </summary>
     public class TuneInfoControl : Control
     {
+        private double _maxAngleValue = 67.5;
+        private double _maxPercent = 37.5;
+        private RotateTransform _rotateTransform;
+
         static TuneInfoControl()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TuneInfoControl), new FrameworkPropertyMetadata(typeof(TuneInfoControl)));
+        }
+
+        public override void OnApplyTemplate()
+        {
+            _rotateTransform = this.GetTemplateChild("PART_RotateTransform") as RotateTransform;
+            base.OnApplyTemplate();
+
         }
 
         public static readonly DependencyProperty NearestNoteProperty = DependencyProperty.Register(
@@ -62,7 +73,11 @@ namespace Tuner.Wpf.Constrols
         }
 
         public static readonly DependencyProperty FrequencyProperty = DependencyProperty.Register(
-            "Frequency", typeof (double), typeof (TuneInfoControl), new PropertyMetadata(default(double)));
+            "Frequency", typeof (double), typeof (TuneInfoControl), new PropertyMetadata(default(double), (o, args) =>
+            {
+                var control = o as TuneInfoControl;
+                control.SetArrowAngle();
+            }));
 
         public double Frequency
         {
@@ -77,6 +92,17 @@ namespace Tuner.Wpf.Constrols
         {
             get { return (INote) GetValue(TargetNoteProperty); }
             set { SetValue(TargetNoteProperty, value); }
+        }
+
+        private void SetArrowAngle()
+        {
+            if(TargetNote==null) return;
+            var percent =   (Frequency - TargetNote.Frequency) * 100  / TargetNote.Frequency;
+            if (Math.Abs(percent) > _maxPercent)
+            {
+                percent = _maxPercent*Math.Sign(percent);
+            }
+            _rotateTransform.Angle =( percent * _maxAngleValue) / _maxPercent;
         }
     }
 }
