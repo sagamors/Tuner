@@ -4,6 +4,7 @@ using Tuner.Wpf.Core;
 using Tuner.Wpf.Sound;
 using Tuner.Wpf.ViewModels;
 using Tuner.Wpf.Views;
+using Tuner.Wpf.Windows;
 
 namespace Tuner.Wpf
 {
@@ -18,24 +19,12 @@ namespace Tuner.Wpf
             Container.Bind<IMainWindowViewModel>().To<MainViewModel>().InSingletonScope();
             Container.Bind<ISettingsView>().To<SettingsWindow>();
             Container.Bind<ISettingsViewModel>().To<SettingsViewModel>().InSingletonScope();
+            Container.Bind<IAddNewPresetView>().To<AddNewPresetWindow>();
+            Container.Bind<IAddNewPresetViewModel>().To<AddNewPresetViewModel>();
             Container.Bind<INoteCapture>().To<NoteCapture>().InSingletonScope();
             Container.Bind<INoteFinder>().To<NoteFinder>().InSingletonScope();
             Container.Bind<INoteFactory>().To<NoteFactory>().InSingletonScope();
             Container.Bind<IInstrument>().To<SixStringGuitar>().InSingletonScope();
-        }
-    }
-
-    public interface IH
-    {
-
-    }
-
-    public class h2 : WindowDialogBase, IH
-    {
-        public IKernel Kernel;
-        public h2(IKernel kernel)
-        {
-            Kernel = kernel;
         }
     }
 }

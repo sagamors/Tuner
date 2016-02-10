@@ -16,6 +16,7 @@
                        Background="{StaticResource MainWindowBackground}"
                        Foreground="{StaticResource MainWindowTextBrush}"
                        ResizeMode="NoResize"
+                       WindowStartupLocation="CenterScreen"
                        mc:Ignorable="d">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>

@@ -8,13 +8,11 @@ namespace Tuner.Wpf.Sound
     {
         public string Name { get; set; }
         public ObservableCollection<IPreset> Presets { get; set; } 
-        public ObservableCollection<IPreset> FavoritePresets { get; set; }
         public IPreset SelectedPreset { get; set; }
 
         protected void DefaultSelect()
         {
-            if (FavoritePresets != null)
-                SelectedPreset = FavoritePresets.FirstOrDefault();
+            SelectedPreset = Presets.FirstOrDefault(preset => preset.IsFavorite);
             if (SelectedPreset == null && Presets != null)
                 SelectedPreset = Presets.FirstOrDefault();
         }

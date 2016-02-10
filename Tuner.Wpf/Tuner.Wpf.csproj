@@ -127,6 +127,8 @@
     <Compile Include="Core\IViewModel.cs" />
     <Compile Include="Core\ValidationViewModelBase.cs" />
     <Compile Include="Core\WindowDialogBase.cs" />
+    <Compile Include="Helpers\ComboBoxSelectorExtension.cs" />
+    <Compile Include="Helpers\ComboBoxTemplateSelector.cs" />
     <Compile Include="Helpers\EnumerationExtension.cs" />
     <Compile Include="SettingsIco.xaml.cs">
       <DependentUpon>SettingsIco.xaml</DependentUpon>
@@ -142,7 +144,10 @@
     <Compile Include="Sound\FftEventArgs.cs" />
     <Compile Include="Sound\Preset.cs" />
     <Compile Include="Sound\SampleAggregator.cs" />
-    <Compile Include="ViewModels\IMainWindowView.cs" />
+    <Compile Include="ViewModels\AddNewPresetViewModel.cs" />
+    <Compile Include="ViewModels\IAddNewPresetViewModel.cs" />
+    <Compile Include="Views\IAddNewPresetView.cs" />
+    <Compile Include="Views\IMainWindowView.cs" />
     <Compile Include="Core\NotificationBase.cs" />
     <Compile Include="Core\IView.cs" />
     <Compile Include="Core\ViewModelBase.cs" />
@@ -151,7 +156,7 @@
     <Compile Include="Core\IDialogView.cs" />
     <Compile Include="ViewModels\ISettings.cs" />
     <Compile Include="ViewModels\ISettingsViewModel.cs" />
-    <Compile Include="ViewModels\ISettingsView.cs" />
+    <Compile Include="Views\ISettingsView.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\GuitarNeckView.xaml.cs">
@@ -159,6 +164,9 @@
     </Compile>
     <Compile Include="Views\InstrumentView.xaml.cs">
       <DependentUpon>InstrumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddNewPresetWindow.xaml.cs">
+      <DependentUpon>AddNewPresetWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
@@ -198,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\InstrumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddNewPresetWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -276,6 +288,13 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\favoritemarks_off.png" />
+    <Resource Include="Resources\favoritemarks_on.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets')" />

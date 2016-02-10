@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows;
+using System.Windows.Data;
 using Ninject;
 using System.Windows.Input;
 using Tuner.Core;
@@ -10,6 +14,7 @@ namespace Tuner.Wpf.ViewModels
 {
     class MainViewModel : DialogViewModelBase<IMainWindowView>, IMainWindowViewModel
     {
+        private IInstrument _selectedInstrument;
         public ISettingsViewModel Settings { private set; get; }
         public INoteCapture NoteCapture { set; get; }
         public INote TargetNote { set; get; }
@@ -17,11 +22,42 @@ namespace Tuner.Wpf.ViewModels
         public double CurrentFrequency { set; get; }
         public ICommand OpenSettingsCommand { private set; get; }
         public ICommand CloseCommand { private set; get; }
-        public IInstrument SelectedInstrument { set; get; }
+        public ICommand DeleteFromFavoriteCommand { private set; get; }
+        public IInstrument SelectedInstrument
+        {
+            set
+            {
+                _selectedInstrument = value;
+                if (_selectedInstrument != null)
+                {
+                    var collectionViewSource = new CollectionViewSource { Source = _selectedInstrument.Presets };
+                    collectionViewSource.LiveFilteringProperties.Add("IsFavorite");
+                    collectionViewSource.IsLiveFilteringRequested = true;
+                    FavoritePresets = collectionViewSource.View;
+                    FavoritePresets.Filter = o =>
+                    {
+                        var preset = o as IPreset;
+                        return preset?.IsFavorite ?? false;
+                    };
+                    FavoritePresets.CollectionChanged += (sender, args) =>
+                    {
+                        SetFirstInPresetsWhenFavoriteEmpty();
+                    };
+                }
+            }
+            get { return _selectedInstrument; }
+        }
+
+        public ICollectionView FavoritePresets { private set; get; }
+        public ICommand DeletePresetCommand { private set; get; }
+        public ICommand AddNewPresetDialogShowCommand { private set; get; }
+
         public MainViewModel(IKernel kernel, IInstrument selectedInstrument, ISettingsViewModel settings, INoteCapture noteCapture) : base(kernel)
         {
-            OpenSettingsCommand = new RelayCommand(OpenSettings);
+            OpenSettingsCommand = new RelayCommand(SettingsShow);
             CloseCommand = new RelayCommand(Close);
+            DeleteFromFavoriteCommand = new RelayCommand(Delete, o => o is IPreset);
+            AddNewPresetDialogShowCommand = new RelayCommand(AddNewPresetDialogShow);
             Settings = settings;
             Settings.SettingsChanged += SettingsChanged;
             NoteCapture = noteCapture;
@@ -32,6 +68,23 @@ namespace Tuner.Wpf.ViewModels
             Application.Current.Exit += Current_Exit;
         }
 
+        private void Delete(object o)
+        {
+            var preset = o as IPreset;
+            if(preset==null) return;
+            preset.IsFavorite = false;
+            FavoritePresets.Refresh();
+            SetFirstInPresetsWhenFavoriteEmpty();
+        }
+
+        private void SetFirstInPresetsWhenFavoriteEmpty()
+        {
+            if (FavoritePresets.IsEmpty)
+            {
+                SelectedInstrument.SelectedPreset = SelectedInstrument.Presets.FirstOrDefault();
+            }
+        }
+
         private void Current_Exit(object sender, ExitEventArgs e)
         {
             Close();
@@ -40,14 +93,19 @@ namespace Tuner.Wpf.ViewModels
         public void ValidateChildren()
         {
             if (Settings.Validate()) return;
-            OpenSettings();
+            SettingsShow();
             if (Settings.IsValid) return;
             View.Close();
         }
 
-        public void OpenSettings()
+        public void SettingsShow()
         {
-            Show<ISettingsView>(Settings);
+            ShowChild(Settings);
+        }
+
+        public void AddNewPresetDialogShow()
+        {
+            ShowChild(Container.Get<IAddNewPresetViewModel>());
         }
 
         private void SettingsChanged(object sender, System.EventArgs e)

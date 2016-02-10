@@ -8,5 +8,6 @@ namespace Tuner.Wpf.Sound
     {
         public string Name { get; set; }
         public ObservableCollection<INote> Notes { get; set; }
+        public bool IsFavorite { get; set; }
     }
 }

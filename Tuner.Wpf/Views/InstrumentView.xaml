@@ -56,31 +56,36 @@
                                                       Converter={StaticResource BooleanToVisibilityConverter}}" />
             <controls:NoteHelper Canvas.Left="149"
                                  Canvas.Top="291"
-                                 Text="{Binding ElementName=D3Button, Path=Content}"
+                                 Text="{Binding ElementName=D3Button,
+                                                Path=Content}"
                                  Visibility="{Binding ElementName=D3Button,
                                                       Path=IsChecked,
                                                       Converter={StaticResource BooleanToVisibilityConverter}}" />
             <controls:NoteHelper Canvas.Left="162"
                                  Canvas.Top="291"
-                                 Text="{Binding ElementName=A2Button, Path=Content}"
+                                 Text="{Binding ElementName=A2Button,
+                                                Path=Content}"
                                  Visibility="{Binding ElementName=A2Button,
                                                       Path=IsChecked,
                                                       Converter={StaticResource BooleanToVisibilityConverter}}" />
             <controls:NoteHelper Canvas.Left="174"
                                  Canvas.Top="291"
-                                 Text="{Binding ElementName=G3Button, Path=Content}"
+                                 Text="{Binding ElementName=G3Button,
+                                                Path=Content}"
                                  Visibility="{Binding ElementName=G3Button,
                                                       Path=IsChecked,
                                                       Converter={StaticResource BooleanToVisibilityConverter}}" />
             <controls:NoteHelper Canvas.Left="189"
                                  Canvas.Top="291"
-                                 Text="{Binding ElementName=B3Button, Path=Content}"
+                                 Text="{Binding ElementName=B3Button,
+                                                Path=Content}"
                                  Visibility="{Binding ElementName=B3Button,
                                                       Path=IsChecked,
                                                       Converter={StaticResource BooleanToVisibilityConverter}}" />
             <controls:NoteHelper Canvas.Left="201"
                                  Canvas.Top="291"
-                                 Text="{Binding ElementName=E4Button, Path=Content}"
+                                 Text="{Binding ElementName=E4Button,
+                                                Path=Content}"
                                  Visibility="{Binding ElementName=E4Button,
                                                       Path=IsChecked,
                                                       Converter={StaticResource BooleanToVisibilityConverter}}" />

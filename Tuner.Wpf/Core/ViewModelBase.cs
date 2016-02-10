@@ -27,12 +27,13 @@ namespace Tuner.Wpf.Core
             return view.ShowDialog(View);
         }
 
-        public void Show<T>(IViewModel<T> viewModel) where T : IDialogView
+        public void ShowChild<T>(IViewModel<T> viewModel) where T : IDialogView
         {
             var view = viewModel.View;
             view.DataContext = viewModel;
             view.ShowDialog(View);
         }
+
     }
 }
 
