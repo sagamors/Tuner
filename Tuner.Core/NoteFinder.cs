@@ -11,8 +11,8 @@
 
         public INote FindNearestNote(double frequency)
         {
-            var total = FrequencyUtils.GetTotalIndexNote(frequency, NoteFactory.MainFrequency);
-            return NoteFactory.CreateNote(FrequencyUtils.GetIndex(total), FrequencyUtils.GetOctave(total));
+            var total = NoteHelper.GetTotalIndexNote(frequency, NoteFactory.MainFrequency);
+            return NoteFactory.CreateNote(NoteHelper.GetIndex(total), NoteHelper.GetOctave(total));
         }
     }
 }

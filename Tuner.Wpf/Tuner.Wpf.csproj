@@ -119,7 +119,6 @@
     <Compile Include="Constrols\TuneProgress.cs" />
     <Compile Include="Constrols\VerticalTransformation.cs" />
     <Compile Include="Converters\ValueConverterBase.cs" />
-    <Compile Include="Converters\DeltaToAngle.cs" />
     <Compile Include="Converters\PointerCenterConverter.cs" />
     <Compile Include="Core\IValidationViewModel.cs" />
     <Compile Include="Core\DialogViewModelBase.cs" />

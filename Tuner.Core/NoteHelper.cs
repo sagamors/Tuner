@@ -2,9 +2,9 @@ using System;
 
 namespace Tuner.Core
 {
-    public class FrequencyUtils
+    public class NoteHelper
     {
-        const uint BASE_NOTE_OCTAVE = 4;
+        const int BASE_NOTE_OCTAVE = 4;
         const int OFFSET_TO_BEGIN_OCTAVE = 9;
         const double CONST = 1.0594;
         const uint NUMBER_NOTE = 12;
@@ -18,7 +18,7 @@ namespace Tuner.Core
 
         public static double GetFrequency(uint index,uint octave, double mainFrequency)
         {
-            return mainFrequency* Math.Pow(CONST, OFFSET_TO_BEGIN_OCTAVE - index + (octave - BASE_NOTE_OCTAVE));
+            return mainFrequency* Math.Pow(CONST, ((int)octave*NUMBER_NOTE + index) - (BASE_NOTE_OCTAVE * NUMBER_NOTE + OFFSET_TO_BEGIN_OCTAVE));
         }
 
         public static uint GetOctave(uint totalIndex)

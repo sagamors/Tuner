@@ -4,20 +4,23 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Tuner.Core.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class NoteHelperTests
     {
-        //C#1
-        private double frequency = 34.65;
-        private uint totalIndex = 13;
-        private uint octave = 1;
-        private uint index = 1;
+        private double delta = 0.5;
+        private double mainFrequency = 440;
+
+        private eNote enote = eNote.G;
+        private double frequency = 392;
+        private uint octave = 4;
+        private uint index = 7;
+        private  uint totalIndex = 55;
 
         [TestMethod]
         public void NoteFinderTest()
         {
             NoteFactory noteFactory = new NoteFactory();
             NoteFinder noteFinder = new NoteFinder(noteFactory);
-            INote note = noteFactory.CreateNote(eNote.C, 2);
+            INote note = noteFactory.CreateNote(enote, octave);
             var actual = noteFinder.FindNearestNote(110);
             Assert.AreEqual(actual, note);
         }
@@ -40,24 +43,31 @@ namespace Tuner.Core.Test
         public void GetOctaveNoteTest()
         {
             var actualOctave = GetOctave();
-            Assert.AreEqual(index, actualOctave);
+            Assert.AreEqual(octave, actualOctave);
+        }
+
+        [TestMethod]
+        public void GetFrequencyTest()
+        {
+            var actualFreq = NoteHelper.GetFrequency(index, octave, mainFrequency);
+            Assert.AreEqual(frequency, actualFreq, delta);
         }
 
         private uint GetTotal()
         {
-             return FrequencyUtils.GetTotalIndexNote(frequency, 440);
+             return NoteHelper.GetTotalIndexNote(frequency, mainFrequency);
         }
 
         private uint GetIndex()
         {
             var actualTotal = GetTotal();
-            return FrequencyUtils.GetIndex(actualTotal);
+            return NoteHelper.GetIndex(actualTotal);
         }
 
         private uint GetOctave()
         {
             var actualTotal = GetTotal();
-            return FrequencyUtils.GetOctave(actualTotal);
+            return NoteHelper.GetOctave(actualTotal);
         }
     }
 }

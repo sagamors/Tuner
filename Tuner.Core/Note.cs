@@ -18,6 +18,7 @@ namespace Tuner.Core
             NoteFactory = noteFactory;
             Octave = octave;
             Index = index;
+            RefreshFrequency();
             NoteFactory.MainFrequencyChanged += NoteFactory_MainFrequencyChanged;
         }
 
@@ -71,7 +72,7 @@ namespace Tuner.Core
 
         private void RefreshFrequency()
         {
-            Frequency = FrequencyUtils.GetFrequency(Index, Octave, NoteFactory.MainFrequency);
+            Frequency = NoteHelper.GetFrequency(Index, Octave, NoteFactory.MainFrequency);
         }
     }
 }
