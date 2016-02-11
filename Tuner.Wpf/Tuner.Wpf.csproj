@@ -130,9 +130,7 @@
     <Compile Include="Helpers\ComboBoxSelectorExtension.cs" />
     <Compile Include="Helpers\ComboBoxTemplateSelector.cs" />
     <Compile Include="Helpers\EnumerationExtension.cs" />
-    <Compile Include="SettingsIco.xaml.cs">
-      <DependentUpon>SettingsIco.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Icons\SettingsIco.cs" />
     <Compile Include="Sound\AudioDevicesWatcher.cs" />
     <Compile Include="Sound\SixStringGuitar.cs" />
     <Compile Include="Sound\INoteCapture.cs" />
@@ -193,10 +191,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SettingsIco.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

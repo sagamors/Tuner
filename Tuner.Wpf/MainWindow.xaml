@@ -10,6 +10,7 @@
                        xmlns:system="clr-namespace:System;assembly=mscorlib"
                        xmlns:viewmodels="clr-namespace:Tuner.Wpf.ViewModels"
                        xmlns:views="clr-namespace:Tuner.Wpf.Views"
+                       xmlns:icons="clr-namespace:Tuner.Wpf.Icons"
                        Title="MainWindow"
                        Width="705"
                        Height="360"
@@ -39,7 +40,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Command="{Binding OpenSettingsCommand}">
-            <local:SettingsIco />
+            <icons:SettingsIco BorderThickness="10" ExternalBorderThickness="16" InternalBorderThickness="10"/>
         </Button>
         <views:InstrumentView Grid.RowSpan="2" Grid.Column="1" />
         <views:TuningsView Grid.Row="1" VerticalAlignment="Stretch" />
