@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Tuner.Wpf.ViewModels;
+using WpfBindingErrors;
 
 namespace Tuner.Wpf
 {
@@ -22,6 +23,8 @@ namespace Tuner.Wpf
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
+            BindingExceptionThrower.Attach();
             IMainWindowViewModel window = Bootstrapper.Container.Get<IMainWindowViewModel>();
             var main = window.View;
             MainWindow = (MainWindow)main;
