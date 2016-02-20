@@ -469,20 +469,22 @@
                                             Canvas.Top="86"
                                             Width="95"
                                             Height="38"
-                                            HorizontalContentAlignment="Center">
-                                <TextBlock HorizontalAlignment="Center"
+                                            >
+                                <TextBlock x:Name="PART_Frequency"
+                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Top"
-                                           FontSize="30"
+                                           FontSize="28"
                                            Text="{Binding Frequency,
                                                           RelativeSource={RelativeSource AncestorType=constrols:TuneInfoControl},
-                                                          StringFormat={}{0} Hz}" />
+                                                          StringFormat={}{0:0} Hz}" />
                             </ContentControl>
-                            <TextBlock Canvas.Left="153"
+                            <TextBlock x:Name="PART_Note"
+                                        Canvas.Left="153"
                                        Canvas.Top="110"
                                        Height="60"
                                        VerticalAlignment="Top"
                                        FontSize="50"
-                                       Text="{TemplateBinding NearestNote}" />
+                                       Text="{Binding NearestNote,RelativeSource={RelativeSource AncestorType=constrols:TuneInfoControl}}" />
                             <ContentControl Canvas.Left="174"
                                             Width="12"
                                             Content="0"

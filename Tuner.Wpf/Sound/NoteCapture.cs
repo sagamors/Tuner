@@ -1,6 +1,7 @@
 ﻿using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using System;
+using System.Diagnostics;
 using Tuner.Core;
 
 namespace Tuner.Wpf.Sound
@@ -34,8 +35,7 @@ namespace Tuner.Wpf.Sound
             ResetSampleAggregator();
             _waveIn = new WasapiCapture(Device);
             _waveIn.DataAvailable +=OnDataAvailable;
-            //_waveIn.RecordingStopped += new EventHandler<StoppedEventArgs>(OnRecordingStopped);
-            _sampleAggregator = new SampleAggregator(fftLength);
+            //_waveIn.RecordingStopped += new EventHandler<StoppedEventArgs>(OnRecordingStopped)
             _waveIn.StartRecording();
         }
 
@@ -58,6 +58,7 @@ namespace Tuner.Wpf.Sound
             }
 
             double freq = FrequencyUtils.FindFundamentalFrequency(spect, _sampleAggregator.Values, SampleRate, MinFreq, MaxFreq);
+            Debug.WriteLine(freq);
             var note = NoteFinder.FindNearestNote(freq);
             OnNoteDetected(note, freq);
         }

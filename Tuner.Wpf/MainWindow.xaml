@@ -31,7 +31,11 @@
         <constrols:TuneInfoControl Grid.RowSpan="2"
                                    Width="Auto"
                                    Height="Auto"
-                                   Margin="0,0,2,131" />
+                                   Margin="0,0,2,131" 
+                                   Frequency="{Binding CurrentFrequency}"
+                                   NearestNote="{Binding CurrentNote}"
+                                   TargetNote="{Binding TargetNote}"
+                                   />
         <Button Width="37"
                 Height="37"
                 MinWidth="0"
