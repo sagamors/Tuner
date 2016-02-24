@@ -51,13 +51,14 @@ namespace Tuner.Wpf.ViewModels
         public ICollectionView FavoritePresets { private set; get; }
         public ICommand DeletePresetCommand { private set; get; }
         public ICommand AddNewPresetDialogShowCommand { private set; get; }
-
+        public ICommand EditPresetDialogShowCommand { private set; get; }
         public MainViewModel(IKernel kernel, IInstrument selectedInstrument, ISettingsViewModel settings, INoteCapture noteCapture) : base(kernel)
         {
             OpenSettingsCommand = new RelayCommand(SettingsShow);
             CloseCommand = new RelayCommand(Close);
             DeleteFromFavoriteCommand = new RelayCommand(Delete, o => o is IPreset);
             AddNewPresetDialogShowCommand = new RelayCommand(AddNewPresetDialogShow);
+            EditPresetDialogShowCommand = new RelayCommand((p)=> { EditPresetDialogShow(p as IPreset); });
             Settings = settings;
             Settings.SettingsChanged += SettingsChanged;
             NoteCapture = noteCapture;
@@ -107,8 +108,22 @@ namespace Tuner.Wpf.ViewModels
 
         public void AddNewPresetDialogShow()
         {
-            ShowChild(Container.Get<IAddNewPresetViewModel>());
+            var preset = new Preset();
+            EditPresetDialogShow(preset);
         }
+
+        public void EditPresetDialogShow(IPreset preset)
+        {
+            var newPreset = Container.Get<IAddNewPresetViewModel>();
+            // todo is not very good
+            newPreset.Preset = (IPreset)preset.Clone();
+            newPreset.Instrument = SelectedInstrument;
+            if (ShowChild(newPreset) == true)
+            {
+                preset.CloneTo(preset);
+            }
+        }
+
 
         private void SettingsChanged(object sender, System.EventArgs e)
         {

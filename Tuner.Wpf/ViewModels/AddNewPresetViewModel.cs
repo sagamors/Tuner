@@ -14,18 +14,20 @@ namespace Tuner.Wpf.ViewModels
 {
     class AddNewPresetViewModel : DialogViewModelBase<IAddNewPresetView>, IAddNewPresetViewModel
     {
-        private readonly IMainWindowViewModel _windowViewModel;
+        public IPreset Preset { set; get; }
 
         public ICommand OkCommand { set; get; }
-        public AddNewPresetViewModel(IKernel container, IMainWindowViewModel windowViewModel) : base(container)
+
+        public IInstrument Instrument  { set; get; }
+
+        public AddNewPresetViewModel(IKernel container) : base(container)
         {
-            _windowViewModel = windowViewModel;
             OkCommand = new RelayCommand(Ok);
         }
 
         private void Ok(object o)
         {
-            
+
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using Ninject;
+using System.Windows.Input;
 using Tuner.Wpf.ViewModels;
 
 namespace Tuner.Wpf.Core
 {
     public abstract class DialogViewModelBase<TView> : ValidationViewModelBase<TView>, IDialogViewModelBase<TView> where TView : IDialogView
     {
-
         public DialogViewModelBase(IKernel container) : base(container)
         {
 

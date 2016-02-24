@@ -105,6 +105,7 @@
                             Command="{Binding DeleteFromFavoriteCommand}"
                             CommandParameter="{Binding ElementName=FavoritePresetItems,
                                                        Path=SelectedValue}" />
+                <MouseBinding Gesture="LeftDoubleClick"  Command="{Binding EditPresetDialogShowCommand}" />
             </ListBox.InputBindings>
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">

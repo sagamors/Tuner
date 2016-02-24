@@ -10,6 +10,12 @@ using Tuner.Wpf.Sound;
 
 namespace Tuner.Wpf.ViewModels
 { 
+    //public abstract class OkCancelDialogViewModelBase<TView> : DialogViewModelBase<TView>, IDialogViewModelBase<TView> where TView : IDialogView
+    //{
+
+    //}
+
+
     public class SettingsViewModel : DialogViewModelBase<ISettingsView>, ISettingsViewModel
     {
         private AudioDevicesWatcher _notificationClient;

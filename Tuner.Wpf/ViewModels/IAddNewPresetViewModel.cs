@@ -6,5 +6,7 @@ namespace Tuner.Wpf.ViewModels
 {
     interface IAddNewPresetViewModel : IDialogViewModelBase<IAddNewPresetView>
     {
+        IPreset Preset { set; get; }
+        IInstrument Instrument { set; get; }
     }
 }
