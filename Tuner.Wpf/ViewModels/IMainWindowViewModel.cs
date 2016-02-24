@@ -8,6 +8,7 @@ namespace Tuner.Wpf.ViewModels
         INote TargetNote { set; get; }
         INote CurrentNote { set; get; }
         double CurrentFrequency { set; get; }
-        void ValidateChildren();
+        bool Validate();
+        void AcceptSettings();
     }
 }

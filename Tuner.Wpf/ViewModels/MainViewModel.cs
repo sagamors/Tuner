@@ -63,8 +63,6 @@ namespace Tuner.Wpf.ViewModels
             NoteCapture = noteCapture;
             NoteCapture.NoteDetected += NoteCapture_NoteDetected;
             SelectedInstrument = selectedInstrument;
-            AcceptSettings();
-            NoteCapture.Start();
             Application.Current.Exit += Current_Exit;
         }
 
@@ -90,12 +88,16 @@ namespace Tuner.Wpf.ViewModels
             Close();
         }
 
-        public void ValidateChildren()
+        public bool Validate()
         {
-            if (Settings.Validate()) return;
+            if (Settings.IsValid) return true;
+            if(Settings.Devices!=null || Settings.Devices.Count == 0)
+            {
+                MessageBox.Show(Settings.GetStringErrors(nameof(Settings.Devices)), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
             SettingsShow();
-            if (Settings.IsValid) return;
-            View.Close();
+            return Settings.IsValid;
         }
 
         public void SettingsShow()
@@ -124,7 +126,7 @@ namespace Tuner.Wpf.ViewModels
             NoteCapture.Stop();
         }
 
-        private void AcceptSettings()
+        public void AcceptSettings()
         {
             NoteCapture.Stop();
             NoteCapture.SampleRate = Settings.SampleRate;

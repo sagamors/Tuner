@@ -28,8 +28,16 @@ namespace Tuner.Wpf
             IMainWindowViewModel window = Bootstrapper.Container.Get<IMainWindowViewModel>();
             var main = window.View;
             MainWindow = (MainWindow)main;
-            window.Show(null);
-            window.ValidateChildren();
+
+            if (window.Validate())
+            { 
+                window.AcceptSettings();
+                window.Show(null);
+            }
+            else
+            {
+                main.Close();
+            }
         }
     }
 }

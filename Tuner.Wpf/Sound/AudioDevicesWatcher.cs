@@ -21,11 +21,17 @@ namespace Tuner.Wpf.Sound
 
         public AudioDevicesWatcher()
         {
-            _dispatcher = Dispatcher.CurrentDispatcher;
-            Devices = new ObservableCollection<MMDevice>();
-            _deviceEnum.RegisterEndpointNotificationCallback(this);
-            RefreshDevices();
-            RefreshDefaultDevice();
+            try {
+                _dispatcher = Dispatcher.CurrentDispatcher;
+                Devices = new ObservableCollection<MMDevice>();
+                _deviceEnum.RegisterEndpointNotificationCallback(this);
+                RefreshDevices();
+                RefreshDefaultDevice();
+            }
+            catch
+            {
+
+            }
         }
 
         void IMMNotificationClient.OnDefaultDeviceChanged(DataFlow dataFlow, Role deviceRole, string defaultDeviceId)

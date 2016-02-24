@@ -10,5 +10,29 @@
                        Height="300"
                        WindowStartupLocation="CenterOwner"
                        mc:Ignorable="d">
-    <Grid />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1">
+            <TextBox />
+            <Button Content="Add"/>
+            <Button Content="Delete"/>
+        </StackPanel>
+        <ListView Name="lstw" Margin="5">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Path=ModelName}"></GridViewColumn>
+                        <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Path=ModelNumber}"></GridViewColumn>
+                        <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Path=UnitCost, StringFormat={}{0:C}}"></GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
 </core:WindowDialogBase>

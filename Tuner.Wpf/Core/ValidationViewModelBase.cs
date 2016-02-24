@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using System.IO;
 
 namespace Tuner.Wpf.Core
 {
@@ -68,6 +69,10 @@ namespace Tuner.Wpf.Core
             ValidateProperty(property.GetValue(this), propertyName);
         }
 
+        /// <summary>
+        /// Checks for errors
+        /// </summary>
+        /// <returns></returns>
         public bool Validate()
         {
             lock (_lock)
@@ -98,8 +103,6 @@ namespace Tuner.Wpf.Core
                 _errors.Add(prop.Key, messages);
                 OnErrorsChanged(prop.Key);
             }
-
-            SetHasErrors();
         }
 
         public override void OnPropertyChanged([CallerMemberName] string propertyName=null)
@@ -108,9 +111,9 @@ namespace Tuner.Wpf.Core
             base.OnPropertyChanged(propertyName);
         }
 
-        private void SetHasErrors()
+        public string GetStringErrors(string propertyName)
         {
-            //HasErrors =_errors.Any(propErrors => propErrors.Value != null && propErrors.Value.Count > 0);
+            return GetErrors(propertyName).Cast<string>().Aggregate((s1,s2)=> { return s1 + Environment.NewLine + s2; });
         }
     }
 }

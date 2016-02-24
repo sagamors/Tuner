@@ -13,10 +13,10 @@ namespace Tuner.Wpf.ViewModels
     public class SettingsViewModel : DialogViewModelBase<ISettingsView>, ISettingsViewModel
     {
         private AudioDevicesWatcher _notificationClient;
-
         public uint SampleRate { set; get; } = 44100;
         [Required]
         public MMDevice SelectedDevice { set; get; }
+        [HasElements(ErrorMessage = "Tuner was unable to find any usable recording device")]
         public ReadOnlyObservableCollection<MMDevice> Devices {private set; get; }
         public int BitDepth { set; get; } = 32;
         public eChannelType ChannelType { set; get; } = eChannelType.Mono;
@@ -37,6 +37,7 @@ namespace Tuner.Wpf.ViewModels
         {
             SelectedDevice = e.Device;
         }
+
 
         private void Ok()
         {

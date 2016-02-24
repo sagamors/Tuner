@@ -127,6 +127,7 @@
     <Compile Include="Core\IViewModel.cs" />
     <Compile Include="Core\ValidationViewModelBase.cs" />
     <Compile Include="Core\WindowDialogBase.cs" />
+    <Compile Include="Helpers\HasElementsAttribute.cs" />
     <Compile Include="Helpers\ComboBoxSelectorExtension.cs" />
     <Compile Include="Helpers\ComboBoxTemplateSelector.cs" />
     <Compile Include="Helpers\EnumerationExtension.cs" />

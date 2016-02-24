@@ -14,5 +14,7 @@ namespace Tuner.Wpf.ViewModels
         int BitDepth { set; get; }
         eChannelType ChannelType { set; get; }
         event EventHandler SettingsChanged;
+
+        string GetStringErrors(string v);
     }
 }
