@@ -465,6 +465,7 @@
                                     </TransformGroup>
                                 </ContentControl.RenderTransform>
                             </ContentControl>
+
                             <ContentControl Canvas.Left="135"
                                             Canvas.Top="86"
                                             Width="95"
@@ -484,7 +485,7 @@
                                        Height="60"
                                        VerticalAlignment="Top"
                                        FontSize="50"
-                                       Text="{Binding NearestNote,RelativeSource={RelativeSource AncestorType=constrols:TuneInfoControl}}" />
+                                       Text="{Binding NearestNote.FullName, RelativeSource={RelativeSource AncestorType=constrols:TuneInfoControl}}" />
                             <ContentControl Canvas.Left="174"
                                             Width="12"
                                             Content="0"
