@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -94,15 +95,19 @@ namespace Tuner.Wpf.Constrols
             set { SetValue(TargetNoteProperty, value); }
         }
 
+        public double SpeedValueChange { get; set; } = 100;
+
         private void SetArrowAngle()
         {
             if(TargetNote==null) return;
             var percent =   (Frequency - TargetNote.Frequency) * 100  / TargetNote.Frequency;
             if (Math.Abs(percent) > _maxPercent)
             {
-                percent = _maxPercent*Math.Sign(percent);
+                percent = _maxPercent * Math.Sign(percent);
             }
-            _rotateTransform.Angle =( percent * _maxAngleValue) / _maxPercent;
+            var value = (percent*_maxAngleValue)/_maxPercent;
+            var animation = new DoubleAnimation(value, new Duration(TimeSpan.FromSeconds(Math.Abs(value / SpeedValueChange))));
+            _rotateTransform.BeginAnimation(RotateTransform.AngleProperty, animation);
         }
     }
 }
