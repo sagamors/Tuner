@@ -52,19 +52,19 @@
                 <system:UInt32>48000</system:UInt32>
                 <system:UInt32>96000</system:UInt32>
             </ComboBox>
-            <TextBlock Style="{StaticResource NameItem}" Text="Bits per sample:" />
+            <!--<TextBlock Style="{StaticResource NameItem}" Text="Bits per sample:" />
             <ComboBox SelectedIndex="0" SelectedItem="{Binding BitDepth, ValidatesOnDataErrors=True}">
                 <system:Int32>8</system:Int32>
                 <system:Int32>16</system:Int32>
                 <system:Int32>32</system:Int32>
-            </ComboBox>
-            <TextBlock Style="{StaticResource NameItem}" Text="Channel type:" />
+            </ComboBox>-->
+            <!--<TextBlock Style="{StaticResource NameItem}" Text="Channel type:" />
             <ComboBox Margin="{StaticResource ControlMargin}"
                       DisplayMemberPath="DisplayName"
                       ItemsSource="{Binding Source={helpers:Enumeration {x:Type viewModels:eChannelType}}}"
                       SelectedValue="{Binding ChannelType,
                                               ValidatesOnDataErrors=True}"
-                      SelectedValuePath="Value" />
+                      SelectedValuePath="Value" />-->
         </auto:AutoGrid>
         <UniformGrid HorizontalAlignment="Right" Rows="1">
             <Button Click="OkButton_Click"

@@ -11,8 +11,8 @@ namespace Tuner.Wpf.ViewModels
         ReadOnlyObservableCollection<MMDevice> Devices { get; }
         MMDevice SelectedDevice { set; get; }
         uint SampleRate { set; get; }
-        int BitDepth { set; get; }
-        eChannelType ChannelType { set; get; }
+        //int BitDepth { set; get; }
+        //eChannelType ChannelType { set; get; }
         event EventHandler SettingsChanged;
 
         string GetStringErrors(string v);
